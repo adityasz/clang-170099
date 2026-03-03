@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.31)
 
 # This varies with cmake version.
 # See https://github.com/Kitware/CMake/blob/v${cmake_version}/Help/dev/experimental.rst
-set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "0e5b6991-d74f-4b3d-a41c-cf096e0b2508")
+set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444")
 
 # Fedora compiles clang with libstdc++ as the default stdlib. CMake wants libc++.
 # Also, std.cc is broken in gcc 15.2.1: See GCC bug 122625.
