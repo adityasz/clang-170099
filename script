@@ -11,13 +11,36 @@ rm -rf build
 
 for i in $(seq 1 $1); do
     (
-        set -e
-    	mkdir -p build/$i
-    	# make sure ccache is not used
-    	cmake -B build/$i -S . -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+		set -e
+        mkdir -p "build/$i"
         while true;
         do
-            cmake --build build/$i -j 1 --clean-first
+            /usr/bin/clang++                                             \
+                -isystem /usr/include/hyprland/protocols                 \
+                -isystem /usr/include/hyprland                           \
+                -isystem /usr/include/libdrm                             \
+                -isystem /usr/include/pango-1.0                          \
+                -isystem /usr/include/cairo                              \
+                -isystem /usr/include/libmount                           \
+                -isystem /usr/include/blkid                              \
+                -isystem /usr/include/fribidi                            \
+                -isystem /usr/include/libxml2                            \
+                -isystem /usr/include/harfbuzz                           \
+                -isystem /usr/include/freetype2                          \
+                -isystem /usr/include/libpng16                           \
+                -isystem /usr/include/glib-2.0                           \
+                -isystem /usr/lib64/glib-2.0/include                     \
+                -isystem /usr/include/sysprof-6                          \
+                -isystem /usr/include/pixman-1                           \
+                -stdlib=libc++ -pthread -Wall -Wpedantic -Wextra         \
+                -march=native -O3 -DNDEBUG -ffast-math -flto=auto        \
+                -std=gnu++26 -fPIC -DWITH_GZFILEOP -pthread              \
+                -x c++-module                                            \
+                -fmodule-output="build/$i/example.pcm"                   \
+                -MD -MT "build/$i/Foo.ixx.o"                             \
+                -MF "build/$i/Foo.ixx.o.d"                               \
+                -o "build/$i/Foo.ixx.o" -c                               \
+                /home/aditya/Playground/cpp/compiler-crash/Foo.ixx
         done
     ) &
 done

@@ -1,1 +1,1 @@
-#include <hyprland/src/managers/KeybindManager.hpp>
+#include <hyprland/src/Compositor.hpp>
