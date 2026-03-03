@@ -13,34 +13,19 @@ for i in $(seq 1 $1); do
     (
 		set -e
         mkdir -p "build/$i"
+		iter=0
+
         while true;
         do
-            /usr/bin/clang++                                             \
-                -isystem /usr/include/hyprland/protocols                 \
-                -isystem /usr/include/hyprland                           \
-                -isystem /usr/include/libdrm                             \
-                -isystem /usr/include/pango-1.0                          \
-                -isystem /usr/include/cairo                              \
-                -isystem /usr/include/libmount                           \
-                -isystem /usr/include/blkid                              \
-                -isystem /usr/include/fribidi                            \
-                -isystem /usr/include/libxml2                            \
-                -isystem /usr/include/harfbuzz                           \
-                -isystem /usr/include/freetype2                          \
-                -isystem /usr/include/libpng16                           \
-                -isystem /usr/include/glib-2.0                           \
-                -isystem /usr/lib64/glib-2.0/include                     \
-                -isystem /usr/include/sysprof-6                          \
-                -isystem /usr/include/pixman-1                           \
-                -stdlib=libc++ -pthread -Wall -Wpedantic -Wextra         \
-                -march=native -O3 -DNDEBUG -ffast-math -flto=auto        \
-                -std=gnu++26 -fPIC -DWITH_GZFILEOP -pthread              \
-                -x c++-module                                            \
-                -fmodule-output="build/$i/example.pcm"                   \
-                -MD -MT "build/$i/Foo.ixx.o"                             \
-                -MF "build/$i/Foo.ixx.o.d"                               \
-                -o "build/$i/Foo.ixx.o" -c                               \
-                /home/aditya/Playground/cpp/compiler-crash/Foo.ixx
+            iter=$((iter + 1))
+
+            /usr/bin/clang++                                               \
+                -stdlib=libc++ -std=gnu++26 -fPIC -DWITH_GZFILEOP -pthread \
+                -march=native -O3 -DNDEBUG -ffast-math -flto=auto          \
+                -x c++-module                                              \
+                -o "build/$i/Foo.ixx.o" -c                                 \
+                /home/aditya/Playground/cpp/compiler-crash/Foo.cppm        \
+				|| { echo "Crashed on the $iter-th try"; exit 1; }
         done
     ) &
 done
