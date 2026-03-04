@@ -4396,22 +4396,13 @@ struct timespec
 ;;
 typedef __fsfilcnt64_t fsfilcnt64_t;
 typedef union
-{
-  __extension__ unsigned long long int __value64;
-  struct
-   __value32;
-} __atomic_wide_counter;
+{} __atomic_wide_counter;
 typedef struct __pthread_internal_list
-{
-} __pthread_list_t;
+{} __pthread_list_t;
 typedef struct __pthread_internal_slist
  __pthread_slist_t;
 struct __pthread_mutex_s
-{
-  short __spins;
-  short __elision;
-  __pthread_list_t __list;
-};
+{};
 struct __pthread_rwlock_arch_t
 ;;
 struct __pthread_cond_s
@@ -4458,34 +4449,11 @@ struct libinput_event_gesture;
 struct libinput_event_tablet_tool;
 struct libinput_event_tablet_pad;
 enum libinput_log_priority {};
-enum libinput_device_capability {
- 
- 
- 
- 
- 
- 
- 
-};
-enum libinput_key_state {
- 
- 
-};
-enum libinput_led {
- 
- 
- 
- 
- 
-};
-enum libinput_button_state {
- 
- 
-};
-enum libinput_pointer_axis {
- 
- 
-};
+enum libinput_device_capability {};
+enum libinput_key_state {};
+enum libinput_led {};
+enum libinput_button_state {};
+enum libinput_pointer_axis {};
 enum libinput_pointer_axis_source {};
 enum libinput_tablet_tool_type {};
 enum libinput_tablet_tool_proximity_state {};
@@ -4641,10 +4609,7 @@ typedef int32_t wl_fixed_t;
 union wl_argument ;
 typedef int ;
 typedef void  __attribute__0;
-enum wl_iterator_result {
- 
- 
-};
+enum wl_iterator_result {};
 }
 extern "C" {
 enum {};
@@ -4743,11 +4708,7 @@ typedef unsigned long int khronos_usize_t;
 typedef float khronos_float_t;
 typedef khronos_uint64_t khronos_utime_nanoseconds_t;
 typedef khronos_int64_t khronos_stime_nanoseconds_t;
-typedef enum {
-    
-    
-    
-} khronos_boolean_enum_t;
+typedef enum {} khronos_boolean_enum_t;
 typedef khronos_int8_t GLbyte;
 typedef khronos_float_t GLclampf;
 typedef khronos_int32_t GLfixed;
@@ -5009,21 +4970,8 @@ inline constexpr auto copy_n = __copy_n{};
 }
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
-} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __format {
 template <class _Container>
@@ -5185,23 +5133,10 @@ inline const bool __is_cpp17_copy_insertable_v =
 } }
 typedef long int ptrdiff_t;
 typedef long unsigned int size_t;
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-using ::max_align_t __attribute__((__using_if_exists__));
-} }
- namespace __attribute__((__type_visibility__("default"))) std {
-enum class align_val_t : size_t ;
-}
- namespace __attribute__((__type_visibility__("default"))) std {
-class __attribute__((__visibility__0)) bad_alloc : public exception {
-public:
-};
-class __attribute__((__visibility__0)) bad_array_new_length : public bad_alloc {
-public:
-};
-}
- namespace __attribute__((__type_visibility__("default"))) std {
-struct __attribute__((__visibility__0)) nothrow_t ;
-}
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__("default"))) std {}
 __attribute__((__visibility__0)) void operator delete(void* __p) noexcept;
 __attribute__((__visibility__0)) void operator delete(void* __p) noexcept;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -5213,8 +5148,7 @@ class allocator;
 template <bool _Cond, class _Unique>
 struct __non_trivial_if ;;
 template <class _Unique>
-struct __non_trivial_if<true, _Unique> {
-};
+struct __non_trivial_if<true, _Unique> {};
 template <class _Tp>
 class allocator : private __non_trivial_if<!is_void<_Tp>::value, allocator<_Tp> > {
 public:
@@ -5258,10 +5192,8 @@ struct __align_type {
   static const size_t value = __alignof(_Tp);
   typedef _Tp type;
 };
-struct __struct_double {
-};
-struct __struct_double4 {
-};
+struct __struct_double {};
+struct __struct_double4 {};
 using __all_types  =
     __type_list<__align_type<unsigned char>,
                 __align_type<unsigned short>,
@@ -5301,13 +5233,7 @@ using aligned_storage_t __attribute__((__deprecated__)) = typename aligned_stora
 template <class _Tp, class _Alloc>
 struct __temp_value ;;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class>
 inline const bool __is_unbounded_array_v = false;
@@ -5443,15 +5369,7 @@ namespace pmr {
 class __attribute__((__visibility__0)) memory_resource ;
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace pmr {
-template <class _ValueType
-          = byte
-          >
-class polymorphic_allocator ;
- ;
-}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace pmr {
 template <class _ValueT>
@@ -5499,8 +5417,7 @@ inline constexpr bool ranges::enable_borrowed_range<basic_string_view<_CharT, _T
  ;
 ;
 template <class _CharT>
-struct __string_view_hash : public __unary_function<basic_string_view<_CharT, char_traits<_CharT> >, size_t> {
-};
+struct __string_view_hash : public __unary_function<basic_string_view<_CharT, char_traits<_CharT> >, size_t> {};
 template <>
 struct hash<basic_string_view<char, char_traits<char> > > : __string_view_hash<char> {};
 template <>
@@ -5511,9 +5428,7 @@ template <>
 struct hash<basic_string_view<char32_t, char_traits<char32_t> > > : __string_view_hash<char32_t> {};
 template <>
 struct hash<basic_string_view<wchar_t, char_traits<wchar_t> > > : __string_view_hash<wchar_t> {};
-inline namespace literals {
-inline namespace string_view_literals {}
-}
+inline namespace literals {}
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _CharT>
@@ -5592,31 +5507,7 @@ using __make_32_64_or_128_bit_t  =
                                                            void>
     > > >;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-;
- ;
- ;
-;
- ;
-namespace __itoa {
-template <unsigned _Base>
-struct __attribute__((__visibility__0)) __integral;
-template <>
-struct __attribute__((__visibility__0)) __integral<2> ;
-template <>
-struct __attribute__((__visibility__0)) __integral<8> ;
-template <>
-struct __attribute__((__visibility__0)) __integral<16> ;
-}
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 struct __fill_n {};
@@ -5633,12 +5524,7 @@ struct in_in_out_result ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
-struct __transform {
-private:
-   ;
-   ;
-   ;
-};
+struct __transform {};
 inline namespace __cpo {
 inline constexpr auto transform = __transform{};
 }
@@ -5753,20 +5639,11 @@ namespace __detail {
 template <typename _Tp, __enable_if_t = 0>
 __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr _Tp __half_positive ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _AlgPolicy, class _Iter, class _Type, class _Proj, class _Comp>
- __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr _Iter __lower_bound_bisecting ;
- ;
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 struct __upper_bound {};
-inline namespace __cpo {
-inline constexpr auto upper_bound = __upper_bound{};
-}
+inline namespace __cpo {}
 }
 } }
  namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
@@ -5781,11 +5658,7 @@ __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instanti
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace __width_estimation_table {
-__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) inline constexpr uint32_t __entries = {};
-}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _StateT>
 class fpos ;;
@@ -5838,8 +5711,7 @@ public:
 private:
   static const size_type __endian_factor = 2;
   struct __long {
-    struct __attribute__((__packed__)) {
-    };
+    struct __attribute__((__packed__)) {};
     pointer __data_;
   };
   enum { __min_cap = 0 / sizeof(value_type) > 2 ? 0 / sizeof(value_type) : 2 };
@@ -6060,10 +5932,7 @@ template <class _CharT, class _Traits, class _Allocator, class _Up>
  __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr typename basic_string<_CharT, _Traits, _Allocator>::size_type
 erase ;
  ;
-inline namespace literals {
-inline namespace string_literals {
-}
-}
+inline namespace literals {}
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __format_spec {
@@ -6525,44 +6394,24 @@ template <class _Tp, class _CharT>
 struct formatter<_Tp, _CharT> ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
-} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 enum class endian ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
-} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
- ;
- ;
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils::Memory {
      ;
      ;
      ;
     namespace Math {
-        enum eTransform {
-            
-            
-            
-            
-        };
+        enum eTransform {};
     }
 }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -6660,10 +6509,7 @@ template <class _Tp, class _Container = deque<_Tp> >
 class stack;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace __escaped_output_table {
-}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
@@ -6769,10 +6615,7 @@ namespace Hyprutils {
 template <typename CharT>
 struct std::formatter<Hyprutils::Math::Vector2D, CharT> : std::formatter<CharT> {};
 namespace Hyprutils::Math {
-    struct SBoxExtents {
-        Vector2D topLeft;
-        Vector2D bottomRight;
-    };
+    struct SBoxExtents {};
     class CBox ;
 }
 namespace Hyprutils {
@@ -6820,7 +6663,7 @@ public:
 };
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-enum __legacy_memory_order {       };
+enum __legacy_memory_order {};
 using __memory_order_underlying_t  = __underlying_type_t<__legacy_memory_order>;
 enum class memory_order : __memory_order_underlying_t ;
 static_assert(is_same<__underlying_type_t<memory_order>, __memory_order_underlying_t>::value,
@@ -6988,8 +6831,7 @@ struct ratio_less : _BoolConstant<__ratio_less<_R1, _R2>::value> {};
 template <class _R1, class _R2>
 struct ratio_greater : _BoolConstant<ratio_less<_R2, _R1>::value> {};
 template <class _R1, class _R2>
-struct ratio_greater_equal : _BoolConstant<!ratio_less<_R1, _R2>::value> {
-};
+struct ratio_greater_equal : _BoolConstant<!ratio_less<_R1, _R2>::value> {};
 template <class _R1, class _R2>
 using __ratio_gcd  = ratio<__static_gcd<_R1::num, _R2::num>, __static_lcm<_R1::den, _R2::den> >;
 template <class _R1, class _R2>
@@ -7264,9 +7106,9 @@ public:
   static const openmode out = 0x10;
   static const openmode trunc = 0x20;
   static const openmode noreplace = 0x40;
-  enum seekdir {    };
+  enum seekdir {};
   class __attribute__((__visibility__0)) Init;
-  enum event {    };
+  enum event {};
   typedef void (*event_callback);
 protected:
 private:
@@ -7715,8 +7557,7 @@ template <class _Alloc>
 class __allocator_destructor ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-class __attribute__((__visibility__0)) bad_weak_ptr : public std::exception {
-};
+class __attribute__((__visibility__0)) bad_weak_ptr : public std::exception {};
 template <class _Tp>
 class weak_ptr;
 template <class _Tp, class _Dp, class _Alloc>
@@ -8333,52 +8174,9 @@ class __attribute__((__visibility__0)) __libcpp_debug_randomizer ;;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
-template <class _Value, class _Map, class _Radix>
-struct __radix_sort_traits ;
-template <class _Value, class _Map>
-struct __counting_sort_traits ;;
- ;
- ;
- ;
- ;
- ;
- ;
-template <size_t _Size>
-struct __unsigned_integer_of_size;
-template <>
-struct __unsigned_integer_of_size<1> ;
-template <>
-struct __unsigned_integer_of_size<2> ;
-template <>
-struct __unsigned_integer_of_size<16> ;
-template <size_t _Size>
-using __unsigned_integer_of_size_t  = typename __unsigned_integer_of_size<_Size>::type;
-template <class _Sc>
-using __unsigned_representation_for_t  = __unsigned_integer_of_size_t<sizeof(_Sc)>;
- ;
- ;
-;
-template <class _Tp, class = void>
-struct __low_byte_fn ;
- ;
- ;
-} }
- namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
- ;
- ;
- ;
-;
- ;
- ;
- ;
-} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __unique_copy_tags {
 struct __reread_from_input_tag ;;
@@ -8412,12 +8210,7 @@ template <class _OutIter1, class _ValType1>
 struct out_value_result ;
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace ranges {
-inline namespace __cpo {
-}
-}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 struct __any_of {};
