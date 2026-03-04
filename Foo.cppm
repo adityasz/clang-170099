@@ -1,71 +1,8 @@
 module;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 typedef struct  __fsid_t;
-
-
-
-
-
-
-
-
-
-
-
 typedef void * __timer_t;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 enum __rlimit_resource
 {};
-
-
 struct rlimit
   ;
 struct rlimit64
@@ -79,7 +16,6 @@ struct rusage
 enum __priority_which
 {};
 extern "C" ;
-
 extern "C" ;
  namespace __attribute__(()) std { inline namespace __1 {
 template <class _Tp, _Tp __v>
@@ -88,8 +24,6 @@ struct  integral_constant {
   typedef _Tp value_type;
   typedef integral_constant type;
 };
-
-
 template <bool _Val>
 using _BoolConstant  = integral_constant<bool, _Val>;
 template <bool __b>
@@ -122,7 +56,6 @@ template <class _Tp>
 concept __class_or_enum = is_class_v<_Tp> || is_union_v<_Tp> || is_enum_v<_Tp>;
 } }
  namespace __attribute__(()) std { inline namespace __1 {
-
 } }
  namespace __attribute__(()) std { inline namespace __1 {
 template <class _Tp>
@@ -225,7 +158,7 @@ struct  is_void : _BoolConstant<__is_same(__remove_cv(_Tp), void)> {};
 template <class _Tp>
  inline constexpr bool is_void_v = __is_same(__remove_cv(_Tp), void);
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct  remove_reference ;;
 template <class _Tp>
@@ -233,7 +166,7 @@ using __libcpp_remove_reference_t  = __remove_reference_t(_Tp);
 template <class _Tp>
 using remove_reference_t = __libcpp_remove_reference_t<_Tp>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct  add_pointer ;;
 template <class _Tp>
@@ -241,7 +174,7 @@ using __add_pointer_t  = __add_pointer(_Tp);
 template <class _Tp>
 using add_pointer_t = __add_pointer_t<_Tp>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <bool>
 struct _IfImpl;
 template <>
@@ -255,15 +188,13 @@ struct  conditional {
   using type  = _If;
 };
 template <class _If, class _Then>
-struct conditional<false, _If, _Then> {
-  using type  = _Then;
-};
+struct conditional<false, _If, _Then> ;
 template <bool _Bp, class _IfRes, class _ElseRes>
 using conditional_t  = typename conditional<_Bp, _IfRes, _ElseRes>::type;
 template <bool _Bp, class _If, class _Then>
 using __conditional_t  = typename conditional<_Bp, _If, _Then>::type;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct  decay ;
 template <class _Tp>
@@ -271,7 +202,7 @@ using __decay_t  = __decay(_Tp);
 template <class _Tp>
 using decay_t = __decay_t<_Tp>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 using __remove_cvref_t  = __remove_cvref(_Tp);
 template <class _Tp>
@@ -279,7 +210,7 @@ struct  remove_cvref ;;
 template <class _Tp>
 using remove_cvref_t = __remove_cvref_t<_Tp>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct __type_identity {
   typedef _Tp type;
@@ -383,7 +314,6 @@ template <class _Ap, class _Bp, class _Xp, class _Yp>
     requires { typename __common_ref_D<_Xp, _Yp>; } &&
     is_convertible_v<_Ap&&, __common_ref_D<_Xp, _Yp>>
 struct __common_ref<_Ap&&, _Bp&, _Xp, _Yp> ;;
-
 template <class _Ap, class _Bp, class _Xp, class _Yp>
 struct __common_ref ;;
 template <class...>
@@ -423,7 +353,6 @@ struct __common_reference_sub_bullet2<_Tp, _Up> ;
 template <class _Tp, class _Up>
   requires requires { typename __cond_res<_Tp, _Up>; }
 struct __common_reference_sub_bullet3<_Tp, _Up> ;;
-
 template <class _Tp, class _Up, class _Vp, class... _Rest>
   requires requires { typename common_reference_t<_Tp, _Up>; }
 struct common_reference<_Tp, _Up, _Vp, _Rest...> : common_reference<common_reference_t<_Tp, _Up>, _Vp, _Rest...> {};
@@ -455,8 +384,8 @@ concept assignable_from =
       { __lhs = std::forward } -> same_as<_Lhs>;
     };
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp>
 struct  is_nothrow_destructible : integral_constant<bool, __is_nothrow_destructible(_Tp)> {};
@@ -562,7 +491,6 @@ concept __swappable_arrays =
 template <class _Tp>
 concept __exchangeable =
     !__unqualified_swappable_with<_Tp&, _Tp&> && move_constructible<_Tp> && assignable_from<_Tp&, _Tp>;
-
 }
 inline namespace __cpo {
 inline constexpr auto swap = __swap::__fn{};
@@ -803,7 +731,6 @@ concept totally_ordered_with =
     __partially_ordered_with<_Tp, _Up>;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <template <class...> class _Templ, class... _Args, class = _Templ<> >
@@ -965,9 +892,7 @@ struct __detector {
   using type  = _Default;
 };
 template <class _Default, template <class...> class _Op, class... _Args>
-struct __detector<_Default, __void_t<_Op<> >, _Op, _Args...> {
-  using type  = _Op<>;
-};
+struct __detector<_Default, __void_t<_Op<> >, _Op, _Args...> ;
 template <class _Default, template <class...> class _Op, class... _Args>
 using __detected_or_t  = typename __detector<_Default, void, _Op, _Args...>::type;
 } }
@@ -1046,7 +971,7 @@ concept __cpp17_random_access_iterator =
        __i + __n  -> same_as_Ip;
        __n + __i  -> same_as_Ip;
        __i - __n  -> same_as_Ip;
-       __i - __i  -> same_asdecltype(__n);
+       __i - __i  -> same_asdecltype0;
        __i  -> convertible_to<iter_reference_t<_Ip>>;
     };
 }
@@ -1252,7 +1177,6 @@ template <class _Tp>
 struct pointer_traits<_Tp*> {
   typedef _Tp* pointer;
   typedef _Tp element_type;
-  
   template <class _Up>
   using rebind = _Up*;
 public:
@@ -1572,7 +1496,6 @@ private:
 };
 class weak_ordering;
 class weak_ordering {
-  
   __attribute__(()) __attribute__(()) __attribute__(()) explicit constexpr weak_ordering(_OrdResult __v) noexcept : __value_() {}
 public:
   static const weak_ordering less;
@@ -1583,7 +1506,6 @@ private:
 };
 class strong_ordering;
 class strong_ordering {
-  
   __attribute__(()) __attribute__(()) __attribute__(()) explicit constexpr strong_ordering(_OrdResult __v) noexcept : __value_() {}
 public:
   static const strong_ordering less;
@@ -1594,16 +1516,13 @@ private:
   signed char __value_;
 };
 struct _CmpUnspecifiedParam ;
-
 inline constexpr partial_ordering partial_ordering::less(_PartialOrdResult::__less);
 inline constexpr partial_ordering partial_ordering::equivalent(_PartialOrdResult::__equiv);
 inline constexpr partial_ordering partial_ordering::greater(_PartialOrdResult::__greater);
 inline constexpr partial_ordering partial_ordering::unordered(_PartialOrdResult::__unordered);
-
 inline constexpr weak_ordering weak_ordering::less(_OrdResult::__less);
 inline constexpr weak_ordering weak_ordering::equivalent(_OrdResult::__equiv);
 inline constexpr weak_ordering weak_ordering::greater(_OrdResult::__greater);
-
 inline constexpr strong_ordering strong_ordering::less(_OrdResult::__less);
 inline constexpr strong_ordering strong_ordering::equal(_OrdResult::__equiv);
 inline constexpr strong_ordering strong_ordering::equivalent(_OrdResult::__equiv);
@@ -1784,10 +1703,6 @@ typedef signed char int_fast8_t;
 typedef long int int_fast16_t;
 typedef long int int_fast32_t;
 typedef long int int_fast64_t;
-
-
-
-
 typedef long int intptr_t;
 typedef unsigned long int uintptr_t;
 typedef long intmax_t;
@@ -1826,7 +1741,7 @@ template <class _Tp>
 template <class _Tp>
 inline const bool __is_cheap_to_copy = __is_trivially_copyable(_Tp) && sizeof(_Tp) <= sizeof(std::intmax_t);
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp, class = void>
 struct __is_replaceable : is_trivially_copyable<_Tp> {};
 template <class _Tp>
@@ -1944,7 +1859,7 @@ class numeric_limits<volatile _Tp> : public numeric_limits<_Tp> {};
 template <class _Tp>
 class numeric_limits<const volatile _Tp> : public numeric_limits<_Tp> {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -2297,7 +2212,6 @@ class __attribute__(()) exception {};
 class __attribute__(()) bad_exception : public exception {};
 }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Arg, class _Result>
@@ -2330,7 +2244,7 @@ struct __check_pair_construction {
     return is_constructible<_T1, _U1>::value && is_constructible<_T2, _U2>::value;
   }
   template <class _U1, class _U2>
-  static __attribute__(()) __attribute__(()) __attribute__((__abi_tag__("ne210108"))) constexpr void  __is_implicit() ;
+  static __attribute__(()) __attribute__(()) __attribute__((__abi_tag__0)) constexpr void  __is_implicit() ;
 };
 template <class, class>
 struct __non_trivially_copyable_base ;
@@ -2347,7 +2261,7 @@ struct pair
     ;
   template <class _CheckArgsDep = __check_pair_construction<_T1, _T2>,
             __enable_if_t<_CheckArgsDep::template __is_pair_constructible<_T1 const&, _T2 const&>(), int> = 0>
-  __attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108")))
+  __attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0))
   constexpr explicit(!_CheckArgsDep::template __is_implicit<_T1 const&, _T2 const&>)
       pair(_T1 const& __t1, _T2 const& __t2) noexcept(is_nothrow_copy_constructible<first_type>::value &&
                                                       is_nothrow_copy_constructible<second_type>::value)  ;
@@ -2445,7 +2359,6 @@ extern "C"
                                           ;
 ;
 ;
-
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
  ;
@@ -2949,10 +2862,7 @@ struct char_traits<wchar_t>;
 template <class _CharT, class _Traits = char_traits<_CharT>, class _Allocator = allocator<_CharT> >
 class basic_string;
 using string = basic_string<char>;
-
 using u8string = basic_string<char8_t>;
-
-
 namespace pmr {}
 template <class _CharT, class _Traits, class _Allocator>
 class 
@@ -3000,7 +2910,7 @@ struct __is_identity<reference_wrapper<const identity> > : integral_constant<boo
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 struct unreachable_sentinel_t {};
 inline constexpr unreachable_sentinel_t unreachable_sentinel;;
 } }
@@ -3018,10 +2928,10 @@ namespace std
 {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct nullopt_t {
-  struct __secret_tag {};
+  struct __secret_tag ;
   __attribute__(()) __attribute__(()) __attribute__(()) constexpr explicit nullopt_t( void) noexcept {}
 };
-inline constexpr nullopt_t nullopt{ };
+inline constexpr nullopt_t nullopt;
 struct __optional_construct_from_invoke_tag ;
 template <class _Tp, bool = is_trivially_destructible<_Tp>::value>
 struct __optional_destruct_base;
@@ -3135,7 +3045,6 @@ template <class _Tp>
 struct __is_std_optional : integral_constant<bool, false> {};
 template <class _Tp>
 struct __is_std_optional<optional<_Tp>> : integral_constant<bool, true> {};
-
 ;
  ;
  ;
@@ -3219,7 +3128,6 @@ class iota_view : public view_interface<iota_view<_Start, _BoundSentinel>> {};
 ;
 template <class _Start, class _BoundSentinel>
 inline constexpr bool enable_borrowed_range<iota_view<_Start, _BoundSentinel>> = true;
-
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3384,16 +3292,6 @@ inline const decltype(sizeof(int)) __datasizeof_v = __builtin_offsetof(_FirstPad
 extern "C" 
 enum
 {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 };
 ;
 ;
@@ -3437,37 +3335,25 @@ enum
 ;
 ;
 ;
-
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
-
-
 enum
 {};
 extern "C" 
  namespace __attribute__(()) std {}
-
-
-
-
-
-
 typedef long unsigned int size_t;
 typedef __builtin_va_list __gnuc_va_list;
 typedef __gnuc_va_list va_list;
-
 typedef struct __mbstate_t mbstate_t;
 struct _IO_FILE;
-
 struct _IO_FILE;
 typedef struct _IO_FILE FILE;
 extern "C" ;
-
 typedef long unsigned int size_t;
 typedef struct  max_align_t;
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__(()) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 template <class _InIter1, class _InIter2>
@@ -3534,10 +3420,6 @@ template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_istream;
 template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_iostream;
-
-
-
-
 template <class _CharT, class _Traits>
 class   basic_istream;
 template <class _CharT, class _Traits>
@@ -3559,16 +3441,12 @@ private:
 template <movable _Val, class _CharT, class _Traits>
   requires default_initializable<_Val> && __stream_extractable<_Val, _CharT, _Traits>
 class basic_istream_view<_Val, _CharT, _Traits>::__iterator {};
-
 namespace __istream {
 template <class _Tp>
 struct __fn ;
 }
-
 template <class _Tp>
 inline constexpr auto Trans_NS_Trans_NS_views___cpo_istream = __istream::__fn<_Tp>{};
-
-
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3598,7 +3476,6 @@ public:
   using value_type = _Iter ;
   using difference_type = _Iter ;
   using pointer = _Iter;
-  
     ;
    ;
   _Iter __current_;
@@ -3625,7 +3502,6 @@ class as_rvalue_view : public view_interface<as_rvalue_view<_View>> {};
 ;
 template <class _View>
 inline constexpr bool enable_borrowed_range<as_rvalue_view<_View>> = enable_borrowed_range<_View>;
-
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
@@ -3661,14 +3537,8 @@ public:
   using value_type = subrange<iterator_t<_View>>;
   using difference_type = range_difference_t<_View>;
 };
-
-
 struct __fn {};
-
-
 inline constexpr auto Trans_NS_Trans_NS_views___cpo_chunk_by = __fn{};
-
-
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3739,12 +3609,7 @@ template <input_range _View, forward_range _Pattern>
            __concatable<range_reference_t<_View>, _Pattern>
 template <bool _Const>
 struct join_with_view<_View, _Pattern>::__sentinel {};
-
-
-struct Trans_NS___join_with_view___fn {};
-
-
-
+struct Trans_NS___join_with_view___fn ;
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3786,8 +3651,6 @@ class istream_iterator
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_streambuf;
-
-
 template <class _CharT, class _Traits>
 class   basic_streambuf;
 } }
@@ -3808,14 +3671,6 @@ template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_ofstream;
 template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_fstream;
-
-
-
-
-
-
-
-
 template <class _CharT, class _Traits>
 class   basic_filebuf;
 template <class _CharT, class _Traits>
@@ -3825,17 +3680,12 @@ class   basic_ifstream;
 class __attribute__(()) ios_base;
 template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_ios;
-
-
 template <class _CharT, class _Traits>
 class   basic_ios;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _CharT, class _Traits = char_traits<_CharT> >
 class basic_ostream;
-
-
 template <class _CharT, class _Traits>
 class   basic_ostream;
 template <class _CharT, class _Traits>
@@ -3854,7 +3704,7 @@ public:
 protected:
 };
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _CharT, class _Traits = char_traits<_CharT>, class _Allocator = allocator<_CharT> >
 class basic_stringbuf;
 template <class _CharT, class _Traits = char_traits<_CharT>, class _Allocator = allocator<_CharT> >
@@ -3863,14 +3713,6 @@ template <class _CharT, class _Traits = char_traits<_CharT>, class _Allocator = 
 class basic_ostringstream;
 template <class _CharT, class _Traits = char_traits<_CharT>, class _Allocator = allocator<_CharT> >
 class basic_stringstream;
-
-
-
-
-
-
-
-
 template <class _CharT, class _Traits, class _Allocator>
 class   basic_stringbuf;
 template <class _CharT, class _Traits, class _Allocator>
@@ -3890,11 +3732,6 @@ template <class _CharT, class _Traits = char_traits<_CharT> >
 class ostreambuf_iterator;
 template <class _State>
 class fpos;
-
-
-
-
-
 template <class _CharT, class _Traits>
 class __save_flags ;
 } }
@@ -3903,15 +3740,11 @@ template <class _CharT>
 struct char_traits;
 template <>
 struct char_traits<char> {
-  
   using int_type = int;
   using off_type = long long;
   using pos_type = fpos<mbstate_t>;
-  
-  
   static inline __attribute__(()) __attribute__(()) __attribute__(()) constexpr void
   assign() noexcept ;
-  
   static inline __attribute__(()) __attribute__(()) __attribute__(()) constexpr void 
   copy(char* __s1, const char* __s2, decltype(sizeof(int)) __n) noexcept ;
 };
@@ -3920,8 +3753,6 @@ struct __char_traits_base {
   using char_type = _CharT;
   using int_type = _IntT;
   using off_type = long long;
-  
-  
   using pos_type = fpos<mbstate_t>;
 };
 template <>
@@ -3950,40 +3781,8 @@ extern "C"
 typedef __builtin_va_list va_list;
 extern "C" ;
 extern "C" 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 typedef __timer_t timer_t;
-
-
 typedef long unsigned int size_t;
-
-
-
-
-
-
-
-
 ;
 ;
 ;
@@ -3992,47 +3791,34 @@ typedef long unsigned int size_t;
 ;
 typedef struct
  __sigset_t;
-
 struct timespec
 ;;
-
 typedef struct
  __atomic_wide_counter;
-
-
 struct __pthread_mutex_s
-{};
+;
 struct __pthread_rwlock_arch_t
 ;;
 struct __pthread_cond_s
 ;;
-
-
 typedef struct
  __once_flag;
-
 typedef struct
  pthread_mutexattr_t;
 typedef struct
  pthread_condattr_t;
-
-
 union pthread_attr_t
 ;;
-
-
 typedef struct
  pthread_cond_t;
 typedef struct
  pthread_rwlock_t;
 typedef struct
  pthread_rwlockattr_t;
-
 typedef struct
  pthread_barrier_t;
 typedef struct
  pthread_barrierattr_t;
-
 extern "C" 
 typedef long unsigned int size_t;
 extern "C" 
@@ -4127,7 +3913,6 @@ typedef long unsigned int size_t;
 typedef struct
    stack_t;
 __extension__ 
-
 enum
 {};
 struct _libc_fpxreg
@@ -4159,7 +3944,6 @@ struct sigstack
 ;
 ;
 ;
-
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
 extern "C" 
@@ -4176,7 +3960,6 @@ extern "C"
  namespace __attribute__((__type_visibility__("default"))) std {}
 extern "C" 
 extern "C++" 
-
 typedef long unsigned int size_t;
 extern "C" 
 extern "C" {
@@ -4195,7 +3978,6 @@ struct wl_array ;
 ;
 ;
 ;
-
 ;
 ;
 ;
@@ -4205,270 +3987,13 @@ typedef int ;
 typedef void  __attribute__0;
 enum wl_iterator_result {};
 }
-extern "C" {
-enum {};
-typedef int ;
-typedef int ;
-typedef int ;
-typedef void ;
-;
-;
-;
-;
-;
-struct wl_event_source *
-wl_event_loop_add_signal;
-;
-;
-;
-;
-;
-;
-;
-struct wl_listener;
-typedef void ;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-struct wl_client;
-typedef void ;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-typedef enum wl_iterator_result ;
-;
-typedef void ;
-;
-;
-;
-struct wl_listener ;;
-struct wl_signal ;
-;
-;
-;
-;
-;
-typedef void ;
-;
-;
-;
-;
-;
-;
-enum wl_protocol_logger_type {};
-struct wl_protocol_logger_message ;
-typedef void ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-typedef void  ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-           ;
-}
-
+extern "C" 
 typedef long unsigned int size_t;
 extern "C" ;
 extern "C" ;
 extern "C" ;
  namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector;
@@ -4494,7 +4019,7 @@ template <class _InIter1, class _OutIter1>
 struct in_out_result ;
 template <class _InIter, class _OutIter>
 using copy_result = in_out_result<_InIter, _OutIter>;
-struct __copy {};
+struct __copy ;
 inline namespace __cpo {}
 }
 } }
@@ -4654,7 +4179,6 @@ inline const bool __is_cpp17_copy_insertable_v =
     0;
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
-
 typedef long unsigned int size_t;
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
@@ -4673,12 +4197,10 @@ struct __non_trivial_if<true, _Unique> {};
 template <class _Tp>
 class allocator : private __non_trivial_if<!is_void<_Tp>::value, allocator<_Tp> > {
 public:
-  
   typedef decltype(static_cast<int *>(nullptr) - static_cast<int *>(nullptr)) difference_type;
   typedef _Tp value_type;
   typedef integral_constant<bool, true> propagate_on_container_move_assignment;
    ;
-   
 };
  ;
 } }
@@ -4782,7 +4304,6 @@ template <class _Tp, class _Allocator>
 struct __container_traits<vector<_Tp, _Allocator> > ;;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 ;
 ;
 ;
@@ -4944,7 +4465,6 @@ enum class __arg_t : uint8_t ;
  ;
 template <class _Context>
 class __basic_format_arg_value ;
-
 template <class _Context>
 class basic_format_arg<_Context>::handle {};
  ;
@@ -4955,7 +4475,6 @@ template <contiguous_iterator _Iterator>
 struct __parse_number_result ;
 ;
 ;
-
  ;
  ;
 }
@@ -4977,7 +4496,7 @@ namespace __extended_grapheme_custer_property_boundary {
 enum class __property : uint8_t ;;
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 namespace __indic_conjunct_break {
 enum class __property : uint8_t ;
 __attribute__(()) __attribute__(()) __attribute__(()) inline constexpr uint32_t __entries = {};
@@ -5037,12 +4556,12 @@ public:
 private:
   static const size_type __endian_factor = 2;
   struct __long {
-    struct __attribute__((__packed__)) {};
+    struct __attribute__0 {};
     pointer __data_;
   };
   enum { __min_cap  };
   struct __short {
-    struct __attribute__((__packed__)) {
+    struct __attribute__0 {
       unsigned char __is_long_ : 1;
       unsigned char __size_ : 7;
     };
@@ -5079,7 +4598,6 @@ public:
   __attribute__(()) __attribute__(()) __attribute__(()) constexpr void 
   operator=(basic_string&& __str) noexcept ;
   constexpr basic_string& operator=(value_type __c);
-  
   constexpr void resize(size_type __n, value_type __c);
   constexpr void reserve(size_type __requested_capacity);
    ;
@@ -5150,17 +4668,13 @@ public:
   constexpr int
   compare(size_type __pos1, size_type __n1, const value_type* __s, size_type __n2) const;
 private:
-  
   ;
-  
   enum { __alignment  };
-  
 constexpr void
 __init(const value_type* __s, size_type __sz) {
   bool __trans_tmp_2;
   size_type __trans_tmp_1;
   __libcpp_is_constant_evaluated;
-  
    __rep_ = __rep();
   {
       if (size_type __m = __alloc_traits::max_size(__alloc_); __m <= 0 / 2) ; else {
@@ -5168,23 +4682,13 @@ __init(const value_type* __s, size_type __sz) {
         __trans_tmp_1 =  __uses_lsb ? __m - __alignment - 1 :  - __alignment - 1;
       }
     }
-  
   __sz > __trans_tmp_1;
-  
    this->__throw_length_error;
-  {
-  size_type __trans_tmp_3 = __sz;
-  {size_type __sz = __trans_tmp_3;
-   __trans_tmp_2 =  __trans_tmp_3 < __min_cap; }}
-  
   
   __trans_tmp_2;
-  
    ;  
   traits_type::copy;
   traits_type::assign;
-  {size_type __current_size = __sz;
-  }
   
   ;
 }
@@ -5212,7 +4716,7 @@ __init(const value_type* __s, size_type __sz) {
   ;
   ;
    ;
-   __attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static void __throw_length_error() ;
+   __attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) static void __throw_length_error() ;
   ;
 };
 extern template __attribute__(()) void basic_string<char>::__init(const value_type*, size_type); extern template __attribute__(()) void basic_string<char>::__init(size_type, value_type); extern template __attribute__(()) basic_string<char>::basic_string(const basic_string&, size_type, size_type, const allocator<char>&); extern template __attribute__0 basic_string<char>::~basic_string(); extern template __attribute__(()) basic_string<char>& basic_string<char>::operator=(value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::assign(size_type, value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::assign(const basic_string&, size_type, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::append(size_type, value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::append(const value_type*); extern template __attribute__(()) basic_string<char>& basic_string<char>::append(const value_type*, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::append(const basic_string&, size_type, size_type); extern template __attribute__(()) void basic_string<char>::push_back(value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::insert(size_type, const value_type*); extern template __attribute__(()) basic_string<char>& basic_string<char>::insert(size_type, size_type, value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::insert(size_type, const value_type*, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::insert(size_type, const basic_string&, size_type, size_type); extern template __attribute__(()) basic_string<char>::iterator basic_string<char>::insert(basic_string::const_iterator, value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::replace(size_type, size_type, const value_type*); extern template __attribute__(()) basic_string<char>& basic_string<char>::replace(size_type, size_type, size_type, value_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::replace(size_type, size_type, const value_type*, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::replace(size_type, size_type, const basic_string&, size_type, size_type); extern template __attribute__(()) void basic_string<char>::__grow_by_and_replace(size_type, size_type, size_type, size_type, size_type, size_type, const value_type*); extern template __attribute__(()) void basic_string<char>::resize(size_type, value_type); extern template __attribute__(()) void basic_string<char>::reserve(size_type); extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::copy(value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find(value_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find(const value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::rfind(value_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::rfind(const value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find_first_of(const value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find_last_of(const value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find_first_not_of(const value_type*, size_type, size_type) const; extern template __attribute__(()) basic_string<char>::size_type basic_string<char>::find_last_not_of(const value_type*, size_type, size_type) const; extern template __attribute__(()) char& basic_string<char>::at(size_type); extern template __attribute__(()) const char& basic_string<char>::at(size_type) const; extern template __attribute__(()) int basic_string<char>::compare(const value_type*) const; extern template __attribute__(()) int basic_string<char>::compare(size_type, size_type, const value_type*) const; extern template __attribute__(()) int basic_string<char>::compare(size_type, size_type, const value_type*, size_type) const; extern template __attribute__(()) int basic_string<char>::compare(size_type, size_type, const basic_string&, size_type, size_type) const; extern template __attribute__(()) const basic_string<char>::size_type basic_string<char>::npos; extern template __attribute__(()) basic_string<char>::basic_string(const basic_string&); extern template __attribute__(()) basic_string<char>::basic_string(const basic_string&, const allocator<char>&); extern template __attribute__(()) basic_string<char>& basic_string<char>::assign(const value_type*); extern template __attribute__(()) basic_string<char>& basic_string<char>::assign(const value_type*, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::operator=(basic_string const&); extern template __attribute__(()) void basic_string<char>::__grow_by(size_type, size_type, size_type, size_type, size_type, size_type); extern template __attribute__(()) basic_string<char>& basic_string<char>::erase(size_type, size_type);
@@ -5220,12 +4724,7 @@ extern template __attribute__(()) void basic_string<wchar_t>::__init(const value
 ;
 ;
 ;
-template <ranges::input_range _Range,
-          class _Allocator = allocator<ranges::range_value_t<_Range>>,
-          class = enable_if_t<__is_allocator<_Allocator>::value> >
-basic_string(from_range_t, _Range&&, _Allocator = _Allocator())
-    -> basic_string<ranges::range_value_t<_Range>, char_traits<ranges::range_value_t<_Range>>, _Allocator>;
-
+;
  ;
  ;
  ;
@@ -5280,7 +4779,7 @@ inline namespace literals {}
  namespace __attribute__(()) std { inline namespace __1 {} }
  namespace __attribute__(()) std {}
 extern "C" 
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__(()) std { inline namespace __1 {
 namespace __locale {
 struct __locale_guard ;;
@@ -5300,7 +4799,7 @@ public:
 };
 class __attribute__(()) __shared_weak_count : private __shared_count {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 struct once_flag;
 ;
 struct once_flag ;
@@ -5309,11 +4808,10 @@ class __call_once_param ;;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 struct __private_constructor_tag ;;
 } }
-
 typedef long unsigned int size_t;
  namespace __attribute__(()) std { inline namespace __1 {
 class __attribute__(()) locale;
@@ -5343,7 +4841,6 @@ template <class _CharT>
 class collate;
 ;
 ;
-
 class __attribute__(()) locale::facet : public __shared_count {};
 class __attribute__(()) locale::id {};
  ;
@@ -5420,7 +4917,7 @@ template <>
 class __attribute__(()) __attribute__(()) codecvt<char32_t, char, mbstate_t>
     : public locale::facet, public codecvt_base {};
 template <>
-class __attribute__((__visibility__("default"))) codecvt<char32_t, char8_t, mbstate_t> : public locale::facet, public codecvt_base {
+class __attribute__((__visibility__0)) codecvt<char32_t, char8_t, mbstate_t> : public locale::facet, public codecvt_base {
 public:
   typedef char32_t intern_type;
   typedef char8_t extern_type;
@@ -5478,7 +4975,7 @@ struct __attribute__(()) __widen_from_utf8<32> : public codecvt<char32_t, char, 
 template <class _CharT>
 class numpunct;
 template <>
-class __attribute__((__visibility__("default"))) numpunct<char> : public locale::facet {
+class __attribute__((__visibility__0)) numpunct<char> : public locale::facet {
 public:
   typedef char char_type;
   typedef basic_string<char_type> string_type;
@@ -5489,7 +4986,7 @@ protected:
   string __grouping_;
 };
 template <>
-class __attribute__((__visibility__("default"))) numpunct<wchar_t> : public locale::facet {
+class __attribute__((__visibility__0)) numpunct<wchar_t> : public locale::facet {
 public:
   typedef wchar_t char_type;
   typedef basic_string<char_type> string_type;
@@ -5506,34 +5003,34 @@ class __attribute__(()) numpunct_byname<char> : public numpunct<char> {};
 template <>
 class __attribute__(()) numpunct_byname<wchar_t> : public numpunct<wchar_t> {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
 namespace Hyprutils::Memory {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <__fmt_char_type _CharT>
 __attribute__(()) __attribute__(()) __attribute__(()) constexpr const _CharT __statically_widen ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Context>
 class basic_format_args ;;
 ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Rp, class _CharT>
 concept __const_formattable_range =
     ranges::input_range<const _Rp> && formattable<ranges::range_reference_t<const _Rp>, _CharT>;
@@ -5566,35 +5063,35 @@ struct formatter<_Rp, _CharT> : __range_default_formatter<format_kind<_Rp>, _Rp,
 template <class _Tp, class _Allocator = allocator<_Tp> >
 class deque;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp, class _Container = deque<_Tp> >
 class queue;
 template <class _Tp, class _Container = vector<_Tp>, class _Compare = less<> >
 class priority_queue;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp, class _Container = deque<_Tp> >
 class stack;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 namespace ranges {
-struct __find_first_of {};
+struct __find_first_of ;
 inline namespace __cpo {}
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 namespace ranges {
 template <class _InIter1, class _Func1>
 struct in_fun_result ;
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 namespace ranges {
 template <class _Iter, class _Func>
 using for_each_result = in_fun_result<_Iter, _Func>;
@@ -5604,11 +5101,11 @@ inline constexpr auto for_each = __for_each{};
 }
 }
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
 namespace Hyprutils {
     namespace Math {
         class Vector2D {
@@ -5627,11 +5124,11 @@ namespace Hyprutils::Math {
     class CBox ;
 }
 namespace Hyprutils {}
- namespace __attribute__((__type_visibility__("default"))) std {
+ namespace __attribute__((__type_visibility__0)) std {
 using terminate_handler = void ;
 class __attribute__(()) exception_ptr;
 }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
  ;
  ;
 class __attribute__(()) __do_message;
@@ -5641,28 +5138,22 @@ public:
 };
 class __attribute__(()) __do_message : public error_category {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct is_error_code_enum : public integral_constant<bool, false> {};
 template <class _Tp>
 inline constexpr bool is_error_code_enum_v = is_error_code_enum<_Tp>::value;
 namespace __adl_only {}
-class __attribute__(()) error_code {
-  int __val_;
-  const error_category __cat_;
-public:
-   ;
-   ;
-};
+class __attribute__(()) error_code ;
 template <>
 struct hash<error_code> : public __unary_function<error_code, decltype(sizeof(int))> {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 class __attribute__(()) system_error : public runtime_error {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <typename _Tp>
 struct __cxx_atomic_base_impl ;
  ;
@@ -5690,9 +5181,9 @@ struct __cxx_atomic_base_impl ;
 template <typename _Tp, typename _Base = __cxx_atomic_base_impl<_Tp> >
 struct __cxx_atomic_impl : public _Base {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <intmax_t _Xp, intmax_t _Yp>
 inline const intmax_t __static_gcd = __static_gcd<_Yp, _Xp % _Yp>;
 template <intmax_t _Xp>
@@ -5702,7 +5193,7 @@ inline const intmax_t __static_lcm = _Xp / __static_gcd<_Xp, _Yp> * _Yp;
 template <intmax_t _Xp>
 inline const intmax_t __static_abs = _Xp < 0 ? -_Xp : _Xp;
 template <intmax_t _Xp>
-inline const intmax_t __static_sign = _Xp == 0 ? 0 : (_Xp < 0 ? -1 : 1);
+inline const intmax_t __static_sign = _Xp == 0 ? 0 : 0;
 template <intmax_t _Xp, intmax_t _Yp, intmax_t = __static_sign<_Yp> >
 class __ll_add;
 template <intmax_t _Xp, intmax_t _Yp>
@@ -5716,15 +5207,7 @@ class __ll_sub;
 template <intmax_t _Xp, intmax_t _Yp>
 class __ll_sub<_Xp, _Yp, 1> ;;
 template <intmax_t _Xp, intmax_t _Yp>
-class __ll_mul {
-  static const intmax_t nan = 0;
-  static const intmax_t min = 0 + 1;
-  static const intmax_t max = -min;
-  static const intmax_t __a_x = __static_abs<_Xp>;
-  static const intmax_t __a_y = __static_abs<_Yp>;
-public:
-  static const intmax_t value = _Xp * _Yp;
-};
+class __ll_mul ;
 template <intmax_t _Yp>
 class __ll_mul<0, _Yp> ;
 template <intmax_t _Xp>
@@ -5828,7 +5311,6 @@ template <class _R1, class _R2>
 inline constexpr bool ratio_not_equal_v = ratio_not_equal<_R1, _R2>::value;
 template <class _R1, class _R2>
 inline constexpr bool ratio_less_v = ratio_less<_R1, _R2>::value;
-
 template <class _Rep, class _Period = ratio<1> >
 class duration;
 template <class _Rep, class _Period>
@@ -5854,10 +5336,8 @@ template <class _Rep, class _Period>
 inline const bool __is_duration_v<volatile duration<_Rep, _Period> > = true;
 template <class _Rep, class _Period>
 inline const bool __is_duration_v<const volatile duration<_Rep, _Period> > = true;
-
 template <class _Rep1, class _Period1, class _Rep2, class _Period2>
 struct common_type<duration<_Rep1, _Period1>, duration<_Rep2, _Period2> > ;;
-
 template <class _FromDuration,
           class _ToDuration,
           class _Period = typename ratio_divide<typename _FromDuration::period, typename _ToDuration::period>::type,
@@ -5876,7 +5356,6 @@ struct __duration_cast<_FromDuration, _ToDuration, _Period, false, false> ;;
 template <class _Rep>
 struct treat_as_floating_point : is_floating_point<_Rep> {};
  ;
-
 typedef duration<long long, nano> nanoseconds;
 typedef duration<long long, micro> microseconds;
 typedef duration<long long, milli> milliseconds;
@@ -5894,25 +5373,16 @@ struct __duration_eq<_LhsDuration, _LhsDuration> ;
  ;
 template <class _LhsDuration, class _RhsDuration>
 struct __duration_lt ;
-
 inline namespace literals {
-
 }
-
-
-
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Clock, class _Duration = typename _Clock::duration>
 class time_point {};
-
 template <class _Clock, class _Duration1, class _Duration2>
 struct common_type<time_point<_Clock, _Duration1>, time_point<_Clock, _Duration2> > ;;
-
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 class __attribute__(()) steady_clock {
 public:
   typedef nanoseconds duration;
@@ -5921,10 +5391,8 @@ public:
   typedef time_point<steady_clock, duration> time_point;
   static constexpr const bool is_steady = true;
 };
-
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 class __attribute__(()) system_clock {
 public:
   typedef microseconds duration;
@@ -5937,11 +5405,10 @@ template <class _Duration>
 using sys_time = time_point<system_clock, _Duration>;
 using sys_seconds = sys_time<seconds>;
 using sys_days = sys_time<days>;
-
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp, class = void>
 struct __atomic_waitable_traits ;
 template <class _Tp, class = void>
@@ -5957,8 +5424,8 @@ struct __atomic_wait_backoff_impl ;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct  remove_volatile ;;
 template <class _Tp>
@@ -5966,20 +5433,17 @@ using __remove_volatile_t  = __remove_volatile(_Tp);
 template <class _Tp>
 using remove_volatile_t = __remove_volatile_t<_Tp>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp, bool = is_integral<_Tp>::value && !is_same<_Tp, bool>::value>
 struct __atomic_base
-{};
+;
 template <class _Tp, bool _IsIntegral>
 struct __atomic_waitable_traits<__atomic_base<_Tp, _IsIntegral> > ;
 template <typename _Tp>
-struct __check_atomic_mandates {
-  using type  = _Tp;
-};
+struct __check_atomic_mandates ;
 template <class _Tp>
 struct atomic : public __atomic_base<typename __check_atomic_mandates<_Tp>::type> {
   using __base  = _Tp ;
-  
 };
 template <class _Tp>
 struct atomic<_Tp*> : public __atomic_base<_Tp*> {};
@@ -6050,7 +5514,7 @@ public:
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 typedef decltype(static_cast<int *>(nullptr) - static_cast<int *>(nullptr)) streamsize;
 class __attribute__(()) ios_base {
 public:
@@ -6123,8 +5587,8 @@ extern template class __attribute__(()) basic_ios<char>;
 extern template class __attribute__(()) basic_ios<wchar_t>;
 } }
  namespace __attribute__(()) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct __has_array_cookie : _Not<is_trivially_destructible<_Tp> > {};
 struct __itanium_array_cookie ;
@@ -6132,8 +5596,8 @@ template <class _Tp>
 struct  __arm_array_cookie ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 struct default_delete ;
 template <class _Tp>
@@ -6224,8 +5688,8 @@ template <class _Tp, class _Dp>
 struct hash<__enable_hash_helper< unique_ptr<_Tp, _Dp>, typename unique_ptr<_Tp, _Dp>::pointer> >
 ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _CharT, class _Traits>
 class basic_streambuf {
 public:
@@ -6248,14 +5712,14 @@ extern template class __attribute__(()) basic_streambuf<char>;
 extern template class __attribute__(()) basic_streambuf<wchar_t>;
 } }
  namespace __attribute__(()) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _CharT>
 using _IsCharLikeType  =
     _And<>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <decltype(sizeof(int)) _N_words, decltype(sizeof(int)) _Size>
 class __bitset;
 template <decltype(sizeof(int)) _N_words, decltype(sizeof(int)) _Size>
@@ -6281,16 +5745,13 @@ template <decltype(sizeof(int)) _Size>
 struct hash<bitset<_Size> >;
 template <decltype(sizeof(int)) _Size>
 struct hash<bitset<_Size> > : public __unary_function<bitset<_Size>, decltype(sizeof(int))> {};
-
  ;
  ;
  ;
-
 ;
 ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _CharT, class _Traits>
 class basic_ostream<_CharT, _Traits>::sentry {}
  ;
@@ -6304,18 +5765,18 @@ class basic_ostream<_CharT, _Traits>::sentry {}
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
 namespace Hyprutils {}
 using namespace Hyprutils::Math;
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__(()) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Fp>
 struct __strip_signature;
 template <class _Rp, class... _Args>
@@ -6432,11 +5893,11 @@ function<_Rp(_ArgTypes...)>::function(_Fp __f) : __f_(0) {}
  namespace __attribute__(()) std {}
  namespace __attribute__(()) std { inline namespace __1 {} }
  namespace __attribute__(()) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Tp>
 using __remove_const_ref_t  = __remove_const_t<__libcpp_remove_reference_t<_Tp> >;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 struct __extract_key_fail_tag ;
 struct __extract_key_self_tag ;
 struct __extract_key_first_tag ;
@@ -6451,7 +5912,7 @@ struct __can_extract_map_key : integral_constant<bool, _IsSame<_RawValTy, _Key>:
 template <class _ValTy, class _Key, class _RawValTy>
 struct __can_extract_map_key<_ValTy, _Key, _Key, _RawValTy> : integral_constant<bool, false> {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Key, class _Tp>
 struct __hash_value_type;
 template <class _Tp>
@@ -6638,7 +6099,7 @@ template <ranges::input_range _Range>
 using __range_to_alloc_type  =
     pair<const typename ranges::range_value_t<_Range>::first_type, typename ranges::range_value_t<_Range>::second_type>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _NodeType, class _Alloc>
 struct __generic_container_node_destructor;
 template <class _NodeType, class _Alloc, template <class, class> class _MapOrSetSpecifics>
@@ -6655,7 +6116,7 @@ using __map_node_handle  = __basic_node_handle< _NodeType, _Alloc, __map_node_ha
 template <class _Iterator, class _NodeType>
 struct __insert_return_type ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Key,
           class _Cp,
           class _Hash,
@@ -6728,7 +6189,7 @@ public:
   template <class _Key2, class _Tp2, class _Hash2, class _Pred2, class _Alloc2>
   friend class unordered_multimap;
   __attribute__(()) __attribute__(()) __attribute__(()) unordered_map;
-  __attribute__((__visibility__("hidden"))) __attribute__(()) __attribute__(()) unordered_map(initializer_list<value_type> __il);
+  __attribute__((__visibility__0)) __attribute__(()) __attribute__(()) unordered_map(initializer_list<value_type> __il);
   ;
    ;
    ;
@@ -6766,70 +6227,67 @@ struct __container_traits<unordered_multimap<_Key, _Tp, _Hash, _Pred, _Alloc> > 
 } }
  namespace __attribute__(()) std {}
  namespace __attribute__(()) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 class any;
 class any {};
 ;
 ;
-
-
-
  ;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__(()) std {}
  namespace __attribute__(()) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
  namespace __attribute__(()) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
  namespace __attribute__(()) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _InIter1, class _InIter2, class _OutIter>
 struct __set_intersection_result ;;
  ;
@@ -6839,22 +6297,22 @@ struct __set_intersection_result ;;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _InIter1, class _InIter2, class _OutIter>
 struct __set_symmetric_difference_result ;;
  ;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _InIter1, class _InIter2, class _OutIter>
 struct __set_union_result ;;
  ;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _UIntType, _UIntType _Xp, decltype(sizeof(int)) _Rp>
 struct __log2_imp;
 template <unsigned long long _Xp, decltype(sizeof(int)) _Rp>
@@ -6864,13 +6322,13 @@ struct __log2_imp<__uint128_t, _Xp, _Rp> ;;
 template <class _UIntType, _UIntType _Xp>
 struct __log2 ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std {}
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
  namespace __attribute__(()) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 namespace __unique_copy_tags {
 struct __reread_from_input_tag ;;
 struct __reread_from_output_tag ;;
@@ -6882,7 +6340,7 @@ struct __read_from_tmp_value_tag ;;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
+ namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 template <class _InIter1>
@@ -7519,15 +6977,12 @@ extern template class __attribute__(()) basic_iostream<char>;
 struct _FilesystemClock;
  } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 using file_clock = _FilesystemClock;
 template <class _Duration>
 using file_time = time_point<file_clock, _Duration>;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 struct local_t ;
 template <class _Duration>
 using local_time = time_point<local_t, _Duration>;
@@ -7535,28 +6990,20 @@ using local_seconds = local_time<seconds>;
 using local_days = local_time<days>;
 struct last_spec {};
 inline constexpr last_spec last;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class day ;;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 template <class _Duration>
 class hh_mm_ss ;;
 ;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class year ;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class month {
 private:
   unsigned char __m_;
@@ -7567,11 +7014,9 @@ public:
   ;
   ;
 };
-inline constexpr month December{};
-
+inline constexpr month December;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class weekday_indexed;
 class weekday_last;
 class weekday {
@@ -7589,38 +7034,27 @@ public:
 };
 class weekday_indexed ;
 class weekday_last ;
-inline constexpr weekday Saturday{};
-
+inline constexpr weekday Saturday;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class month_weekday ;;
 class month_weekday_last ;;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class month_day ;
 class month_day_last ;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class year_month ;;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class year_month_day_last;
 class year_month_day ;;
 class year_month_day_last ;
-
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-
 class year_month_weekday ;
 class year_month_weekday_last ;;
-
 template <class _Tp>
 concept __is_time_point = __is_specialization_v<_Tp, time_point>;
 } }
@@ -7733,7 +7167,7 @@ typedef unsigned int __libcpp_tls_key;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-class __attribute__(()) recursive_mutex {};
+class __attribute__(()) recursive_mutex ;
 class __attribute__(()) recursive_timed_mutex ;;
  ;
  ;
@@ -7764,7 +7198,7 @@ namespace Hyprgraphics {
         double r = 0, g = 0, b = 0;
     };
     class CMatrix3 ;
-    struct SPCPRimaries {};
+    struct SPCPRimaries ;
 };
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -7781,9 +7215,7 @@ namespace ranges {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils {
     namespace Memory {
-        
-            class impl_base {};
-        
+            class impl_base ;
     }
 }
 namespace Hyprutils {
@@ -7831,7 +7263,6 @@ namespace Hyprutils {
 template <typename T>
 struct std::hash<Hyprutils::Memory::CWeakPointer<T>> ;;
 namespace Hyprutils::Memory {
-    
     template <typename T>
     class CAtomicWeakPointer;
     template <typename T>
@@ -7937,23 +7368,17 @@ struct __is_tree_value_type<_One> : __is_tree_value_type_imp<__remove_cvref_t<_O
 template <class _Tp>
 struct __get_tree_key_type ;
 template <class _Key, class _ValueT>
-struct __get_tree_key_type<__value_type<_Key, _ValueT> > {
-  using type  = _Key;
-};
+struct __get_tree_key_type<__value_type<_Key, _ValueT> > ;
 template <class _Tp>
 using __get_tree_key_type_t  = typename __get_tree_key_type<_Tp>::type;
 template <class _Tp>
-struct __get_node_value_type {
-  using type  = _Tp;
-};
+struct __get_node_value_type ;
 template <class _Tp>
 using __get_node_value_type_t  = typename __get_node_value_type<_Tp>::type;
 template <class _NodePtr, class _NodeT = typename pointer_traits<_NodePtr>::element_type>
 struct __tree_node_types;
 template <class _Pointer>
 class __tree_end_node ;
-
-
 template <class _Allocator>
 class __tree_node_destructor ;
 template <class _Tp, class _NodePtr, class _DiffType>
@@ -7962,59 +7387,7 @@ template <class _Tp, class _NodePtr, class _DiffType>
 class __tree_const_iterator ;
 ;
 template <class _Tp, class _Compare, class _Allocator>
-class __tree {
-public:
-  using value_type = _Tp ;
-  typedef _Compare value_compare;
-  typedef _Allocator allocator_type;
-private:
-  typedef allocator_traits<allocator_type> __alloc_traits;
-  using key_type = _Tp ;
-public:
-  typedef typename __alloc_traits::pointer pointer;
-  typedef typename __alloc_traits::const_pointer const_pointer;
-  typedef typename __alloc_traits::size_type size_type;
-  typedef typename __alloc_traits::difference_type difference_type;
-public:
-  using __void_pointer  = typename __alloc_traits::void_pointer;
-  using __node  = _Tp ;
-  using __node_pointer = __rebind_pointer_t<__void_pointer, __node>;
-  using __node_base  = __tree_node_base<__void_pointer>;
-  using __node_base_pointer  = __rebind_pointer_t<__void_pointer, __node_base>;
-  using __end_node_t  = __tree_end_node<__node_base_pointer>;
-  using __end_node_pointer  = __rebind_pointer_t<__void_pointer, __end_node_t>;
-  using __parent_pointer  = __end_node_pointer;
-  typedef __rebind_alloc<__alloc_traits, __node> __node_allocator;
-  typedef allocator_traits<__node_allocator> __node_traits;
-private:
-  __end_node_pointer __begin_node_;
-    __attribute__(()) __end_node_t __end_node_;  ::std::__compressed_pair_padding<__end_node_t> __padding1_854_;  __node_allocator __node_alloc_;  ::std::__compressed_pair_padding<__node_allocator> __padding2_854_; 
-    __attribute__(()) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_855_;  value_compare __value_comp_;  ::std::__compressed_pair_padding<value_compare> __padding2_855_; 
-public:
-public:
-public:
-  typedef _Tp  iterator;
-  typedef _Tp  const_iterator;
-   ;
-   ;
-   ;
-   ;
-   ;
-   ;
-   ;
-   ;
-  ;
-  typedef __tree_node_destructor<__node_allocator> _Dp;
-  typedef unique_ptr<__node, _Dp> __node_holder;
-  ;
-   ;
-  ;
-private:
-  ;
-   ;
-   ;
-  struct _DetachedTreeCache ;
-};
+class __tree ;
  ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -8126,11 +7499,9 @@ enum xkb_consumed_mode {};
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils {
-    
         class CSignalBase;
         class CSignalListener ;;
         typedef Hyprutils::Memory::CSharedPointer<CSignalListener> CHyprSignalListener;
-    
 }
 namespace Hyprutils {}
 using namespace Hyprutils;
@@ -8139,7 +7510,6 @@ enum eHIDType : uint8_t ;
 class IHID {};
 ;
 class IPointer : public IHID {};
-
     using steady_tp = std::steady_clock::time_point;
     using system_tp = std::system_clock::time_point;
     using steady_dur = std::steady_clock::duration;
@@ -8214,7 +7584,6 @@ struct SSessionLockSurface ;;
 struct SSessionLock ;
 class CSessionLockManager ;
 namespace Hyprutils {
-    
 }
 using namespace Hyprutils;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -8234,7 +7603,6 @@ template <class _TreeIterator>
 class __map_iterator ;
 template <class _TreeIterator>
 class __map_const_iterator ;
-
 ;
 ;
 ;
@@ -8281,22 +7649,11 @@ namespace Hyprutils {
     namespace Animation {
         class CBaseAnimatedVariable;
 class CBaseAnimatedVariable {};
-        class CAnimationManager {
-          public:
-            struct SAnimationManagerSignals ;
-            std::vector<Memory::CWeakPointer<CBaseAnimatedVariable>> m_vActiveAnimatedVariables;
-          private:
-            std::unordered_map<std::string, Memory::CSharedPointer<CBezierCurve>> m_mBezierCurves;
-            bool m_bTickScheduled = false;
-            struct SAnimVarListeners ;
-            Memory::CUniquePointer<SAnimVarListeners> m_listeners;
-            Memory::CUniquePointer<SAnimationManagerSignals> m_events;
-        };
+        class CAnimationManager ;
     }
 }
 namespace Hyprutils {
     namespace Animation {
-        
         template <class ValueImpl>
         concept AnimatedType = requires(ValueImpl val) {
             requires std::is_copy_constructible_v<ValueImpl>;
@@ -8339,7 +7696,6 @@ struct SDecorationPositioningInfo ;
 struct SDecorationPositioningReply ;;
 class CDecorationPositioner ;
 class IHyprWindowDecoration ;
-
     struct SGLFormat ;
     struct Trans_NS_Aquamarine_SDRMFormat ;;
 ;
@@ -8386,7 +7742,6 @@ struct SWorkspaceIDName ;
 enum eFullscreenMode : int8_t ;;
 class CWindow;
 class CWorkspace ;;
-
     class RE2;
 ;
 class CRuleRegexContainer ;;
@@ -8443,9 +7798,7 @@ struct CWpContentTypeManagerV1DestroyWrapper ;
 class CWpContentTypeManagerV1 ;
 struct CWpContentTypeV1DestroyWrapper ;
 class CWpContentTypeV1 ;
-
     enum eContentType : uint8_t ;
-
 class CXDGSurfaceResource;
 class CXWaylandSurface;
 enum eIdleInhibitMode : uint8_t {
@@ -8663,13 +8016,10 @@ struct CWpImageDescriptionV1DestroyWrapper ;;
 class CWpImageDescriptionV1 ;;
 struct CWpImageDescriptionInfoV1DestroyWrapper ;
 class CWpImageDescriptionInfoV1 ;;
-
     enum eNoShader : uint8_t ;;
     enum ePrimaries : uint8_t ;;
     using SPCPRimaries = Hyprgraphics::SPCPRimaries;
-    
     struct SImageDescription ;
-
 namespace Hyprutils::CLI {
     class CLoggerImpl;
     enum eLogLevel : uint8_t ;;
@@ -8717,7 +8067,6 @@ extern "C"
 extern "C" ;
 ;
 struct libinput_device;
-
     class ITabletTool;
 class ITabletTool {
       public:
@@ -8736,9 +8085,7 @@ class ITabletTool {
     class ISwitch {};
     enum eTabletToolAxes : uint32_t ;
     class ITablet {};
-    
     class ITabletPad {};
-
 struct udev;
 struct udev_monitor;
 struct udev_device;
@@ -8747,7 +8094,6 @@ struct libinput;
 struct libinput_event;
 struct libinput_device;
 struct libinput_tablet_tool;
-
     class CBackend;
     class CSession;
     class CLibinputDevice;
@@ -8780,13 +8126,11 @@ struct libinput_tablet_tool;
 ;
 ;
 extern "C" 
-
     class IBackendImplementation;
     class IOutput;
     struct SSwapchainOptions ;;
     class CSwapchain ;
 ;
-
 class CWLSurfaceResource;
 struct SWorkspaceRule;
 enum eManagersInitStage : uint8_t ;
