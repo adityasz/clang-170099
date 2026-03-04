@@ -233,8 +233,7 @@ using __void_t  = void;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, class = void>
 inline const bool __is_referenceable_v = false;
-template <class _Tp>
-inline const bool __is_referenceable_v<_Tp, __void_t<_Tp&> > = true;
+
 template <class _Tp>
 concept __referenceable = __is_referenceable_v<_Tp>;
 } }
@@ -736,9 +735,7 @@ template <class... _Args>
 using __invoke_result  = __invoke_result_impl<void, _Args...>;
 template <class... _Args>
 using __invoke_result_t  = typename __invoke_result<_Args...>::type;
-template <class... _Args>
-__attribute__(()) __attribute__(()) __attribute__(()) constexpr __invoke_result_t<_Args...> __invoke(_Args&&... __args)
-    noexcept ;
+ ;
 template <class _Void, class... _Args>
 inline const bool __is_invocable_impl = false;
 template <class... _Args>
@@ -1258,8 +1255,7 @@ template <__dereferenceable _Tp>
 using iter_rvalue_reference_t = decltype(ranges::iter_move);
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Tp>
- constexpr __attribute__(()) __attribute__(()) __attribute__(()) __attribute__(()) _Tp* addressof(_Tp& __x) noexcept ;
+ ;
 ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -1320,8 +1316,7 @@ struct pointer_traits<_Tp*> {
   template <class _Up>
   using rebind = _Up*;
 public:
-  __attribute__(()) __attribute__(()) __attribute__(()) constexpr static pointer
-  pointer_to(__conditional_t<is_void<element_type>::value, __nat, element_type>& __r) noexcept ;
+  
 };
 template <class _From, class _To>
 using __rebind_pointer_t  = typename pointer_traits<_From>::template rebind<_To>;
@@ -1637,7 +1632,7 @@ public:
   static const partial_ordering equivalent;
   static const partial_ordering greater;
   static const partial_ordering unordered;
-  __attribute__(()) __attribute__(()) __attribute__(()) friend constexpr bool operator<=(partial_ordering __v, _CmpUnspecifiedParam) noexcept ;
+  
 private:
   _PartialOrdResult __value_;
 };
@@ -1666,7 +1661,7 @@ public:
   static const strong_ordering equal;
   static const strong_ordering equivalent;
   static const strong_ordering greater;
-  __attribute__(()) __attribute__(()) __attribute__(()) friend constexpr bool operator>(_CmpUnspecifiedParam, strong_ordering __v) noexcept ;
+  
 private:
   _ValueT __value_;
 };
@@ -1682,11 +1677,8 @@ concept __comparison_category =
 namespace __comp_detail {
 enum _ClassifyCompCategory : unsigned ;
  ;
-template <size_t _Size>
-__attribute__(()) __attribute__(()) __attribute__(()) constexpr _ClassifyCompCategory
-__compute_comp_type() ;
-template <class... _Ts, bool _False = false>
-__attribute__(()) __attribute__(()) __attribute__(()) constexpr auto __get_comp_type() ;
+ ;
+ ;
 }
 template <class... _Ts>
 struct common_comparison_category ;
@@ -1731,9 +1723,8 @@ inline constexpr bool uses_allocator_v = uses_allocator<_Tp, _Alloc>::value;
 namespace __find_detail {
 static constexpr size_t __not_found = static_cast<size_t>(-1);
 static constexpr size_t __ambiguous = __not_found - 1;
- __attribute__(()) __attribute__(()) __attribute__(()) constexpr size_t __find_idx_return(size_t __curr_i, size_t __res, bool __matches) ;
-template <size_t _Nx>
- __attribute__(()) __attribute__(()) __attribute__(()) constexpr size_t __find_idx(size_t __i, const bool ) ;
+ 
+ ;
 template <class _T1, class... _Args>
 struct __find_exactly_one_checked ;
 template <class _T1>
@@ -2166,17 +2157,11 @@ struct __tuple_cat<tuple<_Types...>, __tuple_indices<_I0...>, __tuple_indices<_J
  ;
 template <class... _Tp, class _Alloc>
 struct uses_allocator<tuple<_Tp...>, _Alloc> : true_type {};
-template <class _Fn, class _Tuple, size_t... _Id>
- __attribute__(()) __attribute__(()) __attribute__(()) constexpr decltype(auto)
-__apply_tuple_impl(_Fn&& __f, _Tuple&& __t, __tuple_indices<_Id...>)
-    noexcept ;
+ ;
 template <class _Fn, class _Tuple>
  __attribute__(()) __attribute__(()) __attribute__(()) constexpr decltype(auto) apply(_Fn&& __f, _Tuple&& __t)
     noexcept ;
-template <class _Tp, class _Tuple, size_t... _Idx>
- __attribute__(()) __attribute__(()) __attribute__(()) constexpr _Tp __make_from_tuple_impl(_Tuple&& __t, __tuple_indices<_Idx...>)
-  noexcept
-  requires is_constructible_v<_Tp, decltype(std::get<_Idx>)...> ;
+ ;
 template <class _Tp, class _Tuple,
           class _Seq = typename __make_tuple_indices<tuple_size_v<remove_reference_t<_Tuple>>>::type, class = void>
 inline constexpr bool __can_make_from_tuple = false;
@@ -2362,8 +2347,7 @@ template <class _Tp>
 concept common_range = range<_Tp> && same_as<iterator_t<_Tp>, sentinel_t<_Tp>>;
 template <class _Tp>
 inline constexpr bool __is_std_initializer_list = false;
-template <class _Ep>
-inline constexpr bool __is_std_initializer_list<initializer_list<_Ep>> = true;
+
 template <class _Tp>
 concept viewable_range =
     range<_Tp> &&
@@ -2520,8 +2504,8 @@ concept indirectly_swappable =
  namespace __attribute__(()) std {
 class __attribute__(()) exception {
 public:
-  virtual ~exception() noexcept;
-  virtual const char* what() const noexcept;
+  
+  
 };
 class __attribute__(()) bad_exception : public exception {};
 }
@@ -2582,8 +2566,8 @@ struct pair
                       pair,
                       void>;
   using __replaceable  = __conditional_t<__is_replaceable_v<_T1> && __is_replaceable_v<_T2>, pair, void>;
-  __attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) pair(pair const&) = default;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) pair() = default;
+  
+  
     ;
   template <class _CheckArgsDep = __check_pair_construction<_T1, _T2>,
             __enable_if_t<_CheckArgsDep::template __is_pair_constructible<_T1 const&, _T2 const&>(), int> = 0>
@@ -2594,9 +2578,7 @@ struct pair
     ;
     ;
     ;
-  __attribute__(()) __attribute__(()) __attribute__(()) constexpr pair& operator=(
-      __conditional_t<is_move_assignable<first_type>::value && is_move_assignable<second_type>::value, pair, __nat>&&
-          __p) noexcept ;
+  
 };
 ;
 ;
@@ -2701,7 +2683,7 @@ template <class _Size>
 struct __murmur2_or_cityhash<_Size, 32> ;
 template <class _Size>
 struct __murmur2_or_cityhash<_Size, 64> ;;
- __attribute__(()) size_t __hash_memory( const void*, size_t) noexcept;
+ 
 template <class _Tp, size_t = sizeof(_Tp) / sizeof(size_t)>
 struct __scalar_hash;
 template <class _Tp>
@@ -2777,8 +2759,7 @@ inline const bool __desugars_to_v<_CanonicalTag, _Operation&&, _Args...> =
 template <class _Tp = void>
 struct plus : __binary_function<_Tp, _Tp, _Tp> {};
 ;
-template <class _Tp>
-inline const bool __desugars_to_v<__plus_tag, plus<_Tp>, _Tp, _Tp> = true;
+
 template <class _Tp, class _Up>
 inline const bool __desugars_to_v<__plus_tag, plus<void>, _Tp, _Up> = true;
 template 
@@ -2857,16 +2838,13 @@ struct not_equal_to<void> ;
 template <class _Tp>
 struct less : __binary_function<_Tp, _Tp, bool> {};
 ;
-template <class _Tp>
-inline const bool __desugars_to_v<__less_tag, less<_Tp>, _Tp, _Tp> = true;
-template <class _Tp>
-inline const bool __desugars_to_v<__totally_ordered_less_tag, less<_Tp>, _Tp, _Tp> = is_integral<_Tp>::value;
+
+
 template 
 struct less<void> ;
 template <class _Tp, class _Up>
 inline const bool __desugars_to_v<__less_tag, less<>, _Tp, _Up> = true;
-template <class _Tp>
-inline const bool __desugars_to_v<__totally_ordered_less_tag, less<>, _Tp, _Tp> = is_integral<_Tp>::value;
+
 template <class _Tp = void>
 struct less_equal : __binary_function<_Tp, _Tp, bool> {};
 ;
@@ -2920,8 +2898,7 @@ using variant_alternative_t = typename variant_alternative<_Ip, _Tp>::type;
 ;
 } }
 
-  __attribute__(()) __attribute__(()) __attribute__(()) constexpr void*
-operator new(std::size_t, void* __p) noexcept ;
+  
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp>
@@ -2998,7 +2975,7 @@ template <class _Tp>
  namespace __attribute__(()) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct __attribute__(()) in_place_t {};
-inline constexpr in_place_t in_place;
+
 template <class _Tp>
 struct in_place_type_t ;
 template <class _Tp>
@@ -3021,7 +2998,7 @@ struct __is_inplace_index_imp : false_type {};
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, size_t _Size>
 struct __farray ;;
-  __attribute__(()) __attribute__(()) __attribute__(()) void __throw_bad_variant_access() ;
+  
 template <class _Tp>
 struct variant_size<const _Tp> : variant_size<_Tp> {};
 template <class _Tp>
@@ -3044,14 +3021,10 @@ template <size_t _NumAlts>
 using __variant_index_t  = decltype(std::__choose_index_type<_NumAlts>);
 template <class _IndexType>
 constexpr _IndexType __variant_npos = static_cast<_IndexType>(-1);
-template <class... _Types>
-__attribute__(()) __attribute__(()) __attribute__(()) constexpr variant<_Types...>& __as_variant() noexcept ;
-template <class... _Types>
-__attribute__(()) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const variant<_Types...>& __as_variant(const variant<_Types...>& __vs) noexcept ;
-template <class... _Types>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr variant<_Types...>&& __as_variant(variant<_Types...>&& __vs) noexcept ;
-template <class... _Types>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const variant<_Types...>&& __as_variant(const variant<_Types...>&& __vs) noexcept ;
+ ;
+ ;
+ ;
+ ;
 namespace __find_detail {}
 namespace __variant_detail {
 struct __valueless_t ;
@@ -3062,7 +3035,7 @@ constexpr _Trait __trait =
     : _IsAvailable<_Tp>::value
         ? _Trait::_Available
         : _Trait::_Unavailable;
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Trait __common_trait(initializer_list<_Trait> __traits) ;
+
 template <typename... _Types>
 struct __traits ;
 namespace __access {
@@ -3151,8 +3124,7 @@ using _MakeOverloads  =
 template <class _Tp, class... _Types>
 using __best_match_t  = typename invoke_result_t<_MakeOverloads<_Types...>, _Tp, _Tp>::type;
 }
-template <class _Visitor, class... _Vs, typename = void_t<decltype(std::__as_variant(std::declval<_Vs>))...>>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr decltype(auto) visit(_Visitor&& __visitor, _Vs&&... __vs);
+;
 ;
 template <class... _Types>
 class  variant
@@ -3177,11 +3149,7 @@ template <class _Operator>
 struct __convert_to_bool ;
  ;
  ;
-template <class... _Types>
-  requires(requires(const _Types& __t) {
-    { __t != __t } -> __core_convertible_to<bool>;
-  } && ...)
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator!=(const variant<_Types...>& __lhs, const variant<_Types...>& __rhs) ;
+ ;
  ;
  ;
  ;
@@ -3193,8 +3161,7 @@ __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit
  ;
 template <class... _Types>
 struct hash< __enable_hash_helper<variant<_Types...>, remove_const_t<_Types>...>> ;
-template <size_t _Ip, class _Vp>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto&& __unchecked_get(_Vp&& __v) noexcept ;
+ ;
  ;
  ;
 } }
@@ -3251,7 +3218,7 @@ concept common_with =
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct default_sentinel_t {};
-inline constexpr default_sentinel_t default_sentinel;
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class>
@@ -3274,21 +3241,11 @@ class counted_iterator
       public __counted_iterator_category<_Iter>,
       public __counted_iterator_value_type<_Iter> {
 public:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr counted_iterator& operator-=(iter_difference_t<_Iter> __n)
-    requires random_access_iterator<_Iter>
+  
+  
+  
+  
   ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr decltype(auto) operator[](iter_difference_t<_Iter> __n) const
-    requires random_access_iterator<_Iter>
-  ;
-  template <common_with<_Iter> _I2>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) friend constexpr bool
-  operator==(const counted_iterator& __lhs, const counted_iterator& __rhs) {}
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) friend constexpr bool operator==(const counted_iterator& __lhs, default_sentinel_t) ;
-  template <common_with<_Iter> _I2>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) friend constexpr strong_ordering
-  operator<=>(const counted_iterator& __lhs, const counted_iterator& __rhs) {}
-private:
-   _Iter __current_ = _Iter();
   iter_difference_t<_Iter> __count_ = 0;
   template <input_or_output_iterator _OtherIter>
   friend class counted_iterator;
@@ -3348,7 +3305,7 @@ public:
     ;
    ;
   
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr subrange& advance(iter_difference_t<_Iter> __n) ;
+  
 };
 ;
 };
@@ -3413,8 +3370,7 @@ class reverse_iterator
 #pragma GCC diagnostic pop
 private:
   _Iter __t_;
-  static_assert(__has_bidirectional_iterator_category<_Iter>::value || bidirectional_iterator<_Iter>,
-                "reverse_iterator requires It to be a bidirectional iterator.");
+  
 protected:
   _Iter current;
 public:
@@ -3439,9 +3395,7 @@ public:
 ;
  ;
  ;
-template <class _Iter>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr reverse_iterator<_Iter>
-operator+(typename reverse_iterator<_Iter>::difference_type __n, const reverse_iterator<_Iter>& __x) ;
+ ;
  ;
 template <class _Iter, bool __b>
 struct __unwrap_iter_impl ;
@@ -3600,7 +3554,7 @@ template <class _Tp>
 namespace std
 {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_optional_access() ;
+  
 struct nullopt_t {
   struct __secret_tag {};
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr explicit nullopt_t(__secret_tag, __secret_tag) noexcept {}
@@ -3612,28 +3566,24 @@ struct __optional_destruct_base;
 template <class _Tp>
 struct __optional_destruct_base<_Tp, false> {
   typedef _Tp value_type;
-  static_assert(is_object_v<value_type>, "instantiation of optional with a non-object type is undefined behavior");
-  union {
+  
+  
     char __null_state_;
     remove_cv_t<value_type> __val_;
-  };
-  bool __engaged_;
-  template <class... _Args>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr explicit __optional_destruct_base(in_place_t, _Args&&... __args)  ;
-  template <class _Fp, class... _Args>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr explicit __optional_destruct_base(
-      __optional_construct_from_invoke_tag, _Fp&& __f, _Args&&... __args)  ;
+  
+  
+    ;
+    ;
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void reset() noexcept ;
 };
 template <class _Tp>
 struct __optional_destruct_base<_Tp, true> {
   typedef _Tp value_type;
-  static_assert(is_object_v<value_type>, "instantiation of optional with a non-object type is undefined behavior");
-  union {};
-  bool __engaged_;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __optional_destruct_base()  ;
-  template <class... _Args>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr explicit __optional_destruct_base(in_place_t, _Args&&... __args)  ;
+  
+  
+  
+  
+    ;
     ;
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void reset() noexcept ;
 };
@@ -3703,11 +3653,10 @@ public:
   using value_type = _Tp;
   using __trivially_relocatable  =
       conditional_t<__libcpp_is_trivially_relocatable<_Tp>::value, optional, void>;
-  static_assert(!is_same_v<__remove_cvref_t<value_type>, nullopt_t>,
-                "instantiation of optional with nullopt_t is ill-formed");
-  static_assert(!is_reference_v<value_type>, "instantiation of optional with a reference type is ill-formed");
-  static_assert(is_destructible_v<value_type>, "instantiation of optional with a non-destructible type is ill-formed");
-  static_assert(!is_array_v<value_type>, "instantiation of optional with an array type is ill-formed");
+  
+  
+  
+  
   struct _CheckOptionalArgsConstructor ;
   template <class _Up>
   using _CheckOptionalArgsCtor  =
@@ -3728,11 +3677,9 @@ public:
            _CheckOptionalLikeConstructor<_QualUp>,
            __check_tuple_constructor_fail >;
 public:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr optional() noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr optional(nullopt_t) noexcept ;
-  template <class _Up = value_type,
-            enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr optional(_Up&& __v)  ;
+  
+  
+    ;
    ;
    ;
    ;
@@ -3989,8 +3936,7 @@ inline constexpr bool __is_specialization_v = false;
 template <class _Tp>
 class reference_wrapper : public __weak_result_type<_Tp> {};
 ;
-template <class _Tp>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr reference_wrapper<_Tp> ref(_Tp& __t) noexcept ;
+ ;
  ;
  ;
  ;
@@ -4032,32 +3978,20 @@ concept __tuple_like = __tuple_like_no_subrange<_Tp> || __is_ranges_subrange_v<r
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp>
 inline const bool __is_signed_integer_v = false;
-template <>
-inline const bool __is_signed_integer_v<signed char> = true;
-template <>
-inline const bool __is_signed_integer_v<signed short> = true;
-template <>
-inline const bool __is_signed_integer_v<signed int> = true;
-template <>
-inline const bool __is_signed_integer_v<signed long> = true;
-template <>
-inline const bool __is_signed_integer_v<signed long long> = true;
-template <>
-inline const bool __is_signed_integer_v<__int128_t> = true;
+
+
+
+
+
+
 template <class _Tp>
 inline const bool __is_unsigned_integer_v = false;
-template <>
-inline const bool __is_unsigned_integer_v<unsigned char> = true;
-template <>
-inline const bool __is_unsigned_integer_v<unsigned short> = true;
-template <>
-inline const bool __is_unsigned_integer_v<unsigned int> = true;
-template <>
-inline const bool __is_unsigned_integer_v<unsigned long> = true;
-template <>
-inline const bool __is_unsigned_integer_v<unsigned long long> = true;
-template <>
-inline const bool __is_unsigned_integer_v<__uint128_t> = true;
+
+
+
+
+
+
 template <class _Tp>
 concept __signed_integer = __is_signed_integer_v<_Tp>;
 template <class _Tp>
@@ -4077,8 +4011,7 @@ struct __size_difference_type_traits;
 ;
 ;
 ;
-template <class _StorageType>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _StorageType __middle_mask(unsigned __clz, unsigned __ctz);
+;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp>
@@ -4113,18 +4046,13 @@ inline __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_e
   if (__libcpp_is_constant_evaluated) ;
   return __builtin_strlen(reinterpret_cast<const char*>(__str));
 }
-template <class _Tp, class _Up>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int
-__constexpr_memcmp(const _Tp* __lhs, const _Up* __rhs, __element_count __n) ;
-template <class _Tp, class _Up>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool
-__constexpr_memcmp_equal(const _Tp* __lhs, const _Up* __rhs, __element_count __n) ;
+ ;
+ ;
 template <class _Tp, class _Up>
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp* __constexpr_memchr(_Tp* __str, _Up __value, size_t __count) ;
  ;
  ;
-template <class _Tp, class _Up, __enable_if_t = 0>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp& __assign_trivially_copyable(_Tp& __dest, _Up const& __src) ;
+ ;
  ;
 template <class _Tp, class _Up>
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp*
@@ -4457,24 +4385,12 @@ public:
   using reference = iter_rvalue_reference_t<_Iter>;
     ;
    ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const _Iter& base() const& noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Iter base() && ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr move_iterator operator+(difference_type __n) const ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr move_iterator operator-(difference_type __n) const ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr move_iterator& operator-=(difference_type __n) ;
-  template <sentinel_for<_Iter> _Sent>
-  friend __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator==(const move_iterator& __x, const move_sentinel<_Sent>& __y)
-    requires __move_iter_comparable<_Iter, _Sent>
-  {}
-  template <sized_sentinel_for<_Iter> _Sent>
-  friend __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr iter_difference_t<_Iter>
-  operator-(const move_sentinel<_Sent>& __x, const move_iterator& __y) {}
-  template <sized_sentinel_for<_Iter> _Sent>
-  friend __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr iter_difference_t<_Iter>
-  operator-(const move_iterator& __x, const move_sentinel<_Sent>& __y) {}
-private:
-  template <class _It2>
-  friend class move_iterator;
+  
+  
+  
+  
+  
+  
   _Iter __current_;
 };
 ;
@@ -4641,10 +4557,7 @@ public:
 namespace views {
 namespace __join_with_view {
 struct __fn {
-  template <class _Range, class _Pattern>
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto operator()(_Range&& __range, _Pattern&& __pattern) const
-      noexcept
-          -> decltype( join_with_view(std::forward, std::forward<_Pattern>)) ;
+   ;
    ;
 };
 }
@@ -4725,8 +4638,7 @@ __tuple_zip_transform(_Fun&& __f, _Tuple1&& __tuple1, _Tuple2&& __tuple2, index_
  ;
  ;
  ;
-template <class _Tuple1, class _Tuple2>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool __tuple_any_equals(const _Tuple1& __tuple1, const _Tuple2& __tuple2) ;
+ ;
 template <class _Tp>
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp __abs ;
 template <input_range... _Views>
@@ -4746,8 +4658,7 @@ template <bool _Const, class... _Views>
 concept __zip_all_bidirectional = (bidirectional_range<__maybe_const<_Const, _Views>> && ...);
 template <bool _Const, class... _Views>
 concept __zip_all_forward = (forward_range<__maybe_const<_Const, _Views>> && ...);
-template <bool _Const, class... _Views>
-consteval auto __get_zip_view_iterator_tag() ;
+ ;
 template <bool _Const, class... _Views>
 struct __zip_view_iterator_category_base ;
 template <bool _Const, class... _Views>
@@ -4767,8 +4678,7 @@ class zip_view<_Views...>::__sentinel {
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static constexpr decltype(auto)
   __iter_current(zip_view::__iterator<_OtherConst> const& __it) ;
 public:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __sentinel(__sentinel<!_Const> __i)
-    requires _Const && (convertible_to<sentinel_t<_Views>, sentinel_t<__maybe_const<_Const, _Views>>> && ...)  ;
+  
   template <bool _OtherConst>
     requires(sentinel_for<sentinel_t<__maybe_const<_Const, _Views>>, iterator_t<__maybe_const<_OtherConst, _Views>>> &&
              ...)
@@ -4815,11 +4725,10 @@ public:
   typedef void pointer;
   typedef void reference;
   typedef _Container container_type;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr back_insert_iterator&
-  operator=(const typename _Container::value_type& __value) ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr back_insert_iterator& operator*() ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr back_insert_iterator& operator++() ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr back_insert_iterator operator++(int) ;
+  
+  
+  
+  
 };
 ;
 } }
@@ -5171,18 +5080,18 @@ typedef union
 } __atomic_wide_counter;
 typedef struct __pthread_internal_list
 {
-  struct __pthread_internal_list *__prev;
-  struct __pthread_internal_list *__next;
+  
+  
 } __pthread_list_t;
 typedef struct __pthread_internal_slist
  __pthread_slist_t;
 struct __pthread_mutex_s
 {
-  int __lock;
-  unsigned int __count;
-  int __owner;
-  unsigned int __nusers;
-  int __kind;
+  
+  
+  
+  
+  
   short __spins;
   short __elision;
   __pthread_list_t __list;
@@ -5506,8 +5415,8 @@ typedef void ;
 ;
 ;
 struct wl_listener {
- struct wl_list link;
- wl_notify_func_t notify;
+ 
+ 
 };
 struct wl_signal ;
 ;
@@ -5829,7 +5738,7 @@ struct pixman_box32
 struct pixman_region32
 {
     pixman_box32_t extents;
-    pixman_region32_data_t *data;
+    
 };
 ;
 ;
@@ -6160,9 +6069,7 @@ struct allocator_traits {
   
    ;
    ;
-  template <class _Ap = _Alloc>
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static constexpr allocation_result<pointer, size_type>
-  allocate_at_least(_Ap& __alloc, size_type __n) ;
+   ;
    ;
   template <class _Ap = _Alloc, __enable_if_t<!__has_max_size_v<const _Ap>, int> = 0>
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr static size_type max_size(const allocator_type&) noexcept {
@@ -6176,14 +6083,11 @@ using __rebind_alloc [[__gnu__::__nodebug__]] = typename _Traits::template rebin
 template <class _Alloc>
 struct __check_valid_allocator : true_type {
   using _Traits  = std::allocator_traits<_Alloc>;
-  static_assert(is_same<_Alloc, __rebind_alloc<_Traits, typename _Traits::value_type> >::value,
-                " states that rebinding an allocator to the same type should result in the "
-                "original allocator");
+  
 };
 template <class _Tp>
 inline const bool __is_std_allocator_v = false;
-template <class _Tp>
-inline const bool __is_std_allocator_v<allocator<_Tp> > = true;
+
 template <class _Alloc>
 inline const bool __is_cpp17_move_insertable_v =
     is_move_constructible<typename _Alloc::value_type>::value ||
@@ -6197,8 +6101,7 @@ inline const bool __is_cpp17_copy_insertable_v =
       __has_construct_v<_Alloc, typename _Alloc::value_type*, const typename _Alloc::value_type&>));
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Alloc>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto __allocate_at_least(_Alloc& __alloc, size_t __n) ;
+ ;
 } }
 typedef long int ptrdiff_t;
 typedef long unsigned int size_t;
@@ -6214,29 +6117,28 @@ public:
 };
 class __attribute__((__visibility__("default"))) bad_array_new_length : public bad_alloc {
 public:
-  const char* what() const noexcept override;
+  
 };
 
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_array_new_length() ;
+  
 }
  namespace __attribute__((__type_visibility__("default"))) std {
 struct __attribute__((__visibility__("default"))) nothrow_t ;
-extern __attribute__((__visibility__("default"))) const nothrow_t nothrow;
+
 }
- __attribute__((__visibility__("default"))) void* operator new(std::size_t __sz) ;
+ 
 
 __attribute__((__visibility__("default"))) void operator delete(void* __p) noexcept;
- __attribute__((__visibility__("default"))) void* operator new(std::size_t __sz) ;
+ 
 
 __attribute__((__visibility__("default"))) void operator delete(void* __p) noexcept;
- __attribute__((__visibility__("default"))) void* operator new(std::size_t __sz, std::align_val_t) ;
+ 
 
-__attribute__((__visibility__("default"))) void operator delete(void* __p, std::align_val_t, const std::nothrow_t&) noexcept;
-__attribute__((__visibility__("default"))) void operator delete(void* __p, std::size_t __sz, std::align_val_t) noexcept;
- __attribute__((__visibility__("default"))) void*
-operator new(std::size_t __sz, std::align_val_t) ;
 
-__attribute__((__visibility__("default"))) void operator delete(void* __p, std::size_t __sz, std::align_val_t) noexcept;
+
+ 
+
+
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
  ;
 } }
@@ -6247,22 +6149,21 @@ template <bool _Cond, class _Unique>
 struct __non_trivial_if ;;
 template <class _Unique>
 struct __non_trivial_if<true, _Unique> {
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __non_trivial_if() noexcept {}
+  
 };
 template <class _Tp>
 class allocator : private __non_trivial_if<!is_void<_Tp>::value, allocator<_Tp> > {
-  static_assert(!is_const<_Tp>::value, "std::allocator does not support const types");
-  static_assert(!is_volatile<_Tp>::value, "std::allocator does not support volatile types");
+  
+  
 public:
   typedef size_t size_type;
   typedef ptrdiff_t difference_type;
   typedef _Tp value_type;
   typedef true_type propagate_on_container_move_assignment;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr allocator() noexcept = default;
-  template <class _Up>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr allocator(const allocator&) noexcept ;
+  
+   ;
    __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp* allocate(size_t __n) ;
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr allocation_result<_Tp*> allocate_at_least(size_t __n) ;
+   
 };
  ;
 } }
@@ -6274,10 +6175,8 @@ inline const size_t __compressed_pair_alignment<_Tp&> = alignof(void*);
 template <class _ToPad>
 inline const bool __is_reference_or_unpadded_object =
     (is_empty<_ToPad>::value && !__libcpp_is_final<_ToPad>::value) || sizeof(_ToPad) == __datasizeof_v<_ToPad>;
-template <class _Tp>
-inline const bool __is_reference_or_unpadded_object<_Tp&> = true;
-template <class _Tp>
-inline const bool __is_reference_or_unpadded_object<_Tp&&> = true;
+
+
 template <class _ToPad, bool _Empty = __is_reference_or_unpadded_object<_ToPad> >
 class __compressed_pair_padding ;
 template <class _ToPad>
@@ -6302,10 +6201,10 @@ struct __align_type {
   typedef _Tp type;
 };
 struct __struct_double {
-  long double __lx;
+  
 };
 struct __struct_double4 {
-  double __lx[4];
+  
 };
 using __all_types  =
     __type_list<__align_type<unsigned char>,
@@ -6360,8 +6259,7 @@ struct __temp_value ;;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class>
 inline const bool __is_unbounded_array_v = false;
-template <class _Tp>
-inline const bool __is_unbounded_array_v<_Tp[]> = true;
+
 template <class _Tp>
 struct  is_unbounded_array : bool_constant<__is_unbounded_array_v<_Tp>> {};
 template <class _Tp>
@@ -6373,7 +6271,7 @@ struct __exception_guard_exceptions ;
 ;
 template <class _Rollback>
 struct __exception_guard_noexceptions ;
-template <class... _Tag>  __exception_guard_noexceptions(typename _Tag::__allow_ctad...)->__exception_guard_noexceptions<_Tag...>;
+;
 template <class _Rollback>
 using __exception_guard  = __exception_guard_exceptions<_Rollback>;
  ;
@@ -6449,15 +6347,14 @@ public:
       __conditional_t<__is_replaceable_v<pointer> && __container_allocator_is_replaceable<__alloc_traits>::value,
                       vector,
                       void>;
-  static_assert(__check_valid_allocator<allocator_type>::value, "");
-  static_assert(is_same<typename allocator_type::value_type, value_type>::value,
-                "Allocator::value_type must be same type as value_type");
+  
+  
     ;
     ;
 private:
   class __destroy_vector ;
 public:
-  constexpr __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) ~vector() ;
+  
    ;
    ;
 };
@@ -6477,8 +6374,7 @@ template <class _Cp>
 struct __size_difference_type_traits<_Cp, __void_t<typename _Cp::difference_type, typename _Cp::size_type> > ;;
  ;
  ;
-template <class _StorageType>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _StorageType __middle_mask(unsigned __clz, unsigned __ctz) ;
+ ;
  ;
 template <class _Cp, bool = __has_storage_type<_Cp>::value>
 class __bit_reference ;
@@ -6499,13 +6395,11 @@ class __bit_iterator ;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace pmr {
 class __attribute__((__visibility__("default"))) memory_resource ;
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) bool
-operator==(const memory_resource& __lhs, const memory_resource& __rhs) noexcept ;
+ 
 
 
 
- __attribute__((__visibility__("default"))) memory_resource*
-null_memory_resource() noexcept;
+ 
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -6543,7 +6437,7 @@ struct formatter : __disabled_formatter {};
 template <class _Tp>
 constexpr bool enable_nonlocking_formatter_optimization = false;
 #pragma clang diagnostic pop
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_format_error(const char* __s) ;
+  
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp>
@@ -6561,17 +6455,13 @@ inline constexpr bool ranges::enable_view<basic_string_view<_CharT, _Traits>> = 
 template <class _CharT, class _Traits>
 inline constexpr bool ranges::enable_borrowed_range<basic_string_view<_CharT, _Traits> > = true;
 ;
-template <ranges::contiguous_range _Range>
-basic_string_view(_Range) -> basic_string_view<ranges::range_value_t<_Range>>;
-template <class _CharT, class _Traits, int = 1>
-constexpr __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) bool
-operator==(basic_string_view<_CharT, _Traits> __lhs,
-           __type_identity_t<basic_string_view<_CharT, _Traits> > __rhs) noexcept ;
+;
+ ;
  ;
 ;
 template <class _CharT>
 struct __string_view_hash : public __unary_function<basic_string_view<_CharT, char_traits<_CharT> >, size_t> {
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) size_t operator()(const basic_string_view<_CharT, char_traits<_CharT> > __val) const noexcept ;
+  
 };
 template <>
 struct hash<basic_string_view<char, char_traits<char> > > : __string_view_hash<char> {};
@@ -6723,15 +6613,15 @@ inline constexpr auto transform = __transform{};
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _OutIt>
 struct format_to_n_result ;;
-template <class... _Tag>  format_to_n_result(typename _Tag::__allow_ctad...)->format_to_n_result<_Tag...>;
+;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __format {
 class __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) __max_output_size {
 public:
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit __max_output_size(size_t __max_size)  ;
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) size_t __write_request(size_t __code_units) ;
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) size_t __code_units_written() const noexcept ;
+   
+   
+   
 private:
   size_t __max_size_;
   size_t __code_units_written_;
@@ -6758,7 +6648,7 @@ class __allocating_buffer : public __output_buffer<_CharT> {
 public:
   
   
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) basic_string_view<_CharT> __view() ;
+   
 private:
   using _Alloc  = allocator<_CharT>;
   static constexpr size_t __buffer_size_ = 256;
@@ -6766,22 +6656,20 @@ private:
 template <class _OutIt, __fmt_char_type _CharT>
 class __direct_iterator_buffer : public __output_buffer<_CharT> {
 public:
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit __direct_iterator_buffer(_OutIt __out_it)  ;
+   
   
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit __direct_iterator_buffer(_OutIt __out_it, __max_output_size* __max_output_size)  ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static void
-  __prepare_write( __output_buffer<_CharT>& __buffer,  size_t __size_hint) ;
+  
+  
 };
 template <class _OutIt, __fmt_char_type _CharT>
 class __container_inserter_buffer : public __output_buffer<_CharT> {
 public:
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit __container_inserter_buffer(_OutIt __out_it)  ;
+   
   
   static constexpr size_t __buffer_size = 256;
   _CharT __small_buffer_[__buffer_size];
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __prepare_write() ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static void
-  __prepare_write(__output_buffer<_CharT>& __buffer,  size_t __size_hint) ;
+  
+  
 };
 template <class _OutIt, __fmt_char_type _CharT>
 class __iterator_buffer : public __allocating_buffer<_CharT> {};
@@ -6793,7 +6681,7 @@ public:
   using _Base  = __buffer_selector<_OutIt, _CharT>::type;
   
   
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) format_to_n_result<_OutIt> __result() && ;
+   
 private:
   __max_output_size __max_output_size_;
 };
@@ -6806,11 +6694,11 @@ class __retarget_buffer ;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __format {
 enum class __arg_t : uint8_t ;
-inline constexpr unsigned __packed_arg_t_bits = 5;
-inline constexpr uint8_t __packed_arg_t_mask = 0x1f;
-inline constexpr unsigned __packed_types_storage_bits = 64;
-inline constexpr unsigned __packed_types_max = __packed_types_storage_bits / __packed_arg_t_bits;
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool __use_packed_format_arg_store(size_t __size) ;
+
+
+
+
+
 }
  ;
  ;
@@ -6835,7 +6723,7 @@ template <contiguous_iterator _Iterator>
 struct __parse_number_result ;
 ;
 ;
-inline constexpr uint32_t __number_max = (2147483647);
+
 namespace __detail {
  ;
  ;
@@ -6869,23 +6757,23 @@ inline constexpr auto upper_bound = __upper_bound{};
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __extended_grapheme_custer_property_boundary {
 enum class __property : uint8_t ;;
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) inline constexpr uint32_t __entries[1501] = {};
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __property __get_property(const char32_t __code_point) noexcept ;
+
+ 
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __indic_conjunct_break {
 enum class __property : uint8_t ;
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) inline constexpr uint32_t __entries[403] = {};
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __property __get_property(const char32_t __code_point) noexcept ;
+ 
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __width_estimation_table {
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) inline constexpr uint32_t __entries[110] = {};
-inline constexpr uint32_t __table_upper_bound = 0x0003fffd;
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int __estimated_width(const char32_t __code_point) noexcept ;
+
+ 
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -6933,25 +6821,23 @@ public:
   using const_reference = const value_type&;
   using pointer = typename __alloc_traits::pointer;
   using const_pointer = typename __alloc_traits::const_pointer;
-  static_assert(is_trivially_copyable<value_type>::value, "Character type of basic_string must be trivially copyable");
-  static_assert(is_same<_CharT, typename traits_type::char_type>::value,
-                "traits_type::char_type must be the same type as CharT");
-  static_assert(is_same<typename allocator_type::value_type, value_type>::value,
-                "Allocator::value_type must be same type as value_type");
-  static_assert(__check_valid_allocator<allocator_type>::value, "");
+  
+  
+  
+  
   using iterator = __wrap_iter<pointer>;
   using const_iterator = __wrap_iter<const_pointer>;
   using reverse_iterator = std::reverse_iterator<iterator>;
   using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 private:
-  static_assert(8 == 8, "This implementation assumes that one byte contains 8 bits");
+  
   static const size_type __endian_factor = 2;
   struct __long {
     struct __attribute__((__packed__)) {
-      size_type __is_long_ : 1;
-      size_type __cap_ : sizeof(size_type) * 8 - 1;
+      
+      
     };
-    size_type __size_;
+    
     pointer __data_;
   };
   enum { __min_cap = (sizeof - 1) / sizeof(value_type) > 2 ? (sizeof - 1) / sizeof(value_type) : 2 };
@@ -6960,10 +6846,10 @@ private:
       unsigned char __is_long_ : 1;
       unsigned char __size_ : 7;
     };
-    [[__no_unique_address__]] __padding<sizeof - 1> __padding_;
+    [[__no_unique_address__]] 
     value_type __data_[__min_cap];
   };
-  static_assert(sizeof(__short) == (sizeof(value_type) * (__min_cap + 1)), "__short has an unexpected size.");
+  
   union __rep {
     __short __s;
     __long __l;
@@ -6973,14 +6859,12 @@ private:
     ;
 public:
   __attribute__((__visibility__("default"))) static const size_type npos = -1;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string()
-      noexcept
-  ;
+  
   constexpr basic_string(const basic_string& __str)  ;
   constexpr
   basic_string(const basic_string& __str, const allocator_type& __a)  ;
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string(basic_string&& __str)  ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string(basic_string&& __str, const allocator_type& __a)  ;
+  
   template <__enable_if_t<__is_allocator<_Allocator>::value, int> = 0>
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string(const _CharT* _Nonnull __s) {
     ;
@@ -6993,48 +6877,45 @@ public:
     ;
     ;
    constexpr ~basic_string() ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr operator __self_view() const noexcept ;
+  
   constexpr basic_string&
   operator=(const basic_string& __str);
    ;
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string&
   operator=(basic_string&& __str) noexcept ;
-  basic_string& operator=(nullptr_t) = delete;
+  
   constexpr basic_string& operator=(value_type __c);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type length() const noexcept ;
+  
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type max_size() const noexcept {
     if (size_type __m = __alloc_traits::max_size(__alloc_); __m <= std::numeric_limits<size_type>::max() / 2) ; else {
       bool __uses_lsb = __endian_factor == 2;
       return __uses_lsb ? __m - __alignment - 1 : (__m / 2) - __alignment - 1;
     }
   }
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type capacity() const noexcept ;
+  
   constexpr void resize(size_type __n, value_type __c);
   constexpr void reserve(size_type __requested_capacity);
    ;
-   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool empty() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const_reference operator[](size_type __pos) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr reference operator[](size_type __pos) noexcept ;
+   
+  
+  
   constexpr const_reference at(size_type __n) const;
   constexpr reference at(size_type __n);
    ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string& operator+=(initializer_list<value_type> __il) ;
+  
    ;
   constexpr basic_string& append(const basic_string& __str, size_type __pos, size_type __n = npos);
-  template <class _Tp,
-            __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string&
-  append(const _Tp& __t, size_type __pos, size_type __n = npos) ;
+   ;
   constexpr basic_string& append(const value_type* __s, size_type __n);
   constexpr basic_string& append(const value_type* _Nonnull __s);
   constexpr basic_string& append(size_type __n, value_type __c);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __append_default_init(size_type __n);
+  
    ;
    ;
    ;
   constexpr void push_back(value_type __c);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const_reference front() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr reference back() noexcept ;
+  
+  
    ;
   constexpr basic_string& assign(const basic_string& __str, size_type __pos, size_type __n = npos);
    ;
@@ -7051,70 +6932,48 @@ public:
    ;
    ;
    ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr iterator
-  insert(const_iterator __pos, initializer_list<value_type> __il) ;
+  
   constexpr basic_string& erase(size_type __pos = 0, size_type __n = npos);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr iterator erase(const_iterator __first, const_iterator __last);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string&
-  replace(size_type __pos1, size_type __n1, const basic_string& __str) ;
+  
+  
    ;
   constexpr basic_string&
   replace(size_type __pos1, size_type __n1, const basic_string& __str, size_type __pos2, size_type __n2 = npos);
-  template <class _Tp,
-            __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string&
-  replace(size_type __pos1, size_type __n1, const _Tp& __t, size_type __pos2, size_type __n2 = npos) ;
+   ;
   constexpr basic_string&
   replace(size_type __pos, size_type __n1, const value_type* __s, size_type __n2);
   constexpr basic_string& replace(size_type __pos, size_type __n1, const value_type* __s);
   constexpr basic_string& replace(size_type __pos, size_type __n1, size_type __n2, value_type __c);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string&
-  replace(const_iterator __i1, const_iterator __i2, const basic_string& __str) ;
+  
   constexpr size_type copy(value_type* __s, size_type __n, size_type __pos = 0) const;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const value_type* data() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find(const basic_string& __str, size_type __pos = 0) const noexcept ;
+  
+  
    ;
   constexpr size_type find(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find(const value_type* _Nonnull __s, size_type __pos = 0) const noexcept ;
+  
   constexpr size_type find(value_type __c, size_type __pos = 0) const noexcept ;
-  template <class _Tp, __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  rfind(const _Tp& __t, size_type __pos = npos) const noexcept ;
+   ;
   constexpr size_type rfind(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
   constexpr size_type rfind(value_type __c, size_type __pos = npos) const noexcept ;
    ;
   constexpr size_type
   find_first_of(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_first_of(value_type __c, size_type __pos = 0) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_last_of(const basic_string& __str, size_type __pos = npos) const noexcept ;
-  template <class _Tp, __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_last_of(const _Tp& __t, size_type __pos = npos) const noexcept ;
+  
+  
+   ;
   constexpr size_type
   find_last_of(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_last_of(const value_type* _Nonnull __s, size_type __pos = npos) const noexcept ;
+  
   constexpr size_type
   find_first_not_of(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_first_not_of(const value_type* _Nonnull __s, size_type __pos = 0) const noexcept ;
-  template <class _Tp, __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_last_not_of(const _Tp& __t, size_type __pos = npos) const noexcept ;
+  
+   ;
   constexpr size_type
   find_last_not_of(const value_type* __s, size_type __pos, size_type __n) const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type
-  find_last_not_of(const value_type* _Nonnull __s, size_type __pos = npos) const noexcept ;
+  
    ;
-  template <class _Tp, __enable_if_t = 0>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int
-  compare(size_type __pos1, size_type __n1, const _Tp& __t) const ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int
-  compare(size_type __pos1, size_type __n1, const basic_string& __str) const ;
+   ;
+  
   constexpr int
   compare(size_type __pos1, size_type __n1, const basic_string& __str, size_type __pos2, size_type __n2 = npos) const ;
    ;
@@ -7124,39 +6983,30 @@ public:
   constexpr int
   compare(size_type __pos1, size_type __n1, const value_type* __s, size_type __n2) const;
 private:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool
-  __is_long() const noexcept ;
-  static __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __begin_lifetime(pointer __begin, size_type __n) ;
+  
+  
   constexpr __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static bool __fits_in_sso(size_type __sz) { return __sz < __min_cap; }
   ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void
-  __set_short_size(size_type __s) noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __set_long_size(size_type __s) noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __set_long_cap(size_type __s) noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type __get_long_cap() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __set_long_pointer(pointer __p) noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const_pointer __get_long_pointer() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr pointer
-  __get_short_pointer() noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const_pointer
-  __get_short_pointer() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr const_pointer __get_pointer() const noexcept ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void
-  __annotate_contiguous_container(const void* __old_mid, const void* __new_mid) const ;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __annotate_new(size_type __current_size) const noexcept {}
   enum { __alignment = 8 };
-  static __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr size_type __recommend(size_type __s) noexcept ;
+  
   inline constexpr void __init(const value_type* __s, size_type __sz);
   inline constexpr void __init(size_type __n, value_type __c);
   ;
   template <class _ForwardIterator, __enable_if_t<__has_forward_iterator_category<_ForwardIterator>::value, int> = 0>
   inline constexpr void __init(_ForwardIterator __first, _ForwardIterator __last);
-  template <class _InputIterator, class _Sentinel>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void
-  __init_with_sentinel(_InputIterator __first, _Sentinel __last);
-  template <class _InputIterator, class _Sentinel>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void
-  __init_with_size(_InputIterator __first, _Sentinel __last, size_type __sz);
+  ;
+  ;
   constexpr
   __attribute__((__deprecated__)) void __grow_by(
       size_type __old_cap,
@@ -7165,13 +7015,7 @@ private:
       size_type __n_copy,
       size_type __n_del,
       size_type __n_add = 0);
-  constexpr __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __grow_by_without_replace(
-      size_type __old_cap,
-      size_type __delta_cap,
-      size_type __old_sz,
-      size_type __n_copy,
-      size_type __n_del,
-      size_type __n_add = 0);
+  
   constexpr void __grow_by_and_replace(
       size_type __old_cap,
       size_type __delta_cap,
@@ -7204,7 +7048,7 @@ basic_string<_CharT, _Traits, _Allocator>::__init(const value_type* __s, size_ty
     __rep_ = __rep();
   if (__sz > max_size())
     this->__throw_length_error();
-  pointer __p;
+  
   if (__fits_in_sso(__sz)) ; else 
   traits_type::copy;
   traits_type::assign;
@@ -7252,51 +7096,46 @@ struct hash<basic_string<wchar_t, char_traits<wchar_t>, _Allocator> > : __string
 ;
 ;
 ;
-template <class _CharT, class _Traits, class _Allocator>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) basic_istream<_CharT, _Traits>&
-getline(basic_istream<_CharT, _Traits>&& __is, basic_string<_CharT, _Traits, _Allocator>& __str);
+;
 template <class _CharT, class _Traits, class _Allocator, class _Up>
  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr typename basic_string<_CharT, _Traits, _Allocator>::size_type
 erase ;
  ;
 inline namespace literals {
 inline namespace string_literals {
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr basic_string<char16_t>
-operator""s(const char16_t* __str, size_t __len) ;
+ 
 }
 }
-template <>
-inline constexpr bool __format::__enable_insertable<std::basic_string<char>> = true;
-template <>
-inline constexpr bool __format::__enable_insertable<std::basic_string<wchar_t>> = true;
+
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __format_spec {
 
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_invalid_type_format_error(const char* __id) ;
+ 
 template <contiguous_iterator _Iterator, class _ParseContext>
 __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr __format::__parse_number_result<_Iterator>
 __parse_arg_id ;
  ;
 struct __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) __fields {
-  uint16_t __sign_ : 1 ;
-  uint16_t __alternate_form_ : 1 ;
-  uint16_t __zero_padding_ : 1 ;
-  uint16_t __precision_ : 1 ;
+  
+  
+  
+  
   uint16_t __locale_specific_form_ : 1 ;
   uint16_t __type_ : 1 ;
   uint16_t __use_range_fill_ : 1 ;
   uint16_t __clear_brackets_ : 1 ;
   uint16_t __consume_all_ : 1 ;
 };
-inline constexpr __fields __fields_bool{};
-inline constexpr __fields __fields_integral{};
-inline constexpr __fields __fields_floating_point{};
-inline constexpr __fields __fields_string{};
-inline constexpr __fields __fields_pointer{};
-inline constexpr __fields __fields_tuple{};
-inline constexpr __fields __fields_range{};
-inline constexpr __fields __fields_fill_align_width{};
+
+
+
+
+
+
+
+
 enum class __alignment : uint8_t ;;
 enum class __sign : uint8_t ;;
 enum class __type : uint8_t {
@@ -7321,8 +7160,8 @@ inline constexpr uint32_t __type_mask_integer =
     __create_type_mask(__type::__binary_lower_case) |
     __create_type_mask(__type::__hexadecimal_upper_case);
 struct __std {
-  __alignment __alignment_ : 3;
-  __sign __sign_ : 2;
+  
+  
   bool __alternate_form_ : 1;
   bool __locale_specific_form_ : 1;
   __type __type_;
@@ -7368,7 +7207,7 @@ public:
   __code_point<_CharT> __fill_;
    ;
 };
-static_assert(sizeof(__parser<char>) == 16);
+
 static_assert(sizeof(__parser<wchar_t>) == 16);
  ;
  ;
@@ -7408,7 +7247,7 @@ class __attribute__((__visibility__("default"))) bad_cast : public exception {};
 class __attribute__((__visibility__("default"))) bad_typeid : public exception {};
 }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_cast() ;
+  
  ;
 class __attribute__((__visibility__("default"))) __shared_count {
 protected:
@@ -7452,7 +7291,7 @@ public:
       collate = (1 << 3), ctype = (1 << 0), monetary = (1 << 4),
       numeric = (1 << 1), time = (1 << 2), messages = (1 << 5),
       all = collate | ctype | monetary | numeric | time | messages;
-  locale(const locale&) noexcept;
+  
   ;
    ;
 private:
@@ -7517,9 +7356,7 @@ public:
   static const mask __regex_word = 0x80;
   static const mask alnum = alpha | digit;
   static const mask graph = alnum | punct;
-  static_assert((__regex_word & ~(space | print | cntrl | upper | lower | alpha |
-                                                                  digit | punct | xdigit | blank)) == __regex_word,
-                "__regex_word can't overlap other bits");
+  
 };
 template <class _CharT>
 class ctype;
@@ -7802,8 +7639,7 @@ struct __bool_strings<wchar_t> ;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <__fmt_char_type _CharT>
 struct formatter<bool, _CharT> ;
-template <>
-inline constexpr bool enable_nonlocking_formatter_optimization<bool> = true;
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, class _CharT>
@@ -7812,20 +7648,17 @@ struct formatter<_Tp, _CharT> ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <__unsigned_integer _Tp>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Tp bit_floor(_Tp __t) noexcept ;
+ ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <__unsigned_integer _Tp>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int bit_width(_Tp __t) noexcept ;
+ ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 enum class endian ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Tp>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr int __popcount(_Tp __t) noexcept ;
+ ;
  ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -7842,8 +7675,7 @@ template <class _Tp>
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils::Memory {
-    template <typename To, typename From>
-    constexpr To sc(From&& from) noexcept ;
+     ;
      ;
      ;
     namespace Math {
@@ -7955,8 +7787,8 @@ class stack;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace __escaped_output_table {
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) inline constexpr uint32_t __entries = {};
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool __needs_escape(const char32_t __code_point) noexcept ;
+
+ 
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -7998,12 +7830,9 @@ template <__fmt_char_type _CharT>
 struct formatter<void*, _CharT> : public __formatter_pointer<_CharT> {};
 template <__fmt_char_type _CharT>
 struct formatter<const void*, _CharT> : public __formatter_pointer<_CharT> {};
-template <>
-inline constexpr bool enable_nonlocking_formatter_optimization<nullptr_t> = true;
-template <>
-inline constexpr bool enable_nonlocking_formatter_optimization<void*> = true;
-template <>
-inline constexpr bool enable_nonlocking_formatter_optimization<const void*> = true;
+
+
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <__fmt_char_type _CharT>
@@ -8061,12 +7890,12 @@ namespace Hyprutils {
         class Vector2D {
           public:
             constexpr Vector2D(int xx, int yy)  ;
-            constexpr Vector2D() = default;
-            ~Vector2D() = default;
+            
+            
             double x = 0;
             double y = 0;
-            constexpr Vector2D operator-(const Vector2D& a) const ;
-            constexpr Vector2D operator-() const ;
+            
+            
             constexpr bool operator==(const Vector2D& a) const ;
         };
     }
@@ -8099,13 +7928,11 @@ namespace Hyprutils {
  namespace __attribute__((__type_visibility__("default"))) std {
 using terminate_handler = void ;
 class __attribute__((__visibility__("default"))) exception_ptr;
-__attribute__((__visibility__("default"))) exception_ptr current_exception() noexcept;
- __attribute__((__visibility__("default"))) void rethrow_exception(exception_ptr);
+
+ 
 }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _AlgPolicy, class _BidirectionalIterator>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void
-__reverse_impl(_BidirectionalIterator __first, _BidirectionalIterator __last, bidirectional_iterator_tag) ;
+ ;
  ;
 class __attribute__((__visibility__("hidden"))) __do_message;
 class __attribute__((__visibility__("default"))) error_category {
@@ -8116,7 +7943,7 @@ class __attribute__((__visibility__("hidden"))) __do_message : public error_cate
 public:
 };
 
- __attribute__((__visibility__("default"))) const error_category& system_category() noexcept;
+ 
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -8140,8 +7967,8 @@ class __attribute__((__visibility__("default"))) system_error : public runtime_e
   error_code __ec_;
 public:
 };
- __attribute__((__visibility__("default"))) void __throw_system_error(int __ev, const char* __what_arg);
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_system_error(error_code __ec, const char* __what_arg) ;
+ 
+ 
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 enum __legacy_memory_order { __mo_relaxed, __mo_consume, __mo_acquire, __mo_release, __mo_acq_rel, __mo_seq_cst };
@@ -8156,19 +7983,18 @@ enum class memory_order : __memory_order_underlying_t {
 };
 static_assert(is_same<__underlying_type_t<memory_order>, __memory_order_underlying_t>::value,
               "unexpected underlying type for std::memory_order");
-inline constexpr auto memory_order_relaxed = memory_order::relaxed;
-inline constexpr auto memory_order_consume = memory_order::consume;
-inline constexpr auto memory_order_acquire = memory_order::acquire;
-inline constexpr auto memory_order_release = memory_order::release;
-inline constexpr auto memory_order_acq_rel = memory_order::acq_rel;
-inline constexpr auto memory_order_seq_cst = memory_order::seq_cst;
+
+
+
+
+
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <typename _Tp>
 struct __cxx_atomic_base_impl ;
  ;
-template <class _Tp>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __cxx_atomic_init(__cxx_atomic_base_impl<_Tp>* __a, _Tp __val) noexcept ;
+ ;
  ;
  ;
  ;
@@ -8202,8 +8028,7 @@ template <intmax_t _Xp, intmax_t _Yp>
 inline const intmax_t __static_gcd = __static_gcd<_Yp, _Xp % _Yp>;
 template <intmax_t _Xp>
 inline const intmax_t __static_gcd<_Xp, 0> = _Xp;
-template <>
-inline const intmax_t __static_gcd<0, 0> = 1;
+
 template <intmax_t _Xp, intmax_t _Yp>
 inline const intmax_t __static_lcm = _Xp / __static_gcd<_Xp, _Yp> * _Yp;
 template <intmax_t _Xp>
@@ -8229,7 +8054,7 @@ class __ll_mul {
   static const intmax_t max = -min;
   static const intmax_t __a_x = __static_abs<_Xp>;
   static const intmax_t __a_y = __static_abs<_Yp>;
-  static_assert(_Xp != nan && _Yp != nan && __a_x <= max / __a_y, "overflow in __ll_mul");
+  
 public:
   static const intmax_t value = _Xp * _Yp;
 };
@@ -8243,9 +8068,9 @@ template <intmax_t _Xp, intmax_t _Yp>
 class __ll_div ;;
 template <intmax_t _Num, intmax_t _Den = 1>
 class ratio {
-  static_assert(__static_abs<_Num> >= 0, "ratio numerator is out of range");
-  static_assert(_Den != 0, "ratio divide by 0");
-  static_assert(__static_abs<_Den> > 0, "ratio denominator is out of range");
+  
+  
+  
   static constexpr const intmax_t __na = __static_abs<_Num>;
   static constexpr const intmax_t __da = __static_abs<_Den>;
   static constexpr const intmax_t __s = __static_sign<_Num> * __static_sign<_Den>;
@@ -8280,8 +8105,8 @@ struct __ratio_multiply {
 private:
   static const intmax_t __gcd_n1_d2 = __static_gcd<_R1::num, _R2::den>;
   static const intmax_t __gcd_d1_n2 = __static_gcd<_R1::den, _R2::num>;
-  static_assert(__is_ratio_v<_R1>, "/2 requires R1 to be a specialisation of the ratio template");
-  static_assert(__is_ratio_v<_R2>, "/2 requires R2 to be a specialisation of the ratio template");
+  
+  
 public:
   typedef typename ratio< __ll_mul<_R1::num / __gcd_n1_d2, _R2::num / __gcd_d1_n2>::value,
                           __ll_mul<_R2::den / __gcd_n1_d2, _R1::den / __gcd_d1_n2>::value >::type type;
@@ -8293,8 +8118,8 @@ struct __ratio_divide {
 private:
   static const intmax_t __gcd_n1_n2 = __static_gcd<_R1::num, _R2::num>;
   static const intmax_t __gcd_d1_d2 = __static_gcd<_R1::den, _R2::den>;
-  static_assert(__is_ratio_v<_R1>, "/2 requires R1 to be a specialisation of the ratio template");
-  static_assert(__is_ratio_v<_R2>, "/2 requires R2 to be a specialisation of the ratio template");
+  
+  
 public:
   typedef typename ratio< __ll_mul<_R1::num / __gcd_n1_n2, _R2::den / __gcd_d1_d2>::value,
                           __ll_mul<_R2::num / __gcd_n1_n2, _R1::den / __gcd_d1_d2>::value >::type type;
@@ -8337,8 +8162,8 @@ template <class _R1, class _R2>
 struct ratio_greater : _BoolConstant<ratio_less<_R2, _R1>::value> {};
 template <class _R1, class _R2>
 struct ratio_greater_equal : _BoolConstant<!ratio_less<_R1, _R2>::value> {
-  static_assert(__is_ratio_v<_R1>, "/2 requires R1 to be a specialisation of the ratio template");
-  static_assert(__is_ratio_v<_R2>, "/2 requires R2 to be a specialisation of the ratio template");
+  
+  
 };
 template <class _R1, class _R2>
 using __ratio_gcd  = ratio<__static_gcd<_R1::num, _R2::num>, __static_lcm<_R1::den, _R2::den> >;
@@ -8385,9 +8210,9 @@ struct treat_as_floating_point : is_floating_point<_Rep> {};
  ;
 template <class _Rep, class _Period>
 class duration {
-  static_assert(!__is_duration_v<_Rep>, "A duration representation can not be a duration");
-  static_assert(__is_ratio_v<_Period>, "Second template parameter of duration must be a std::ratio");
-  static_assert(_Period::num > 0, "duration period must be positive");
+  
+  
+  
   template <class _R1, class _R2>
   struct __no_overflow ;
 public:
@@ -8428,7 +8253,7 @@ using namespace literals::chrono_literals;
 namespace chrono {
 template <class _Clock, class _Duration = typename _Clock::duration>
 class time_point {
-  static_assert(__is_duration_v<_Duration>, "Second template parameter of time_point must be a std::chrono::duration");
+  
 public:
   typedef _Clock clock;
   typedef _Duration duration;
@@ -8476,7 +8301,7 @@ using sys_days = sys_time<days>;
 namespace chrono {}
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-static constexpr const int __libcpp_polling_count = 64;
+
  ;
 struct __spinning_backoff_policy ;
 } }
@@ -8515,7 +8340,7 @@ struct __atomic_waitable_traits<__atomic_base<_Tp, _IsIntegral> > ;
 template <typename _Tp>
 struct __check_atomic_mandates {
   using type  = _Tp;
-  static_assert(is_trivially_copyable<_Tp>::value, "std::atomic requires that 'T' be a trivially copyable type");
+  
 };
 template <class _Tp>
 struct atomic : public __atomic_base<typename __check_atomic_mandates<_Tp>::type> {
@@ -8622,11 +8447,11 @@ public:
   static const openmode noreplace = 0x40;
   enum seekdir { beg, cur, end };
   class __attribute__((__visibility__("default"))) Init;
-  virtual ~ios_base();
+  
   enum event { erase_event, imbue_event, copyfmt_event };
   typedef void (*event_callback)(event, ios_base&, int __index);
-  void clear(iostate __state = goodbit);
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void setstate(iostate __state);
+  
+  
 protected:
 private:
   fmtflags __fmtflags_;
@@ -8645,9 +8470,9 @@ template <>
 struct is_error_code_enum<io_errc> : public true_type {};
 class __attribute__((__visibility__("default"))) ios_base::failure : public system_error {
 public:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) failure(const failure&) noexcept = default;
+  
 };
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_failure(char const* __msg) ;
+  
 class __attribute__((__visibility__("default"))) ios_base::Init {};
 template <class _Traits>
 struct __attribute__((__packed__)) _SentinelValueFill {
@@ -8661,9 +8486,8 @@ public:
   typedef typename traits_type::int_type int_type;
   typedef typename traits_type::pos_type pos_type;
   typedef typename traits_type::off_type off_type;
-  static_assert(is_same<_CharT, typename traits_type::char_type>::value,
-                "traits_type::char_type must be the same type as CharT");
-  ~basic_ios() override;
+  
+  
 protected:
 private:
   basic_ostream<char_type, traits_type>* __tie_;
@@ -8716,7 +8540,7 @@ public:
 private:
   template <class _Up, class _OtherDeleter>
   friend class unique_ptr;
-  struct {};
+  
   using _BoundsChecker  = __unique_ptr_array_bounds_stateless;
   [[__no_unique_address__]] _BoundsChecker __checker_;
   template <class _From>
@@ -8760,17 +8584,13 @@ public:
  ;
  ;
  ;
-template <class _T1, class _D1>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator<(nullptr_t, const unique_ptr<_T1, _D1>& __x) ;
  ;
  ;
  ;
-template <class _T1, class _D1>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator<=(nullptr_t, const unique_ptr<_T1, _D1>& __x) ;
-template <class _T1, class _D1>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator>=(const unique_ptr<_T1, _D1>& __x, nullptr_t) ;
-template <class _T1, class _D1>
- __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr bool operator>=(nullptr_t, const unique_ptr<_T1, _D1>& __x) ;
+ ;
+ ;
+ ;
+ ;
  ;
  ;
  ;
@@ -8794,11 +8614,10 @@ public:
   typedef typename traits_type::int_type int_type;
   typedef typename traits_type::pos_type pos_type;
   typedef typename traits_type::off_type off_type;
-  static_assert(is_same<_CharT, typename traits_type::char_type>::value,
-                "traits_type::char_type must be the same type as CharT");
-  virtual ~basic_streambuf() ;
-  virtual int_type uflow() ;
-  virtual streamsize xsputn(const char_type* __s, streamsize __n) ;
+  
+  
+  
+  
 private:
   locale __loc_;
   char_type* __binp_ = nullptr;
@@ -8861,7 +8680,7 @@ public:
   typedef typename traits_type::int_type int_type;
   typedef typename traits_type::pos_type pos_type;
   typedef typename traits_type::off_type off_type;
-  ~basic_ostream() override;
+  
 protected:
 public:
   class sentry;
@@ -8908,8 +8727,8 @@ inline constexpr int is_placeholder_v = is_placeholder<_Tp>::value;
 namespace placeholders {
 template <int _Np>
 struct __ph ;
-__attribute__((__visibility__("default"))) extern const __ph<1> _1;
-__attribute__((__visibility__("default"))) extern const __ph<2> _2;
+
+
 }
 template <int _Np>
 struct is_placeholder<placeholders::__ph<_Np> > : public integral_constant<int, _Np> {};
@@ -9004,7 +8823,7 @@ struct __strip_signature<_Rp (_Gp::*) (_Ap...) volatile & noexcept> ;;
 #pragma clang diagnostic push
 class __attribute__((__visibility__("default"))) bad_function_call : public exception {};
 #pragma clang diagnostic pop
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_function_call() ;
+  
 template <class _Fp>
 class function;
 namespace __function {
@@ -9016,13 +8835,10 @@ template <class _Rp>
 struct __maybe_derive_from_binary_function {};
 template <class _Rp, class _A1, class _A2>
 struct __maybe_derive_from_binary_function<_Rp(_A1, _A2)> : public __binary_function<_A1, _A2, _Rp> {};
-template <class _Fp>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) bool __not_null(_Fp const&) ;
-template <class _Fp>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) bool __not_null(_Fp* __ptr) ;
  ;
-template <class _Fp>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) bool __not_null(function<_Fp> const& __f) ;
+ ;
+ ;
+ ;
 }
 namespace __function {
 template <class _Fp>
@@ -9047,8 +8863,8 @@ class __value_func<_Rp(_ArgTypes...)> {
 public:
   template <class _Fp, __enable_if_t<!is_same<__decay_t<_Fp>, __value_func>::value, int> = 0>
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit __value_func(_Fp&& __f)  ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) __value_func(const __value_func& __f) ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void swap(__value_func& __f) noexcept ;
+  
+  
    ;
 };
 union __policy_storage {};
@@ -9086,7 +8902,7 @@ class function<_Rp(_ArgTypes...)>
   using _EnableIfLValueCallable  = __enable_if_t<__callable<_Fp&>::value>;
 public:
   typedef _Rp result_type;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) function(const function&);
+  
   template <class _Fp, class = _EnableIfLValueCallable<_Fp>>
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) function(_Fp);
 public:
@@ -9108,9 +8924,9 @@ class __allocator_destructor ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 class __attribute__((__visibility__("default"))) bad_weak_ptr : public std::exception {
-  ~bad_weak_ptr() noexcept override;
+  
 };
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_weak_ptr() ;
+  
 template <class _Tp>
 class weak_ptr;
 template <class _Tp, class _Dp, class _Alloc>
@@ -9282,10 +9098,7 @@ struct __hash_node_base {
   typedef __rebind_pointer_t<_NodePtr, __first_node> __node_base_pointer;
   typedef _NodePtr __node_pointer;
   typedef __node_base_pointer __next_pointer;
-  static_assert(sizeof(__node_base_pointer) == sizeof(__node_pointer) && alignof(__node_base_pointer) ==
-                    alignof(__node_pointer),
-                "don't care about your ABI being broken, define the _LIBCPP_ABI_TREE_REMOVE_NODE_POINTER_UB macro to "
-                "silence this diagnostic.");
+  
   __next_pointer __next_;
 };
 template <class _Tp>
@@ -9354,11 +9167,9 @@ public:
   typedef __rebind_pointer_t<_VoidPtr, __node_value_type> __node_value_type_pointer;
   typedef __rebind_pointer_t<_VoidPtr, const __node_value_type> __const_node_value_type_pointer;
 private:
-  static_assert(!is_const<__node_type>::value, "_NodePtr should never be a pointer to const");
-  static_assert(is_same<typename pointer_traits<_VoidPtr>::element_type, void>::value,
-                "_VoidPtr does not point to unqualified void type");
-  static_assert(is_same<__rebind_pointer_t<_VoidPtr, __node_type>, _NodePtr>::value,
-                "_VoidPtr does not rebind to _NodePtr.");
+  
+  
+  
 };
 template <class _HashIterator>
 struct __hash_node_types_from_iterator;
@@ -9387,7 +9198,7 @@ class __bucket_list_deallocator {
   typedef _Alloc allocator_type;
   typedef allocator_traits<allocator_type> __alloc_traits;
   typedef typename __alloc_traits::size_type size_type;
-  struct {  __attribute__((__aligned__)) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_581_;  allocator_type __alloc_;  ::std::__compressed_pair_padding<allocator_type> __padding2_581_; };
+    __attribute__((__aligned__)) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_581_;  allocator_type __alloc_;  ::std::__compressed_pair_padding<allocator_type> __padding2_581_; 
 public:
   typedef typename __alloc_traits::pointer pointer;
 };
@@ -9432,8 +9243,7 @@ public:
   typedef typename _NodeTypes::__node_base_pointer __node_base_pointer;
   typedef typename _NodeTypes::__next_pointer __next_pointer;
 private:
-  static_assert(is_same<__node_pointer, typename __node_traits::pointer>::value,
-                "Allocator does not rebind pointers in a sane manner.");
+  
 private:
   typedef __rebind_alloc<__node_traits, __next_pointer> __pointer_allocator;
   typedef __bucket_list_deallocator<__pointer_allocator> __bucket_list_deleter;
@@ -9441,9 +9251,9 @@ private:
   typedef allocator_traits<__pointer_allocator> __pointer_alloc_traits;
   typedef typename __bucket_list_deleter::pointer __node_pointer_pointer;
   __bucket_list __bucket_list_;
-  struct {};
+  
   struct {  __attribute__((__aligned__(::std::__compressed_pair_alignment<hasher>))) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_744_; [[__no_unique_address__]] hasher __hasher_; [[__no_unique_address__]] ::std::__compressed_pair_padding<hasher> __padding2_744_; };
-  struct {};
+  
 public:
 public:
   typedef __hash_iterator<__node_pointer> iterator;
@@ -9523,8 +9333,7 @@ public:
   typedef pair<const key_type, mapped_type> value_type;
   typedef value_type& reference;
   typedef const value_type& const_reference;
-  static_assert(is_same<value_type, typename allocator_type::value_type>::value,
-                "Allocator::value_type must be same type as value_type");
+  
 private:
   typedef __hash_value_type<key_type, mapped_type> __value_type;
   typedef __unordered_map_hasher<key_type, value_type, hasher, key_equal> __hasher;
@@ -9540,7 +9349,7 @@ private:
   typedef __hash_map_node_destructor<__node_allocator> _Dp;
   typedef unique_ptr<__node, _Dp> __node_holder;
   typedef allocator_traits<allocator_type> __alloc_traits;
-  static_assert(__check_valid_allocator<allocator_type>::value, "");
+  
 public:
   typedef typename __alloc_traits::pointer pointer;
   typedef typename __alloc_traits::const_pointer const_pointer;
@@ -9599,12 +9408,10 @@ struct __container_traits<unordered_multimap<_Key, _Tp, _Hash, _Pred, _Alloc> > 
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) void __throw_bad_any_cast() ;
+  
 class any;
-template <class _ValueType>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) add_pointer_t<add_const_t<_ValueType>> any_cast(any const*) noexcept;
-template <class _ValueType>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) add_pointer_t<_ValueType> any_cast(any*) noexcept;
+;
+;
 namespace __any_imp {}
 class any {};
 namespace __any_imp {}
@@ -9774,7 +9581,7 @@ using __unsigned_representation_for_t  = __unsigned_integer_of_size_t<sizeof(_Sc
  ;
 ;
 template <class _Tp, class = void>
-inline const bool __is_ordered_integer_representable_v = false;
+
 struct __low_byte_fn ;
  ;
  ;
@@ -9828,9 +9635,9 @@ struct out_value_result ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
-struct __all_of {};
+
 inline namespace __cpo {
-inline constexpr auto all_of = __all_of{};
+
 }
 }
 } }
@@ -10449,14 +10256,14 @@ extern template class __attribute__((__visibility__("default"))) basic_istream<w
 extern template class __attribute__((__visibility__("default"))) basic_iostream<char>;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-extern __attribute__((__visibility__("default"))) istream cin;
-extern __attribute__((__visibility__("default"))) ostream cout;
-extern __attribute__((__visibility__("default"))) ostream cerr;
+
+
+
 extern __attribute__((__visibility__("default"))) ostream clog;
-extern __attribute__((__visibility__("default"))) wistream wcin;
-extern __attribute__((__visibility__("default"))) wostream wcout;
-extern __attribute__((__visibility__("default"))) wostream wcerr;
-extern __attribute__((__visibility__("default"))) wostream wclog;
+
+
+
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -10469,10 +10276,9 @@ template <class _CharT>
 class __time_get_c_storage {
 protected:
   typedef basic_string<_CharT> string_type;
-  virtual const string_type* __months() const;
+  
 };
-template <>
-__attribute__((__visibility__("default"))) const string* __time_get_c_storage<char>::__months() const;
+
 template <class _CharT, class _InputIterator = istreambuf_iterator<_CharT> >
 class time_get : public locale::facet, public time_base, private __time_get_c_storage<_CharT> {
 public:
@@ -10482,10 +10288,9 @@ public:
   typedef basic_string<char_type> string_type;
   static locale::id id;
 protected:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) ~time_get() override ;
-  virtual dateorder do_date_order() const;
-  virtual iter_type
-  do_get_date(iter_type __b, iter_type __e, ios_base& __iob, ios_base::iostate& __err, tm* __tm) const;
+  
+  
+  
 private:
 };
 template <class _CharT, class _InputIterator>
@@ -10523,29 +10328,26 @@ public:
   typedef _InputIterator iter_type;
   typedef _CharT char_type;
   typedef basic_string<char_type> string_type;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit time_get_byname(const char* __nm, size_t __refs = 0)  ;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) explicit time_get_byname(const string& __nm, size_t __refs = 0)  ;
+  
+  
 protected:
 private:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) const string_type* __months() const override ;
+  
 };
 extern template class __attribute__((__visibility__("default"))) time_get_byname<char>;
 extern template class __attribute__((__visibility__("default"))) time_get_byname<wchar_t>;
 class __attribute__((__visibility__("default"))) __time_put {
   __locale::__locale_t __loc_;
 protected:
-  ~__time_put();
+  
 };
 template <class _CharT, class _OutputIterator = ostreambuf_iterator<_CharT> >
 class time_put : public locale::facet, private __time_put {
 public:
   typedef _CharT char_type;
   typedef _OutputIterator iter_type;
-  iter_type
-  put(iter_type __s, ios_base& __iob, char_type __fl, const tm* __tm, const char_type* __pb, const char_type* __pe)
-      const;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) iter_type
-  put(iter_type __s, ios_base& __iob, char_type __fl, const tm* __tm, char __fmt, char __mod = 0) const ;
+  
+  
   static locale::id id;
 protected:
 };
@@ -10589,9 +10391,7 @@ template <class _CharT>
 class __iom_t10 ;
  ;
  ;
-template <class _CharT, class _Traits>
-__attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) basic_ostream<_CharT, _Traits>& __quoted_output(
-    _CharT __escape) ;
+ ;
  ;
 template <class _CharT, class _Traits>
 struct __attribute__((__visibility__("hidden"))) __quoted_output_proxy ;;
@@ -10683,7 +10483,7 @@ public:
   typedef typename traits_type::off_type off_type;
   typedef typename traits_type::state_type state_type;
   using native_handle_type = int;
-  ~basic_filebuf() override;
+  
   const codecvt<char_type, char, state_type>* __cv_;
   state_type __st_;
   state_type __st_last_;
@@ -10714,7 +10514,7 @@ public:
   typedef typename traits_type::pos_type pos_type;
   typedef typename traits_type::off_type off_type;
   using native_handle_type = typename basic_filebuf<_CharT, _Traits>::native_handle_type;
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) basic_ofstream();
+  
   ;
   ;
 private:
@@ -10789,17 +10589,17 @@ public:
   ;
   ;
 };
-inline constexpr month January{1};
-inline constexpr month February{2};
-inline constexpr month March{3};
-inline constexpr month April{4};
-inline constexpr month May{5};
-inline constexpr month June{6};
-inline constexpr month July{7};
-inline constexpr month August{8};
-inline constexpr month September{9};
-inline constexpr month October{10};
-inline constexpr month November{11};
+
+
+
+
+
+
+
+
+
+
+
 inline constexpr month December{12};
 }
 } }
@@ -10821,12 +10621,12 @@ public:
 };
 class weekday_indexed ;
 class weekday_last ;
-inline constexpr weekday Sunday{0};
-inline constexpr weekday Monday{1};
-inline constexpr weekday Tuesday{2};
-inline constexpr weekday Wednesday{3};
-inline constexpr weekday Thursday{4};
-inline constexpr weekday Friday{5};
+
+
+
+
+
+
 inline constexpr weekday Saturday{6};
 }
 } }
@@ -11143,8 +10943,7 @@ class __attribute__((__visibility__("default"))) recursive_timed_mutex ;;
  ;
  ;
  ;
-template <class _L0, class _L1, class _L2, class... _L3>
-void __lock_first(int __i, _L0& __l0, _L1& __l1, _L2& __l2, _L3&... __l3) ;
+ ;
  ;
 template <class... _Mutexes>
 class scoped_lock;
@@ -11158,11 +10957,11 @@ class scoped_lock ;
 } }
 enum eLogLevel : int8_t ;
 namespace Debug {
-    inline std::string m_logFile;
-    inline std::ofstream m_logOfs;
+    
+    
     inline int64_t* const* m_disableLogs = nullptr;
     inline int64_t* const* m_disableTime = nullptr;
-    inline bool m_disableStdout = false;
+    
     inline bool m_trace = false;
     inline bool m_shuttingDown = false;
     inline int64_t* const* m_coloredLogs = nullptr;
@@ -11175,7 +10974,7 @@ namespace Hyprgraphics {
         struct SHSL ;
         struct SOkLab {};
         struct xy {
-            double x = 0, y = 0;
+            
         };
         struct XYZ ;
       private:
@@ -11183,7 +10982,7 @@ namespace Hyprgraphics {
     };
     class CMatrix3 ;
     struct SPCPRimaries {
-        CColor::xy red, green, blue, white;
+        
     };
 };
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -11291,8 +11090,8 @@ namespace Hyprutils {
               ;
             CSharedPointer  ;
              ;
-            CSharedPointer(std::nullptr_t) noexcept ;
-            ~CSharedPointer() ;
+            
+            
              ;
              ;
             T* operator->() const ;
@@ -11397,7 +11196,7 @@ class CWindow;
 using PHLWINDOW = SP<CWindow>;
 class CWLSurfaceResource;
 class CHyprXWaylandManager ;
-inline UP<CHyprXWaylandManager> g_pXWaylandManager;
+
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Key, class _Compare = less<_Key>, class _Allocator = allocator<_Key> >
 class set;
@@ -11510,13 +11309,11 @@ public:
   using __parent_pointer  = __end_node_pointer;
   typedef __rebind_alloc<__alloc_traits, __node> __node_allocator;
   typedef allocator_traits<__node_allocator> __node_traits;
-  static_assert(sizeof(__node_base_pointer) == sizeof(__end_node_pointer) && alignof(__node_base_pointer) ==
-                    alignof(__end_node_pointer),
-                "Allocator does not rebind pointers in a sane manner.");
+  
 private:
   __end_node_pointer __begin_node_;
-  struct {  __attribute__((__aligned__(::std::__compressed_pair_alignment<__node_allocator>))) __end_node_t __end_node_;  ::std::__compressed_pair_padding<__end_node_t> __padding1_854_;  __node_allocator __node_alloc_;  ::std::__compressed_pair_padding<__node_allocator> __padding2_854_; };
-  struct {  __attribute__((__aligned__)) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_855_;  value_compare __value_comp_;  ::std::__compressed_pair_padding<value_compare> __padding2_855_; };
+    __attribute__((__aligned__(::std::__compressed_pair_alignment<__node_allocator>))) __end_node_t __end_node_;  ::std::__compressed_pair_padding<__end_node_t> __padding1_854_;  __node_allocator __node_alloc_;  ::std::__compressed_pair_padding<__node_allocator> __padding2_854_; 
+    __attribute__((__aligned__)) size_type __size_;  ::std::__compressed_pair_padding<size_type> __padding1_855_;  value_compare __value_comp_;  ::std::__compressed_pair_padding<value_compare> __padding2_855_; 
 public:
 public:
 public:
@@ -11526,8 +11323,7 @@ public:
    ;
    ;
    ;
-  template <class _Pp>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) pair<iterator, bool> __emplace_unique_extract_key(_Pp&& __x, __extract_key_self_tag) ;
+   ;
    ;
    ;
    ;
@@ -11556,8 +11352,7 @@ public:
   typedef __type_identity_t<_Allocator> allocator_type;
   typedef value_type& reference;
   typedef const value_type& const_reference;
-  static_assert(is_same<typename allocator_type::value_type, value_type>::value,
-                "Allocator::value_type must be same type as value_type");
+  
 private:
 };
 } }
@@ -11857,7 +11652,7 @@ class CWLSurfaceResource;
 struct SSessionLockSurface ;;
 struct SSessionLock ;
 class CSessionLockManager ;
-inline UP<CSessionLockManager> g_pSessionLockManager;
+
 namespace Hyprutils {
     namespace String {
         class CVarList ;;
@@ -11891,8 +11686,7 @@ public:
   typedef __type_identity_t<_Allocator> allocator_type;
   typedef value_type& reference;
   typedef const value_type& const_reference;
-  static_assert(is_same<typename allocator_type::value_type, value_type>::value,
-                "Allocator::value_type must be same type as value_type");
+  
   class value_compare : public __binary_function<value_type, value_type, bool> {};
 private:
   typedef std::__value_type<key_type, mapped_type> __value_type;
@@ -11900,7 +11694,7 @@ private:
   typedef __tree<__value_type, __vc, allocator_type> __base;
   typedef typename __base::__node_traits __node_traits;
   typedef allocator_traits<allocator_type> __alloc_traits;
-  static_assert(__check_valid_allocator<allocator_type>::value, "");
+  
   __base __tree_;
 public:
   typedef typename __alloc_traits::pointer pointer;
@@ -11976,12 +11770,12 @@ using multimap =
 enum eConfigValueDataTypes : int8_t ;
 class ICustomConfigValueData {
   public:
-    virtual ~ICustomConfigValueData() = default;
+    
 };
 class CGradientValueData : public ICustomConfigValueData {
   public:
     CGradientValueData ;;
-    virtual ~CGradientValueData() = default;
+    
     std::vector<CHyprColor> m_colors;
     ;
     ;
@@ -12001,8 +11795,8 @@ namespace Hyprutils {
 }
 namespace Hyprutils {
     namespace Animation {
-        constexpr int BAKEDPOINTS = 255;
-        constexpr float INVBAKEDPOINTS = 1.f / BAKEDPOINTS;
+        
+        
         class CBezierCurve ;
     }
 }
@@ -12114,7 +11908,7 @@ struct hash<type_index> : public __unary_function<type_index, size_t> {};
 namespace Aquamarine {
     class IAttachment ;
     template <typename T>
-    concept AttachmentConcept = std::is_base_of_v<IAttachment, T>;
+    
     class CAttachmentManager ;
 };
 namespace Aquamarine {};
@@ -12142,7 +11936,7 @@ class CPopup ;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct unexpect_t {};
-inline constexpr unexpect_t unexpect;
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Err>
@@ -12186,14 +11980,7 @@ template <class _Tp, class _Err>
 class __expected_base ;
 template <class _Tp, class _Err>
 class expected : private __expected_base<_Tp, _Err> {
-  static_assert(!is_reference_v<_Tp> && !is_function_v<_Tp> && !is_same_v<remove_cv_t<_Tp>, in_place_t> &&
-                    !is_same_v<remove_cv_t<_Tp>, unexpect_t> && !__is_std_unexpected<remove_cv_t<_Tp>>::value &&
-                    __valid_std_unexpected<_Err>::value,
-                " A program that instantiates the definition of template expected for a "
-                "reference type, a function type, or for possibly cv-qualified types in_place_t, unexpect_t, or a "
-                "specialization of unexpected for the T parameter is ill-formed. A program that instantiates the "
-                "definition of the template expected with a type for the E parameter that is not a valid "
-                "template argument for unexpected is ill-formed.");
+  
   template <class _Up, class _OtherErr>
   friend class expected;
   using __base  = __expected_base<_Tp, _Err>;
@@ -12248,37 +12035,23 @@ private:
                   is_nothrow_move_constructible<_Err>> >::value;
 public:
    ;
-  template <class _OtherErr>
-    requires(__can_assign_from_unexpected<_OtherErr>)
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr expected& operator=(unexpected<_OtherErr>&& __un) ;
+   ;
    ;
    ;
 public:
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr _Err&& error() && noexcept ;
-   ;
-   ;
-  template <class _Func>
-    requires is_constructible_v<_Tp, _Tp&&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto or_else(_Func&& __f) && ;
+  
    ;
    ;
    ;
    ;
-  template <class _Func>
-    requires is_constructible_v<_Err, const _Err&&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto transform(_Func&& __f) const&& ;
-  template <class _Func>
-    requires is_constructible_v<_Tp, _Tp&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto transform_error(_Func&& __f) & ;
-  template <class _Func>
-    requires is_constructible_v<_Tp, const _Tp&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto transform_error(_Func&& __f) const& ;
-  template <class _Func>
-    requires is_constructible_v<_Tp, _Tp&&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto transform_error(_Func&& __f) && ;
-  template <class _Func>
-    requires is_constructible_v<_Tp, const _Tp&&>
-  __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr auto transform_error(_Func&& __f) const&& ;
+   ;
+   ;
+   ;
+   ;
+   ;
+   ;
+   ;
+   ;
   template <class _T2, class _E2>
   __attribute__((__visibility__("hidden"))) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) friend constexpr bool operator==(const expected& __x, const expected<_T2, _E2>& __y)
     requires(!is_void_v<_T2>)
@@ -12343,9 +12116,9 @@ namespace Hyprutils {
 };
 struct SCallstackFrameInfo ;;
 struct SWorkspaceIDName ;
-std::string execAndGet(const char*);
-int64_t getPPIDof(int64_t pid);
-Vector2D configStringToVector2D(const std::string&);
+
+
+
  ;
 enum eFullscreenMode : int8_t ;;
 class CWindow;
@@ -12385,10 +12158,8 @@ template <typename T, bool Extended = std::is_same_v<T, bool> || std::is_same_v<
 class CWindowOverridableVar {
   public:
     CWindowOverridableVar(T const& value)  ;
-    CWindowOverridableVar(std::string const& value)
-        requires(Extended && !std::is_same_v<T, bool>)  ;
-    CWindowOverridableVar(std::string const& value, std::optional<T> const& min, std::optional<T> const& max = std::nullopt)
-        requires(Extended && !std::is_same_v<T, bool>)  ;
+    
+    
     ~CWindowOverridableVar() = default;
   private:
     std::map<eOverridePriority, T> m_values;
@@ -12443,13 +12214,13 @@ enum eSuppressEvents : uint8_t {
 };
 class IWindowTransformer;
 struct SAlphaValue {
-    float alpha;
+    
     bool overridden;
     ;
 };
 struct SWindowData {
-    CWindowOverridableVar<SAlphaValue> alpha = SAlphaValue{};
-    CWindowOverridableVar<SAlphaValue> alphaInactive = SAlphaValue{};
+    
+    
     CWindowOverridableVar<SAlphaValue> alphaFullscreen = SAlphaValue{};
     CWindowOverridableVar<bool> allowsInput = false;
     CWindowOverridableVar<bool> dimAround = false;
@@ -12552,7 +12323,7 @@ class CWindow {
     eIdleInhibitMode m_idleInhibitMode = IDLEINHIBIT_NONE;
     std::string m_initialWorkspaceToken = "";
     struct SGroupData {
-        PHLWINDOWREF pNextWindow;
+        
         bool head = false;
         bool locked = false;
         bool deny = false;
@@ -12645,10 +12416,10 @@ class CWpImageDescriptionV1;
 class CWpImageDescriptionInfoV1;
 class CWpImageDescriptionInfoV1;
 extern const wl_interface wp_color_manager_v1_interface;
-extern const wl_interface wp_color_management_output_v1_interface;
-extern const wl_interface wp_color_management_surface_v1_interface;
-extern const wl_interface wp_color_management_surface_feedback_v1_interface;
-extern const wl_interface wp_image_description_creator_icc_v1_interface;
+
+
+
+
 extern const wl_interface wp_image_description_creator_params_v1_interface;
 extern const wl_interface wp_image_description_v1_interface;
 extern const wl_interface wp_image_description_info_v1_interface;
@@ -12674,7 +12445,7 @@ struct CWpImageDescriptionCreatorParamsV1DestroyWrapper {
 };
 class CWpImageDescriptionCreatorParamsV1 ;
 struct CWpImageDescriptionV1DestroyWrapper {
-    wl_listener listener;
+    
     CWpImageDescriptionV1* parent = nullptr;
 };
 class CWpImageDescriptionV1 {
@@ -12693,7 +12464,7 @@ namespace NColorManagement {
     enum ePrimaries : uint8_t ;;
     using SPCPRimaries = Hyprgraphics::SPCPRimaries;
     namespace NColorPrimaries {
-        static const auto DEFAULT_PRIMARIES = SPCPRimaries{};
+        
         static const auto BT709 = SPCPRimaries{};
         static const auto GENERIC_FILM = SPCPRimaries{};
         static const auto DISPLAY_P3 = SPCPRimaries{};
@@ -12713,7 +12484,7 @@ struct __intrusive_shared_ptr_traits;
 template <class _Tp>
 struct __intrusive_shared_ptr {
 private:
-  _Tp* __raw_ptr_ = nullptr;
+  
 };
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -12737,7 +12508,7 @@ template <class _Tp>
 struct __atomic_waitable_traits<__atomic_ref_base<_Tp>> ;
 template <class _Tp>
 struct atomic_ref : public __atomic_ref_base<_Tp> {
-  static_assert(is_trivially_copyable_v<_Tp>, "std::atomic_ref requires that 'T' be a trivially copyable type");
+  
   using __base  = __atomic_ref_base<_Tp>;
 };
 template <class _Tp>
@@ -12772,7 +12543,7 @@ struct __intrusive_list_view ;;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct __stop_callback_base : __intrusive_node_base<__stop_callback_base> {
   using __callback_fn_t  = void(__stop_callback_base*) noexcept;
-  __callback_fn_t* __callback_fn_;
+  
   atomic<bool> __completed_ = false;
   bool* __destroyed_ = nullptr;
 };
@@ -12788,12 +12559,8 @@ class stop_token ;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Callback>
 class stop_callback : private __stop_callback_base {
-  static_assert(invocable<_Callback>,
-                "Mandates: stop_callback is instantiated with an argument for the template parameter Callback that "
-                "satisfies invocable.");
-  static_assert(destructible<_Callback>,
-                "Mandates: stop_callback is instantiated with an argument for the template parameter Callback that "
-                "satisfies destructible.");
+  
+  
 public:
   using callback_type = _Callback;
     ;
@@ -12880,7 +12647,7 @@ namespace Aquamarine {
       public:
         struct STabletPadGroup {
             std::vector<uint32_t> buttons, strips, rings;
-            uint16_t modes = 0;
+            
         };
         uint16_t buttons = 0, rings = 0, strips = 0;
         std::vector<std::string> paths;
@@ -13005,12 +12772,12 @@ namespace Aquamarine {
         enum scheduleFrameReason : uint32_t ;
         struct SHDRMetadata ;
         struct xy {};
-        struct SChromaticityCoords {
+        
             xy red;
             xy green;
             xy blue;
             xy white;
-        };
+        
         struct SParsedEDID {};
         std::string name, description, make, model, serial;
         SParsedEDID parsedEDID;
