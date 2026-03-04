@@ -735,8 +735,7 @@ template <class _Ret, class... _Args>
 inline const bool __is_invocable_r_v = __is_invocable_r_impl<_Ret, __is_invocable_v<_Args...>, _Args...>;
 template <bool __is_invocable, class... _Args>
 inline const bool __is_nothrow_invocable_impl = false;
-template <class... _Args>
-inline const bool __is_nothrow_invocable_impl<true, _Args...> = noexcept(0);
+
 template <class... _Args>
 inline const bool __is_nothrow_invocable_v = __is_nothrow_invocable_impl<__is_invocable_v<_Args...>, _Args...>;
 template <bool __is_invocable, class _Ret, class... _Args>
@@ -1597,7 +1596,7 @@ enum class _PartialOrdResult : signed char {
   __less ,
   __equiv ,
   __greater ,
-  __unordered = -127,
+  __unordered ,
 };
 class partial_ordering;
 class weak_ordering;
@@ -1966,14 +1965,14 @@ using __promote_t  =
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 enum float_round_style {
   
-  round_toward_zero = 0,
+  round_toward_zero ,
   
   
   
 };
 enum __attribute__((__deprecated__)) float_denorm_style {
   
-  denorm_absent = 0,
+  denorm_absent ,
   
 };
 template <class _Tp, bool = is_arithmetic<_Tp>::value>
@@ -2014,7 +2013,7 @@ class __libcpp_numeric_limits<bool, true> ;;
 template <>
 class __libcpp_numeric_limits<float, true> ;
 template <>
-class __libcpp_numeric_limits<double, true> {};
+class __libcpp_numeric_limits<double, true> ;
 template <>
 class __libcpp_numeric_limits<long double, true> ;
 template <class _Tp>
@@ -2492,8 +2491,7 @@ template <class _Tp>
 inline constexpr bool __tuple_like_no_subrange_impl = false;
 template <class _Tp, size_t _Size>
 inline constexpr bool __tuple_like_no_subrange_impl<array<_Tp, _Size>> = true;
-template <class _Tp>
-inline constexpr bool __tuple_like_no_subrange_impl<complex<_Tp>> = true;
+
 template <class _Tp>
 concept __tuple_like_no_subrange = __tuple_like_no_subrange_impl<remove_cvref_t<_Tp>>;
 template <class _Tp>
@@ -2777,8 +2775,7 @@ struct equal_to : __binary_function<_Tp, _Tp, bool> {};
 ;
 template 
 struct equal_to<void> ;
-template <class _Tp>
-inline const bool __desugars_to_v<__equal_tag, equal_to<_Tp>, _Tp, _Tp> = true;
+
 template <class _Tp, class _Up>
 inline const bool __desugars_to_v<__equal_tag, equal_to<void>, _Tp, _Up> = true;
 template <class _Tp = void>
@@ -2806,8 +2803,7 @@ struct greater_equal<void> ;;
 template <class _Tp = void>
 struct greater : __binary_function<_Tp, _Tp, bool> {};
 ;
-template <class _Tp>
-inline const bool __desugars_to_v<__greater_tag, greater<_Tp>, _Tp, _Tp> = true;
+
 template 
 struct greater<void> ;;
 template <class _Tp, class _Up>
@@ -3956,17 +3952,17 @@ __constexpr_memmove ;
 extern "C" {
 enum
 {
-  _ISupper = 0,
-  _ISlower = 0,
-  _ISalpha = 0,
-  _ISdigit = 0,
-  _ISxdigit = 0,
-  _ISspace = 0,
-  _ISprint = 0,
+  _ISupper ,
+  _ISlower ,
+  _ISalpha ,
+  _ISdigit ,
+  _ISxdigit ,
+  _ISspace ,
+  _ISprint ,
   
-  _ISblank = 0,
-  _IScntrl = 0,
-  _ISpunct = 0,
+  _ISblank ,
+  _IScntrl ,
+  _ISpunct ,
   
 };
 ;
@@ -4969,11 +4965,7 @@ typedef union
   long int __align;
 } pthread_mutex_t;
 typedef union
-{
-  struct __pthread_cond_s __data;
-  char __size[48];
-  __extension__ long long int __align;
-} pthread_cond_t;
+ pthread_cond_t;
 typedef union
  pthread_rwlock_t;
 typedef union
@@ -5817,9 +5809,9 @@ template <size_t _Len, size_t _A1, size_t _A2>
 struct __select_align {
 private:
   static const size_t __min = _A2 < _A2;
-  static const size_t __max = _A1 < _A2 ? _A2 : _A1;
+  static const size_t __max = _A1 < _A2;
 public:
-  static const size_t value = _Len < __max ? __min : __max;
+  static const size_t value = _Len < __min;
 };
 template <class _Head, class... _Tail, size_t _Len>
 struct __find_max_align<__type_list<_Head, _Tail...>, _Len>
@@ -5872,14 +5864,12 @@ template <class _Alloc, class _Iter>
 class _AllocatorDestroyRangeReverse ;;
 template <class _Alloc, class _Type>
 inline const bool __allocator_has_trivial_copy_construct_v = !__has_construct_v<_Alloc, _Type*, const _Type&>;
-template <class _Type>
-inline const bool __allocator_has_trivial_copy_construct_v<allocator<_Type>, _Type> = true;
+
  ;
  ;
 template <class _Alloc, class _Type>
 inline const bool __allocator_has_trivial_move_construct_v = !__has_construct_v<_Alloc, _Type*, _Type&&>;
-template <class _Type>
-inline const bool __allocator_has_trivial_move_construct_v<allocator<_Type>, _Type> = true;
+
 template <class _Alloc, class _Tp>
 inline const bool __allocator_has_trivial_destroy_v = !__has_destroy_v<_Alloc, _Tp*>;
 template <class _Tp, class _Up>
@@ -6499,7 +6489,7 @@ private:
   constexpr __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) static bool __fits_in_sso(size_type __sz) { return __sz < __min_cap; }
   ;
   __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__("ne210108"))) constexpr void __annotate_new(size_type __current_size) const noexcept {}
-  enum { __alignment = 8 };
+  enum { __alignment  };
   inline constexpr void __init(const value_type* __s, size_type __sz);
   inline constexpr void __init(size_type __n, value_type __c);
   ;
@@ -6618,20 +6608,7 @@ struct __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_i
 };
 enum class __alignment : uint8_t ;;
 enum class __sign : uint8_t ;;
-enum class __type : uint8_t {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+enum class __type : uint8_t ;
 __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) inline constexpr uint32_t __create_type_mask(__type __t) {
   uint32_t __shift = static_cast<uint32_t>(__t);
   return 1 << __shift;
@@ -6654,34 +6631,13 @@ struct __parsed_specifications {
   int32_t __precision_;
   __code_point<_CharT> __fill_;
 };
-static_assert(sizeof(__parsed_specifications<char>) == 16);
+
 static_assert(is_trivially_copyable_v<__parsed_specifications<char>>);
-static_assert(sizeof(__parsed_specifications<wchar_t>) == 16);
+
 static_assert(is_trivially_copyable_v<__parsed_specifications<wchar_t>>);
 template <class _CharT>
-class __parser {
-public:
-   ;
-   ;
-  bool __locale_specific_form_ : 1 ;
-  bool __clear_brackets_ : 1 ;
-  __type __type_;
-  bool __hour_ : 1 ;
-  bool __weekday_name_ : 1 ;
-  bool __weekday_ : 1 ;
-  bool __day_of_year_ : 1 ;
-  bool __week_of_year_ : 1 ;
-  bool __month_name_ : 1 ;
-  uint8_t __reserved_0_ : 2 ;
-  uint8_t __reserved_1_ : 6 ;
-  bool __width_as_arg_ : 1 ;
-  bool __precision_as_arg_ : 1 ;
-  int32_t __width_;
-  int32_t __precision_;
-  __code_point<_CharT> __fill_;
-   ;
-};
-static_assert(sizeof(__parser<wchar_t>) == 16);
+class __parser ;
+
  ;
  ;
 template <contiguous_iterator _Iterator>
@@ -7902,8 +7858,7 @@ template <class _Tp>
 struct default_delete ;
 template <class _Deleter>
 inline const bool __is_default_deleter_v = false;
-template <class _Tp>
-inline const bool __is_default_deleter_v<default_delete<_Tp> > = true;
+
 template <class _Deleter>
 struct __unique_ptr_deleter_sfinae ;
 template <class _Deleter>
@@ -10272,8 +10227,8 @@ enum eLogLevel : int8_t ;
 namespace Debug {
     inline int64_t* const* m_disableLogs = nullptr;
     inline int64_t* const* m_disableTime = nullptr;
-    inline bool m_trace = false;
-    inline bool m_shuttingDown = false;
+    
+    
     inline int64_t* const* m_coloredLogs = nullptr;
      ;
 };
@@ -10903,7 +10858,7 @@ class CKeybindManager {
     friend class CWorkspace;
     friend class CPointerManager;
 };
-inline UP<CKeybindManager> g_pKeybindManager;
+
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Value, class _Hash, class _Pred, class _Alloc>
 class unordered_multiset;
@@ -11179,7 +11134,7 @@ enum eDecorationEdges : uint8_t ;
 struct SDecorationPositioningInfo ;
 struct SDecorationPositioningReply ;;
 class CDecorationPositioner ;
-inline UP<CDecorationPositioner> g_pDecorationPositioner;
+
 class IHyprWindowDecoration ;
 namespace Aquamarine {
     struct SGLFormat ;
@@ -11471,13 +11426,13 @@ namespace NContentType {
 class CXDGSurfaceResource;
 class CXWaylandSurface;
 enum eIdleInhibitMode : uint8_t {
-    IDLEINHIBIT_NONE = 0,
+    IDLEINHIBIT_NONE ,
     
     
     
 };
 enum eGroupRules : uint8_t {
-    GROUP_NONE = 0,
+    GROUP_NONE ,
     
     
     
@@ -11488,7 +11443,7 @@ enum eGroupRules : uint8_t {
 };
 enum eGetWindowProperties : uint8_t ;
 enum eSuppressEvents : uint8_t {
-    SUPPRESS_NONE = 0,
+    SUPPRESS_NONE ,
     
     
     
@@ -11876,7 +11831,7 @@ namespace Aquamarine {
     class ITabletTool {
       public:
         enum eTabletToolType : uint32_t {
-            AQ_TABLET_TOOL_TYPE_INVALID = 0,
+            AQ_TABLET_TOOL_TYPE_INVALID ,
             
             
             
@@ -11999,5 +11954,5 @@ class CWLSurfaceResource;
 struct SWorkspaceRule;
 enum eManagersInitStage : uint8_t ;
 class CCompositor ;;
-inline UP<CCompositor> g_pCompositor;
+
 export module example;
