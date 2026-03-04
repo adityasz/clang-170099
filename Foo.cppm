@@ -3078,9 +3078,7 @@ class __attribute__((__visibility__0)) length_error : public logic_error {};
 class __attribute__((__visibility__0)) out_of_range : public logic_error {};
 class __attribute__((__visibility__0)) range_error : public runtime_error {};
 class __attribute__((__visibility__0)) overflow_error : public runtime_error {};
-class __attribute__((__visibility__0)) underflow_error : public runtime_error {
-public:
-};
+class __attribute__((__visibility__0)) underflow_error : public runtime_error {};
 }
  namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {} }
@@ -3684,32 +3682,7 @@ enum
 typedef unsigned int wint_t;
 typedef unsigned long int wctype_t;
 enum
-{
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-};
+{};
 extern "C" 
  namespace __attribute__((__type_visibility__0)) std {}
 typedef _Complex float __cfloat128 __attribute__ ((__mode__ (__TC__)));
@@ -3746,9 +3719,7 @@ struct __unwrap_range_impl<_Iter, _Iter> ;
  ;
  ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace ranges {}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 namespace ranges {
 template <class _InIter1, class _InIter2>
@@ -4101,10 +4072,7 @@ public:
 };
 namespace views {
 namespace __join_with_view {
-struct __fn {
-   ;
-   ;
-};
+struct __fn {};
 }
 inline namespace __cpo {
 inline constexpr auto join_with = __join_with_view::__fn{};
@@ -4113,41 +4081,7 @@ inline constexpr auto join_with = __join_with_view::__fn{};
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace ranges {
-template <class _Container>
-constexpr bool __reservable_container =
-    sized_range<_Container> && requires(_Container& __c, range_size_t<_Container> __n) {
-      __c.reserve;
-      { __c.capacity } -> same_as<decltype(__n)>;
-      { __c.max_size } -> same_as<decltype(__n)>;
-    };
-template <class _Container, class _Ref>
-constexpr bool __container_appendable = requires(_Container& __c, _Ref&& __ref) {
-  requires(
-      requires { __c.emplace_back; } ||
-      requires { __c.push_back; } ||
-      requires { __c.emplace; } ||
-      requires { __c.insert; });
-};
-template <class _Container, class _Range>
-concept __try_non_recursive_conversion =
-    !input_range<_Container> || convertible_to<range_reference_t<_Range>, range_value_t<_Container>>;
-template <class _Container, class _Range, class... _Args>
-concept __constructible_from_iter_pair =
-    common_range<_Range> && requires { typename iterator_traits<iterator_t<_Range>>::iterator_category; } &&
-    derived_from<typename iterator_traits<iterator_t<_Range>>::iterator_category, input_iterator_tag> &&
-    constructible_from<_Container, iterator_t<_Range>, sentinel_t<_Range>, _Args...>;
-template <class>
-concept __always_false = false;
- ;
-template <class _Range>
-struct __minimal_input_iterator ;
-template <template <class...> class _Container, input_range _Range, class... _Args>
-struct _Deducer ;
- ;
- ;
- ;
-}
+namespace ranges {}
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Iterator>
@@ -4165,143 +4099,21 @@ template <class _Iterator, size_t _Nth>
 using __product_iterator_element_t  =
     decltype(__product_iterator_traits<_Iterator>::template __get_iterator_element<_Nth>);
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace ranges {
-template <class... _Ranges>
-concept __zip_is_common =
-    (sizeof...(_Ranges) == 1 && (common_range<_Ranges> && ...)) ||
-    (!0 && (common_range<_Ranges> && ...)) ||
-    ((random_access_range<_Ranges> && ...) && (sized_range<_Ranges> && ...));
- ;
- ;
-template <class _Fun, class _Tuple1, class _Tuple2, size_t... _Indices>
-__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr tuple<
-    invoke_result_t<_Fun&,
-                    typename tuple_element<_Indices, remove_cvref_t<_Tuple1>>::type,
-                    typename tuple_element<_Indices, remove_cvref_t<_Tuple2>>::type>...>
-__tuple_zip_transform(_Fun&& __f, _Tuple1&& __tuple1, _Tuple2&& __tuple2, index_sequence<_Indices...>) ;
- ;
- ;
- ;
- ;
-template <class _Tp>
-__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr _Tp __abs ;
-template <input_range... _Views>
-  requires(view<_Views> && ...) && (sizeof...(_Views) > 0)
-class zip_view : public view_interface<zip_view<_Views...>> {
-   tuple<_Views...> __views_;
-  template <bool>
-  class __iterator;
-  template <bool>
-  class __sentinel;
-public:
-};
-;
-template <bool _Const, class... _Views>
-concept __zip_all_random_access = (random_access_range<__maybe_const<_Const, _Views>> && ...);
-template <bool _Const, class... _Views>
-concept __zip_all_bidirectional = (bidirectional_range<__maybe_const<_Const, _Views>> && ...);
-template <bool _Const, class... _Views>
-concept __zip_all_forward = (forward_range<__maybe_const<_Const, _Views>> && ...);
- ;
-template <bool _Const, class... _Views>
-struct __zip_view_iterator_category_base ;
-template <bool _Const, class... _Views>
-  requires __zip_all_forward<_Const, _Views...>
-struct __zip_view_iterator_category_base<_Const, _Views...> ;
-template <input_range... _Views>
-  requires(view<_Views> && ...) && (sizeof...(_Views) > 0)
-template <bool _Const>
-class zip_view<_Views...>::__iterator : public __zip_view_iterator_category_base<_Const, _Views...> {};
-template <input_range... _Views>
-  requires(view<_Views> && ...) && (sizeof...(_Views) > 0)
-template <bool _Const>
-class zip_view<_Views...>::__sentinel {
-  tuple<sentinel_t<__maybe_const<_Const, _Views>>...> __end_;
-  friend class zip_view;
-  template <bool _OtherConst>
-  __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) static constexpr decltype(auto)
-  __iter_current(zip_view::__iterator<_OtherConst> const& __it) ;
-public:
-  template <bool _OtherConst>
-    requires(sentinel_for<sentinel_t<__maybe_const<_Const, _Views>>, iterator_t<__maybe_const<_OtherConst, _Views>>> &&
-             ...)
-  __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) friend constexpr bool operator==(const __iterator<_OtherConst>& __x, const __sentinel& __y) {}
-  template <bool _OtherConst>
-    requires(
-        sized_sentinel_for<sentinel_t<__maybe_const<_Const, _Views>>, iterator_t<__maybe_const<_OtherConst, _Views>>> &&
-        ...)
-  __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) friend constexpr common_type_t<range_difference_t<__maybe_const<_OtherConst, _Views>>...>
-  operator-(const __iterator<_OtherConst>& __x, const __sentinel& __y) {
-    const auto __diffs = ranges::__tuple_zip_transform(minus(), __iter_current, __y.__end_);
-    return std::apply;
-  }
-  template <bool _OtherConst>
-    requires(
-        sized_sentinel_for<sentinel_t<__maybe_const<_Const, _Views>>, iterator_t<__maybe_const<_OtherConst, _Views>>> &&
-        ...)
-  __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) friend constexpr common_type_t<range_difference_t<__maybe_const<_OtherConst, _Views>>...>
-  operator-(const __sentinel& __y, const __iterator<_OtherConst>& __x) {}
-};
-template <class... _Views>
-inline constexpr bool enable_borrowed_range<zip_view<_Views...>> = 0;
-namespace views {}
-}
-template <class _Iterator>
-  requires _Iterator::__is_zip_view_iterator
-struct __product_iterator_traits<_Iterator> ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Container>
 class back_insert_iterator
     : public iterator<output_iterator_tag, void, void, void, void>
-{
-protected:
-  _Container* container;
-public:
-  typedef output_iterator_tag iterator_category;
-  typedef void value_type;
-  typedef ptrdiff_t difference_type;
-  typedef void pointer;
-  typedef void reference;
-  typedef _Container container_type;
-};
+{};
 ;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Container>
-class front_insert_iterator
-    : public iterator<output_iterator_tag, void, void, void, void>
-{
-protected:
-  _Container* container;
-public:
-  typedef output_iterator_tag iterator_category;
-  typedef void value_type;
-  typedef ptrdiff_t difference_type;
-  typedef void pointer;
-  typedef void reference;
-  typedef _Container container_type;
-};
-;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, class _CharT = char, class _Traits = char_traits<_CharT>, class _Distance = ptrdiff_t>
 class istream_iterator
     : public iterator<input_iterator_tag, _Tp, _Distance, const _Tp*, const _Tp&>
-{
-public:
-  typedef input_iterator_tag iterator_category;
-  typedef _CharT char_type;
-  typedef _Traits traits_type;
-  typedef basic_istream<_CharT, _Traits> istream_type;
-private:
-  istream_type* __in_stream_;
-  _Tp __value_;
-public:
-  ;
-};
+{};
  ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -4530,10 +4342,7 @@ concept permutable =
     forward_iterator<_Iterator> && indirectly_movable_storable<_Iterator, _Iterator> &&
     indirectly_swappable<_Iterator, _Iterator>;
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Iter, class _Comp = ranges::less, class _Proj = identity>
-concept sortable = permutable<_Iter> && indirect_strict_weak_order<_Comp, projected<_Iter, _Proj>>;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 extern "C" ;
 extern "C" ;
 extern "C" {
