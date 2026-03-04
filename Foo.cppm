@@ -2802,174 +2802,7 @@ struct __is_inplace_index_imp : false_type {};
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__0)) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-template <class _Tp, size_t _Size>
-struct __farray ;;
-template <class _Tp>
-struct variant_size<const _Tp> : variant_size<_Tp> {};
-template <class _Tp>
-struct variant_size<volatile _Tp> : variant_size<_Tp> {};
-template <class _Tp>
-struct variant_size<const volatile _Tp> : variant_size<_Tp> {};
-template <class... _Types>
-struct variant_size<variant<_Types...>> : integral_constant<size_t, sizeof...(_Types)> {};
-template <size_t _Ip, class _Tp>
-struct variant_alternative<_Ip, const _Tp> : add_const<variant_alternative_t<_Ip, _Tp>> {};
-template <size_t _Ip, class _Tp>
-struct variant_alternative<_Ip, volatile _Tp> : add_volatile<variant_alternative_t<_Ip, _Tp>> {};
-template <size_t _Ip, class _Tp>
-struct variant_alternative<_Ip, const volatile _Tp> : add_cv<variant_alternative_t<_Ip, _Tp>> {};
-template <size_t _Ip, class... _Types>
-struct variant_alternative<_Ip, variant<_Types...>> ;
-template <size_t _NumAlternatives>
-__attribute__(()) __attribute__(()) __attribute__(()) constexpr auto __choose_index_type() ;
-template <size_t _NumAlts>
-using __variant_index_t  = decltype(std::__choose_index_type<_NumAlts>);
-template <class _IndexType>
-constexpr _IndexType __variant_npos = static_cast<_IndexType>(-1);
- ;
- ;
- ;
- ;
-namespace __find_detail {}
-namespace __variant_detail {
-struct __valueless_t ;
-enum class _Trait { _TriviallyAvailable, _Available, _Unavailable };
-template <typename _Tp, template <typename> class _IsTriviallyAvailable, template <typename> class _IsAvailable>
-constexpr _Trait __trait =
-    _IsTriviallyAvailable<_Tp>::value ? _Trait::_TriviallyAvailable
-    : _IsAvailable<_Tp>::value
-        ? _Trait::_Available
-        : _Trait::_Unavailable;
-template <typename... _Types>
-struct __traits ;
-namespace __access {
-struct __union ;;
-struct __base ;
-struct __variant ;
-}
-namespace __visitation {
-struct __base ;;
-struct __variant ;
-}
-template <size_t _Index, class _Tp>
-struct __alt ;
-template <_Trait _DestructibleTrait, size_t _Index, class... _Types>
-union __union;
-template <_Trait _DestructibleTrait, size_t _Index>
-union __union<_DestructibleTrait, _Index> ;
-template <size_t _Index, class _Tp, class... _Types> union __union<_Trait::_TriviallyAvailable, _Index, _Tp, _Types...> ;;
-template <size_t _Index, class _Tp, class... _Types> union __union<_Trait::_Available, _Index, _Tp, _Types...> ;
-template <size_t _Index, class _Tp, class... _Types> union __union<_Trait::_Unavailable, _Index, _Tp, _Types...> ;
-template <_Trait _DestructibleTrait, class... _Types>
-class __base ;
-template <class _Traits, _Trait = _Traits::__destructible_trait>
-class __dtor;
-template <class... _Types> class __dtor<__traits<_Types...>, _Trait::_TriviallyAvailable> : public __base<_Trait::_TriviallyAvailable, _Types...> {};
-template <class... _Types> class __dtor<__traits<_Types...>, _Trait::_Available> : public __base<_Trait::_Available, _Types...> {};
-template <class... _Types> class __dtor<__traits<_Types...>, _Trait::_Unavailable> : public __base<_Trait::_Unavailable, _Types...> {};
-template <class _Traits>
-class __ctor : public __dtor<_Traits> {};
-template <class _Traits, _Trait = _Traits::__move_constructible_trait>
-class __move_constructor;
-template <class... _Types> class __move_constructor<__traits<_Types...>, _Trait::_TriviallyAvailable> : public __ctor<__traits<_Types...>> { using __base_type  = __ctor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class... _Types> class __move_constructor<__traits<_Types...>, _Trait::_Available> : public __ctor<__traits<_Types...>> { using __base_type  = __ctor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      static_assert(true, ""); };
-template <class... _Types> class __move_constructor<__traits<_Types...>, _Trait::_Unavailable> : public __ctor<__traits<_Types...>> { using __base_type  = __ctor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class _Traits, _Trait = _Traits::__copy_constructible_trait>
-class __copy_constructor;
-template <class... _Types> class __copy_constructor<__traits<_Types...>, _Trait::_TriviallyAvailable> : public __move_constructor<__traits<_Types...>> { using __base_type  = __move_constructor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class... _Types> class __copy_constructor<__traits<_Types...>, _Trait::_Available> : public __move_constructor<__traits<_Types...>> { using __base_type  = __move_constructor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      static_assert(true, ""); };
-template <class... _Types> class __copy_constructor<__traits<_Types...>, _Trait::_Unavailable> : public __move_constructor<__traits<_Types...>> { using __base_type  = __move_constructor<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class _Traits>
-class __assignment : public __copy_constructor<_Traits> {
-  using __base_type  = __copy_constructor<_Traits>;
-public:
-  using __base_type::__base_type;
-  using __base_type::operator=;
-   ;
-protected:
-   ;
-   ;
-};
-template <class _Traits, _Trait = _Traits::__move_assignable_trait>
-class __move_assignment;
-template <class... _Types> class __move_assignment<__traits<_Types...>, _Trait::_TriviallyAvailable> : public __assignment<__traits<_Types...>> { using __base_type  = __assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class... _Types> class __move_assignment<__traits<_Types...>, _Trait::_Available> : public __assignment<__traits<_Types...>> { using __base_type  = __assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      static_assert(true, ""); };
-template <class... _Types> class __move_assignment<__traits<_Types...>, _Trait::_Unavailable> : public __assignment<__traits<_Types...>> { using __base_type  = __assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class _Traits, _Trait = _Traits::__copy_assignable_trait>
-class __copy_assignment;
-template <class... _Types> class __copy_assignment<__traits<_Types...>, _Trait::_TriviallyAvailable> : public __move_assignment<__traits<_Types...>> { using __base_type  = __move_assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class... _Types> class __copy_assignment<__traits<_Types...>, _Trait::_Available> : public __move_assignment<__traits<_Types...>> { using __base_type  = __move_assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      static_assert(true, ""); };
-template <class... _Types> class __copy_assignment<__traits<_Types...>, _Trait::_Unavailable> : public __move_assignment<__traits<_Types...>> { using __base_type  = __move_assignment<__traits<_Types...>>; public: using __base_type::__base_type; using __base_type::operator=;      };
-template <class... _Types>
-class __impl : public __copy_assignment<__traits<_Types...>> {
-  using __base_type  = __copy_assignment<__traits<_Types...>>;
-public:
-  using __base_type::__base_type;
-   ;
-private:
-};
-struct __no_narrowing_check ;;
-struct __narrowing_check ;
-template <class _Dest, class _Source>
-using __check_for_narrowing  =
-    typename _If< is_arithmetic<_Dest>::value, __narrowing_check, __no_narrowing_check >::template _Apply<_Dest,
-                                                                                                          _Source>;
-template <class _Tp, size_t _Idx>
-struct __overload ;
-template <class... _Bases>
-struct __all_overloads : _Bases... {};
-template <class _IdxSeq>
-struct __make_overloads_imp;
-template <size_t... _Idx>
-struct __make_overloads_imp<__tuple_indices<_Idx...> > ;
-template <class... _Types>
-using _MakeOverloads  =
-    typename __make_overloads_imp< __make_indices_imp<sizeof...(_Types), 0> >::template _Apply<_Types...>;
-template <class _Tp, class... _Types>
-using __best_match_t  = typename invoke_result_t<_MakeOverloads<_Types...>, _Tp, _Tp>::type;
-}
-;
-;
-template <class... _Types>
-class  variant
-    : private __sfinae_ctor_base< __all<is_copy_constructible_v<_Types>...>::value,
-                                  __all<is_move_constructible_v<_Types>...>::value>,
-      private __sfinae_assign_base<
-          __all<(is_copy_constructible_v<_Types> && is_copy_assignable_v<_Types>)...>::value,
-          __all<(is_move_constructible_v<_Types> && is_move_assignable_v<_Types>)...>::value> {};
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
-template <class _Operator>
-struct __convert_to_bool ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
- ;
-template < class _Visitor, class... _Vs, typename>
-__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) constexpr decltype(auto) visit(_Visitor&& __visitor, _Vs&&... __vs) ;
- ;
- ;
-template <class... _Types>
-struct hash< __enable_hash_helper<variant<_Types...>, remove_const_t<_Types>...>> ;
- ;
- ;
- ;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__0)) std { inline namespace __1 {
 template <class _Iter>
 concept __can_use_postfix_proxy =
@@ -3087,24 +2920,7 @@ template <input_or_output_iterator _Iter,
           sentinel_for<_Iter> _Sent = _Iter,
           subrange_kind _Kind = sized_sentinel_for<_Sent, _Iter> ? subrange_kind::sized : subrange_kind::unsized>
   requires(_Kind == subrange_kind::sized || !sized_sentinel_for<_Sent, _Iter>)
-class subrange : public view_interface<subrange<_Iter, _Sent, _Kind>> {
-public:
-  static constexpr bool _StoreSize = 0;
-private:
-  static constexpr bool _MustProvideSizeAtConstruction = !_StoreSize;
-  struct _Empty ;
-  using _Size  = conditional_t<_StoreSize, make_unsigned_t<iter_difference_t<_Iter>>, _Empty>;
-   _Iter __begin_ = _Iter();
-   _Sent __end_ = _Sent();
-   _Size __size_ = 0;
-public:
-    ;
-    ;
-    ;
-    ;
-    ;
-   ;
-};
+class subrange : public view_interface<subrange<_Iter, _Sent, _Kind>> {};
 ;
 };
 template <class _Ip, class _Sp, ranges::subrange_kind _Kp>
@@ -3114,11 +2930,7 @@ struct tuple_element<0, const ranges::subrange<_Ip, _Sp, _Kp>> ;;
 enum class byte : unsigned char;
 }
  namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-inline constexpr size_t dynamic_extent = 0;
-template <typename _Tp, size_t _Extent = dynamic_extent>
-class span;
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Iterator>
 struct __bounded_iter ;
@@ -3136,13 +2948,7 @@ struct __unwrap_iter_impl<_Iter, true> ;;
 template <class _Category, class _Tp, class _Distance = ptrdiff_t, class _Pointer = _Tp*, class _Reference = _Tp&>
 struct __attribute__((__deprecated__)) iterator {};
 } }
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
- ;
-namespace ranges {
-struct __next ;;
-inline namespace __cpo {}
-}
-} }
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Iterator>
 struct __segmented_iterator_traits;
