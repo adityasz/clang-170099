@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-command="/usr/bin/clang++ -w -stdlib=libc++ -std=c++26 -march=native -O3 -ffast-math -o /dev/null -c Foo.cppm"
+command="/usr/bin/clang++ -w -stdlib=libc++ -std=c++26 -fno-crash-diagnostics -march=native -O3 -ffast-math -o /dev/null -c Foo.cppm"
 
 if ! out=$(${command} 2>&1); then
     if [[ "$out" != "PLEASE submit"* ]]; then
