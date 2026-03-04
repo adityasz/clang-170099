@@ -18,6 +18,7 @@ for _ in $(seq 1 "$1"); do
 
             /usr/bin/clang++ -w -stdlib=libc++ -std=c++26 \
                 -march=native -O3 -ffast-math             \
+                -fno-crash-diagnostics                    \
                 -o /dev/null -c Foo.cppm                  \
                 || { echo "Crashed on the $iter-th try"; exit 1; }
         done
