@@ -7,30 +7,23 @@ if [[ ! $# -eq 1 ]]; then
     exit 1
 fi
 
-rm -rf build
-
-for i in $(seq 1 $1); do
+for _ in $(seq 1 "$1"); do
     (
-		set -e
-        mkdir -p "build/$i"
-		iter=0
+        set -e
+        iter=0
 
         while true;
         do
             iter=$((iter + 1))
 
-            /usr/bin/clang++                                               \
-                -stdlib=libc++ -std=gnu++26 -fPIC -DWITH_GZFILEOP -pthread \
-                -march=native -O3 -DNDEBUG -ffast-math -flto=auto          \
-                -x c++-module                                              \
-                -o "build/$i/Foo.ixx.o" -c                                 \
-                /home/aditya/Playground/cpp/compiler-crash/Foo.cppm        \
-				|| { echo "Crashed on the $iter-th try"; exit 1; }
+            /usr/bin/clang++ -w -stdlib=libc++ -std=c++26 \
+                -march=native -O3 -ffast-math             \
+                -o /dev/null -c Foo.cppm                  \
+                || { echo "Crashed on the $iter-th try"; exit 1; }
         done
     ) &
 done
 
 wait -n
-exit_code=$?
 
-exit $exit_code
+exit $?
