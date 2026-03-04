@@ -852,7 +852,7 @@ concept __has_integral_minus = requires(const _Tp& __x, const _Tp& __y) {
 };
 template <__has_integral_minus _Tp>
   requires(!__has_member_difference_type<_Tp>)
-struct incrementable_traits<_Tp> ;;
+struct incrementable_traits_Tp ;;
 template <class>
 struct iterator_traits;
 template <class _Ip>
@@ -897,7 +897,7 @@ template <class>
 struct __cond_value_type ;;
 template <class _Tp>
   requires is_object_v<_Tp>
-struct __cond_value_type<_Tp> ;;
+struct __cond_value_type_Tp ;;
 template <class _Tp>
 concept __has_member_value_type = requires { typename _Tp::value_type; };
 template <class _Tp>
@@ -1043,10 +1043,10 @@ concept __cpp17_random_access_iterator =
     requires(_Ip __i, typename incrementable_traits<_Ip>::difference_type __n) {
        __i += __n  -> same_as<_Ip&>;
        __i -= __n  -> same_as<_Ip&>;
-       __i + __n  -> same_as<_Ip>;
-       __n + __i  -> same_as<_Ip>;
-       __i - __n  -> same_as<_Ip>;
-       __i - __i  -> same_as<decltype(__n)>;
+       __i + __n  -> same_as_Ip;
+       __n + __i  -> same_as_Ip;
+       __i - __n  -> same_as_Ip;
+       __i - __i  -> same_asdecltype(__n);
        __i  -> convertible_to<iter_reference_t<_Ip>>;
     };
 }
@@ -1181,12 +1181,12 @@ concept __unqualified_iter_move = __class_or_enum<remove_cvref_t<_Tp>> && requir
 template <class _Tp>
 concept __move_deref = !__unqualified_iter_move<_Tp> && requires(_Tp&& __t) {
   *__t;
-  requires is_lvalue_reference_v<decltype(*__t)>;
+  requires is_lvalue_reference_vdecltype(*__t);
 };
 template <class _Tp>
 concept __just_deref = !__unqualified_iter_move<_Tp> && !__move_deref<_Tp> && requires(_Tp&& __t) {
   *__t;
-  requires(!is_lvalue_reference_v<decltype(*__t)>);
+  requires(!is_lvalue_reference_vdecltype(*__t));
 };
 struct __fn {};
 }
@@ -1367,7 +1367,7 @@ concept weakly_incrementable =
     };
 template <class _Ip>
 concept incrementable = regular<_Ip> && weakly_incrementable<_Ip> && requires(_Ip __i) {
-   __i++  -> same_as<_Ip>;
+   __i++  -> same_as_Ip;
 };
 template <class _Ip>
 concept input_or_output_iterator = requires(_Ip __i) {
@@ -1414,7 +1414,7 @@ template <class _Ip>
 concept bidirectional_iterator =
     forward_iterator<_Ip> && derived_from<_ITER_CONCEPT<_Ip>, bidirectional_iterator_tag> && requires(_Ip __i) {
        --__i  -> same_as<_Ip&>;
-       __i--  -> same_as<_Ip>;
+       __i--  -> same_as_Ip;
     };
 template <class _Ip>
 concept random_access_iterator =
@@ -1422,10 +1422,10 @@ concept random_access_iterator =
     totally_ordered<_Ip> && sized_sentinel_for<_Ip, _Ip> &&
     requires(_Ip __i, const _Ip __j, const iter_difference_t<_Ip> __n) {
        __i += __n  -> same_as<_Ip&>;
-       __j + __n  -> same_as<_Ip>;
-       __n + __j  -> same_as<_Ip>;
+       __j + __n  -> same_as_Ip;
+       __n + __j  -> same_as_Ip;
        __i -= __n  -> same_as<_Ip&>;
-       __j - __n  -> same_as<_Ip>;
+       __j - __n  -> same_as_Ip;
        __j  -> same_as<iter_reference_t<_Ip>>;
     };
 template <class _Ip>
@@ -2198,7 +2198,7 @@ template <class... _Rs>
 using __concat_rvalue_reference_t  = common_reference_t<range_rvalue_reference_t<_Rs>...>;
 template <class _Ref, class _RRef, class _It>
 concept __concat_indirectly_readable_impl = requires(const _It __it) {
-   *__it  -> convertible_to<_Ref>;
+   *__it  -> convertible_to_Ref;
   { ranges::iter_move } -> convertible_to<_RRef>;
 };
 template <class... _Rs>
@@ -2758,8 +2758,8 @@ template <class _Tp, class _Up>
 concept common_with =
     same_as<common_type_t<_Tp, _Up>, common_type_t<_Up, _Tp>> &&
     requires {
-        static_cast<common_type_t<_Tp, _Up>>(std::declval);
-        static_cast<common_type_t<_Tp, _Up>>(std::declval);
+        static_castcommon_type_t<_Tp, _Up>(std::declval);
+        static_castcommon_type_t<_Tp, _Up>(std::declval);
     } &&
     common_reference_with<
         add_lvalue_reference_t<const _Tp>,
@@ -3022,9 +3022,9 @@ namespace std
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 struct nullopt_t {
   struct __secret_tag {};
-  __attribute__(()) __attribute__(()) __attribute__(()) constexpr explicit nullopt_t(__secret_tag, __secret_tag) noexcept {}
+  __attribute__(()) __attribute__(()) __attribute__(()) constexpr explicit nullopt_t( void) noexcept {}
 };
-inline constexpr nullopt_t nullopt{nullopt_t::__secret_tag{}, nullopt_t::__secret_tag{}};
+inline constexpr nullopt_t nullopt{ };
 struct __optional_construct_from_invoke_tag ;
 template <class _Tp, bool = is_trivially_destructible<_Tp>::value>
 struct __optional_destruct_base;
@@ -3206,7 +3206,7 @@ using _IotaDiffT  =
 template <class _Iter>
 concept __decrementable = incrementable<_Iter> && requires(_Iter __i) {
    --__i  -> same_as<_Iter&>;
-   __i--  -> same_as<_Iter>;
+   __i--  -> same_as_Iter;
 };
 template <class _Iter>
 concept __advanceable =
@@ -3225,7 +3225,7 @@ class iota_view : public view_interface<iota_view<_Start, _BoundSentinel>> {};
 ;
 template <class _Start, class _BoundSentinel>
 inline constexpr bool enable_borrowed_range<iota_view<_Start, _BoundSentinel>> = true;
-namespace views {}
+
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3570,16 +3570,16 @@ private:
 template <movable _Val, class _CharT, class _Traits>
   requires default_initializable<_Val> && __stream_extractable<_Val, _CharT, _Traits>
 class basic_istream_view<_Val, _CharT, _Traits>::__iterator {};
-namespace views {
+
 namespace __istream {
 template <class _Tp>
 struct __fn ;
 }
-inline namespace __cpo {
+
 template <class _Tp>
-inline constexpr auto istream = __istream::__fn<_Tp>{};
-}
-}
+inline constexpr auto Trans_NS_Trans_NS_views___cpo_istream = __istream::__fn<_Tp>{};
+
+
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3636,7 +3636,7 @@ class as_rvalue_view : public view_interface<as_rvalue_view<_View>> {};
 ;
 template <class _View>
 inline constexpr bool enable_borrowed_range<as_rvalue_view<_View>> = enable_borrowed_range<_View>;
-namespace views {}
+
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
@@ -3672,14 +3672,14 @@ public:
   using value_type = subrange<iterator_t<_View>>;
   using difference_type = range_difference_t<_View>;
 };
-namespace views {
-namespace __chunk_by {
+
+
 struct __fn {};
-}
-inline namespace __cpo {
-inline constexpr auto chunk_by = __chunk_by::__fn{};
-}
-}
+
+
+inline constexpr auto Trans_NS_Trans_NS_views___cpo_chunk_by = __fn{};
+
+
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -3750,12 +3750,12 @@ template <input_range _View, forward_range _Pattern>
            __concatable<range_reference_t<_View>, _Pattern>
 template <bool _Const>
 struct join_with_view<_View, _Pattern>::__sentinel {};
-namespace views {
-namespace __join_with_view {
-struct __fn {};
-}
-inline namespace __cpo {}
-}
+
+
+struct Trans_NS___join_with_view___fn {};
+
+
+
 }
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
@@ -4954,7 +4954,7 @@ template <contiguous_iterator _Iterator>
 struct __parse_number_result ;
 ;
 ;
-namespace __detail {}
+
  ;
  ;
 }
@@ -5811,7 +5811,7 @@ template <class _R1, class _R2>
 inline constexpr bool ratio_not_equal_v = ratio_not_equal<_R1, _R2>::value;
 template <class _R1, class _R2>
 inline constexpr bool ratio_less_v = ratio_less<_R1, _R2>::value;
-namespace chrono {
+
 template <class _Rep, class _Period = ratio<1> >
 class duration;
 template <class _Tp>
@@ -5824,10 +5824,10 @@ template <class _Rep, class _Period>
 inline const bool __is_duration_v<volatile duration<_Rep, _Period> > = true;
 template <class _Rep, class _Period>
 inline const bool __is_duration_v<const volatile duration<_Rep, _Period> > = true;
-}
+
 template <class _Rep1, class _Period1, class _Rep2, class _Period2>
-struct common_type<chrono::duration<_Rep1, _Period1>, chrono::duration<_Rep2, _Period2> > ;;
-namespace chrono {
+struct common_type<duration<_Rep1, _Period1>, duration<_Rep2, _Period2> > ;;
+
 template <class _FromDuration,
           class _ToDuration,
           class _Period = typename ratio_divide<typename _FromDuration::period, typename _ToDuration::period>::type,
@@ -5876,50 +5876,50 @@ struct __duration_eq<_LhsDuration, _LhsDuration> ;
  ;
 template <class _LhsDuration, class _RhsDuration>
 struct __duration_lt ;
-}
+
 inline namespace literals {
-inline namespace chrono_literals {}
+
 }
-namespace chrono {
-using namespace literals::chrono_literals;
-}
+
+
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 template <class _Clock, class _Duration = typename _Clock::duration>
 class time_point {};
-}
+
 template <class _Clock, class _Duration1, class _Duration2>
-struct common_type<chrono::time_point<_Clock, _Duration1>, chrono::time_point<_Clock, _Duration2> > ;;
-namespace chrono {}
+struct common_type<time_point<_Clock, _Duration1>, time_point<_Clock, _Duration2> > ;;
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class __attribute__(()) steady_clock {
 public:
   typedef nanoseconds duration;
   typedef duration::rep rep;
   typedef duration::period period;
-  typedef chrono::time_point<steady_clock, duration> time_point;
+  typedef time_point<steady_clock, duration> time_point;
   static constexpr const bool is_steady = true;
 };
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class __attribute__(()) system_clock {
 public:
   typedef microseconds duration;
   typedef duration::rep rep;
   typedef duration::period period;
-  typedef chrono::time_point<system_clock> time_point;
+  typedef time_point<system_clock> time_point;
   static constexpr const bool is_steady = false;
 };
 template <class _Duration>
 using sys_time = time_point<system_clock, _Duration>;
 using sys_seconds = sys_time<seconds>;
 using sys_days = sys_time<days>;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
@@ -6768,9 +6768,9 @@ struct __container_traits<unordered_multimap<_Key, _Tp, _Hash, _Pred, _Alloc> > 
 class any;
 ;
 ;
-namespace __any_imp {}
+
 class any {};
-namespace __any_imp {}
+
  ;
  ;
  ;
@@ -7509,19 +7509,19 @@ extern template class __attribute__(()) basic_iostream<char>;
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std {}
- namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 { inline namespace __fs { namespace filesystem {
+ namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {  
 struct _FilesystemClock;
-}} } }
+ } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
-using file_clock = filesystem::_FilesystemClock;
+
+using file_clock = _FilesystemClock;
 template <class _Duration>
 using file_time = time_point<file_clock, _Duration>;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 struct local_t ;
 template <class _Duration>
 using local_time = time_point<local_t, _Duration>;
@@ -7529,28 +7529,28 @@ using local_seconds = local_time<seconds>;
 using local_days = local_time<days>;
 struct last_spec {};
 inline constexpr last_spec last;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class day ;;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 template <class _Duration>
 class hh_mm_ss ;;
 ;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class year ;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class month {
 private:
   unsigned char __m_;
@@ -7561,10 +7561,10 @@ public:
   ;
 };
 inline constexpr month December{12};
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class weekday_indexed;
 class weekday_last;
 class weekday {
@@ -7582,39 +7582,39 @@ public:
 class weekday_indexed ;
 class weekday_last ;
 inline constexpr weekday Saturday{6};
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class month_weekday ;;
 class month_weekday_last ;;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class month_day ;
 class month_day_last ;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class year_month ;;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class year_month_day_last;
 class year_month_day ;;
 class year_month_day_last ;
-}
+
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
-namespace chrono {
+
 class year_month_weekday ;
 class year_month_weekday_last ;;
-}
+
 template <class _Tp>
-concept __is_time_point = __is_specialization_v<_Tp, chrono::time_point>;
+concept __is_time_point = __is_specialization_v<_Tp, time_point>;
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
  namespace __attribute__(()) std { inline namespace __1 {} }
@@ -7743,7 +7743,7 @@ class scoped_lock ;
 ;
 } }
 enum eLogLevel : int8_t ;
-namespace Debug {};
+;
 namespace Hyprgraphics {
     class CColor {
       public:
@@ -7773,9 +7773,9 @@ namespace ranges {}
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils {
     namespace Memory {
-        namespace Impl_ {
+        
             class impl_base {};
-        }
+        
     }
 }
 namespace Hyprutils {
@@ -7793,7 +7793,7 @@ namespace Hyprutils {
              ;
              ;
             T* operator->() const ;
-            Impl_::impl_base* impl_ = nullptr;
+            impl_base* impl_ = nullptr;
             void* m_data = nullptr;
           private:
         };
@@ -7823,7 +7823,7 @@ namespace Hyprutils {
 template <typename T>
 struct std::hash<Hyprutils::Memory::CWeakPointer<T>> ;;
 namespace Hyprutils::Memory {
-    namespace Atomic_ {}
+    
     template <typename T>
     class CAtomicWeakPointer;
     template <typename T>
@@ -7936,7 +7936,7 @@ using __get_node_value_type_t  = typename __get_node_value_type<_Tp>::type;
 template <class _NodePtr, class _NodeT = typename pointer_traits<_NodePtr>::element_type>
 struct __tree_node_types;
 template <class _Pointer>
-class __tree_end_node {};
+class __tree_end_node ;
 template <class _VoidPtr>
 class 
 __tree_node_base : public __tree_end_node<__rebind_pointer_t<_VoidPtr, __tree_node_base<_VoidPtr> > > {};
@@ -8007,7 +8007,7 @@ private:
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Key, class _Compare, class _Allocator>
-class set {};
+class set ;
 } }
  namespace __attribute__((__type_visibility__("default"))) std {}
 extern "C" {
@@ -8114,26 +8114,26 @@ enum xkb_consumed_mode {};
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {} }
 namespace Hyprutils {
-    namespace Signal {
+    
         class CSignalBase;
         class CSignalListener ;;
         typedef Hyprutils::Memory::CSharedPointer<CSignalListener> CHyprSignalListener;
-    }
+    
 }
 namespace Hyprutils {}
-using namespace Hyprutils::Signal;
+using namespace Hyprutils;
 enum eHIDCapabilityType : uint8_t ;
 enum eHIDType : uint8_t ;
 class IHID {};
-namespace Aquamarine {};
+;
 class IPointer : public IHID {};
-namespace Time {
-    using steady_tp = std::chrono::steady_clock::time_point;
-    using system_tp = std::chrono::system_clock::time_point;
-    using steady_dur = std::chrono::steady_clock::duration;
-    using system_dur = std::chrono::system_clock::duration;
+
+    using steady_tp = std::steady_clock::time_point;
+    using system_tp = std::system_clock::time_point;
+    using steady_dur = std::steady_clock::duration;
+    using system_dur = std::system_clock::duration;
     steady_tp steadyNow();
-};
+;
 class CEventLoopTimer ;
 class CTimer ;
 class CInputManager;
@@ -8202,9 +8202,9 @@ struct SSessionLockSurface ;;
 struct SSessionLock ;
 class CSessionLockManager ;
 namespace Hyprutils {
-    namespace String {}
+    
 }
-using namespace Hyprutils::String;
+using namespace Hyprutils;
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Key,
           class _CP,
@@ -8289,7 +8289,7 @@ namespace Hyprutils {
         concept AnimatedType = requires(ValueImpl val) {
             requires std::is_copy_constructible_v<ValueImpl>;
             { val == val } -> std::same_as<bool>;
-            { val = val };
+             val = val ;
         };
         template <AnimatedType VarType, class AnimationContext>
         class CGenericAnimatedVariable : public CBaseAnimatedVariable {};
@@ -8327,18 +8327,18 @@ struct SDecorationPositioningInfo ;
 struct SDecorationPositioningReply ;;
 class CDecorationPositioner ;
 class IHyprWindowDecoration ;
-namespace Aquamarine {
+
     struct SGLFormat ;
-    struct SDRMFormat ;;
-};
+    struct Trans_NS_Aquamarine_SDRMFormat ;;
+;
 using DRMFormat = uint32_t;
 using SHMFormat = uint32_t;
 struct SPixelFormat ;
-using SDRMFormat = Aquamarine::SDRMFormat;
-namespace NFormatUtils {};
+using SDRMFormat = Trans_NS_Aquamarine_SDRMFormat;
+;
  namespace __attribute__(()) std { inline namespace __1 {} }
-namespace Aquamarine {};
-namespace Aquamarine {};
+;
+;
 class IHLBuffer;
 namespace Hyprutils {};
 enum eTextureType : int8_t ;
@@ -8366,7 +8366,7 @@ class CPopup ;
  namespace __attribute__((__type_visibility__("default"))) std {}
 extern "C" ;
 namespace Hyprutils {
-    namespace OS {};
+    ;
 };
 struct SCallstackFrameInfo ;;
 struct SWorkspaceIDName ;
@@ -8374,9 +8374,9 @@ struct SWorkspaceIDName ;
 enum eFullscreenMode : int8_t ;;
 class CWindow;
 class CWorkspace ;;
-namespace re2 {
+
     class RE2;
-};
+;
 class CRuleRegexContainer ;;
 class CWindowRule ;
 class CConfigImpl;
@@ -8431,9 +8431,9 @@ struct CWpContentTypeManagerV1DestroyWrapper ;
 class CWpContentTypeManagerV1 ;
 struct CWpContentTypeV1DestroyWrapper ;
 class CWpContentTypeV1 ;
-namespace NContentType {
+
     enum eContentType : uint8_t ;
-}
+
 class CXDGSurfaceResource;
 class CXWaylandSurface;
 enum eIdleInhibitMode : uint8_t {
@@ -8556,7 +8556,7 @@ class CWindow {
     std::vector<SP<CWindowRule>> m_matchedRules;
     CTagKeeper m_tags;
     PHLANIMVAR<float> m_notRespondingTint;
-    Time::steady_tp m_closeableSince = Time::steadyNow();
+    steady_tp m_closeableSince = steadyNow();
     PHLWINDOWREF m_self;
     struct  m_listeners;
   private:
@@ -8651,13 +8651,13 @@ struct CWpImageDescriptionV1DestroyWrapper ;;
 class CWpImageDescriptionV1 ;;
 struct CWpImageDescriptionInfoV1DestroyWrapper ;
 class CWpImageDescriptionInfoV1 ;;
-namespace NColorManagement {
+
     enum eNoShader : uint8_t ;;
     enum ePrimaries : uint8_t ;;
     using SPCPRimaries = Hyprgraphics::SPCPRimaries;
-    namespace NColorPrimaries {}
+    
     struct SImageDescription ;
-}
+
 namespace Hyprutils::CLI {
     class CLoggerImpl;
     enum eLogLevel : uint8_t ;;
@@ -8703,12 +8703,12 @@ typedef unsigned int drm_handle_t;
 extern "C" 
 extern "C" 
 extern "C" ;
-namespace Aquamarine {};
+;
 struct libinput_device;
-namespace Aquamarine {
+
     class ITabletTool;
-    class IKeyboard {};
-    class IPointer {};
+    class Trans_NS_Aquamarine_IKeyboard {};
+    class Trans_NS_Aquamarine_IPointer {};
     class ITouch {};
     class ISwitch {};
     enum eTabletToolAxes : uint32_t ;
@@ -8725,7 +8725,7 @@ namespace Aquamarine {
         struct  events;
     };
     class ITabletPad {};
-}
+
 struct udev;
 struct udev_monitor;
 struct udev_device;
@@ -8734,14 +8734,14 @@ struct libinput;
 struct libinput_event;
 struct libinput_device;
 struct libinput_tablet_tool;
-namespace Aquamarine {
+
     class CBackend;
     class CSession;
     class CLibinputDevice;
     struct SPollFD;
     class CSessionDevice ;
-    class CLibinputKeyboard : public IKeyboard {};
-    class CLibinputMouse : public IPointer {
+    class CLibinputKeyboard : public Trans_NS_Aquamarine_IKeyboard {};
+    class CLibinputMouse : public Trans_NS_Aquamarine_IPointer {
       public:
       private:
         Hyprutils::Memory::CWeakPointer<CLibinputDevice> device;
@@ -8764,16 +8764,16 @@ namespace Aquamarine {
     class CLibinputTabletPad : public ITabletPad {};
     class CLibinputDevice ;
     class CSession ;;
-};
-namespace Aquamarine {};
+;
+;
 extern "C" 
-namespace Aquamarine {
+
     class IBackendImplementation;
     class IOutput;
     struct SSwapchainOptions ;;
     class CSwapchain ;
-};
-namespace Aquamarine {}
+;
+
 class CWLSurfaceResource;
 struct SWorkspaceRule;
 enum eManagersInitStage : uint8_t ;
