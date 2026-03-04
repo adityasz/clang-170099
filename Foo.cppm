@@ -198,7 +198,7 @@ __attribute__(()) __attribute__(()) __attribute__(()) decltype(std::__declval<_T
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _From, class _To>
-concept convertible_to = is_convertible_v<_From, _To> && requires { static_cast<_To>(std::declval<_From>()); };
+concept convertible_to = is_convertible_v<_From, _To> && requires { static_cast<_To>(std::declval<_From>); };
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Tp, class _Up>
@@ -365,7 +365,7 @@ template <class _Tp>
 } }
  namespace __attribute__((__type_visibility__("default"))) std { inline namespace __1 {
 template <class _Xp, class _Yp>
-using __cond_res  = decltype(false ? std::declval<_Xp > : std::declval<_Yp ()>);
+using __cond_res  = decltype(false ? std::declval<_Xp > : std::declval<_Yp >);
 template <class _Tp>
 struct __xref ;;
 template <class _Ap, class _Bp, class _Xp = remove_reference_t<_Ap>, class _Yp = remove_reference_t<_Bp>>
@@ -566,7 +566,7 @@ void swap(_Tp&, _Tp&) = delete;
 template <class _Tp, class _Up>
 concept __unqualified_swappable_with =
     (__class_or_enum<remove_cvref_t<_Tp>> || __class_or_enum<remove_cvref_t<_Up>>) &&
-    requires(_Tp&& __t, _Up&& __u) {
+    requires {
         swap;
     };
 struct __fn;
@@ -587,7 +587,7 @@ inline constexpr auto swap = __swap::__fn{};
 }
 }
 template <class _Tp>
-concept swappable = requires(_Tp& __a, _Tp& __b) { ranges::swap; };
+concept swappable = requires { ranges::swap; };
 template <class _Tp, class _Up>
 concept swappable_with = common_reference_with<_Tp, _Up> && requires {
   ranges::swap;
@@ -1210,7 +1210,7 @@ using iter_value_t =
 namespace ranges {
 namespace __iter_move {
 template <class _Tp>
-concept __unqualified_iter_move = __class_or_enum<remove_cvref_t<_Tp>> && requires(_Tp&& __t) {
+concept __unqualified_iter_move = __class_or_enum<remove_cvref_t<_Tp>> && requires {
   iter_move(std::forward<_Tp>);
 };
 template <class _Tp>
@@ -1230,7 +1230,7 @@ inline constexpr auto iter_move = __iter_move::__fn{};
 }
 }
 template <__dereferenceable _Tp>
-  requires requires(_Tp& __t) {
+  requires requires {
     { ranges::iter_move } -> __referenceable;
   }
 using iter_rvalue_reference_t = decltype(ranges::iter_move);
@@ -4934,16 +4934,7 @@ struct __pthread_mutex_s
 struct __pthread_rwlock_arch_t
 ;;
 struct __pthread_cond_s
-{
-  __atomic_wide_counter __wseq;
-  __atomic_wide_counter __g1_start;
-  unsigned int __g_size ;
-  unsigned int __g1_orig_size;
-  unsigned int __wrefs;
-  unsigned int __g_signals[2];
-  unsigned int __unused_initialized_1;
-  unsigned int __unused_initialized_2;
-};
+;;
 typedef unsigned int __tss_t;
 typedef unsigned long int __thrd_t;
 typedef struct
@@ -5195,7 +5186,7 @@ wl_event_loop_add_signal;
 ;
 ;
 struct wl_listener;
-typedef void (*wl_notify_func_t);
+typedef void ;
 ;
 ;
 ;
@@ -5300,18 +5291,18 @@ typedef void  ;
 typedef void  ;
 typedef void  ;
 typedef void  ;
-typedef void (* PFNGLTEXPARAMETERFVPROC) ;
-typedef void (* PFNGLTEXPARAMETERIPROC) ;
-typedef void (* PFNGLTEXPARAMETERIVPROC) ;
-typedef void (* PFNGLTEXSUBIMAGE2DPROC) ;
-typedef void (* PFNGLUNIFORM1FPROC) ;
-typedef void (* PFNGLPROGRAMBINARYPROC) ;
-typedef void (* PFNGLPROGRAMPARAMETERIPROC) ;
-typedef void (* PFNGLINVALIDATEFRAMEBUFFERPROC) ;
-typedef void (* PFNGLINVALIDATESUBFRAMEBUFFERPROC) ;
-typedef void (* PFNGLTEXSTORAGE2DPROC) ;
-typedef void (* PFNGLTEXSTORAGE3DPROC) ;
-typedef void (* PFNGLGETINTERNALFORMATIVPROC) ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
            ;
            ;
            ;
@@ -5392,18 +5383,18 @@ typedef void (* PFNGLGETINTERNALFORMATIVPROC) ;
            ;
            ;
            ;
-typedef void (* PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC) ;
-typedef void (* PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC) ;
-typedef void (* PFNGLFRAMEBUFFERTEXTUREPROC) ;
-typedef void (* PFNGLPRIMITIVEBOUNDINGBOXPROC) ;
-typedef void (* PFNGLGETNUNIFORMUIVPROC) ;
-typedef void (* PFNGLMINSAMPLESHADINGPROC) ;
-typedef void (* PFNGLPATCHPARAMETERIPROC) ;
-typedef void (* PFNGLTEXPARAMETERIIVPROC) ;
-typedef void (* PFNGLTEXPARAMETERIUIVPROC) ;
-typedef void (* PFNGLGETTEXPARAMETERIIVPROC) ;
-typedef void (* PFNGLGETTEXPARAMETERIUIVPROC) ;
-typedef void (* PFNGLSAMPLERPARAMETERIIVPROC) ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
+typedef void  ;
            ;
            ;
            ;
@@ -6609,10 +6600,7 @@ struct __attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_i
 enum class __alignment : uint8_t ;;
 enum class __sign : uint8_t ;;
 enum class __type : uint8_t ;
-__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) inline constexpr uint32_t __create_type_mask(__type __t) {
-  uint32_t __shift = static_cast<uint32_t>(__t);
-  return 1 << __shift;
-}
+__attribute__((__visibility__0)) __attribute__((__exclude_from_explicit_instantiation__)) __attribute__((__abi_tag__0)) inline constexpr uint32_t __create_type_mask(__type __t) ;
 inline constexpr uint32_t __type_mask_integer =
     0 |
     0;
